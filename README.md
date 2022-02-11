@@ -33,21 +33,16 @@
 		* [5.1.3 Petició Modalitat 2](#5.1.3)
 		* [5.1.3 Resposta](#5.1.3)
 		* [5.1.3 Codis de resposta](#5.1.3)
-		
-  
    * [5.2 Modificació Expedient](#5.2)
 		* [5.2.1 Petició](#5.2.1)
 		* [5.2.2 Resposta](#5.2.2)
-		* [5.2.3 Codis de resposta](#5.2.3)
-		
+		* [5.2.3 Codis de resposta](#5.2.3)	
    * [5.3 Modificació Expedient](#5.3)
-		* [5.3.1 Petició](#5.3.1)
-		
+		* [5.3.1 Petició](#5.3.1)		
    * [5.4 Modificació Expedient](#5.4)
 		* [5.4.1 Petició](#5.4.1)
 		* [5.4.2 Resposta](#5.4.2)
 		* [5.4.3 Codis de resposta](#5.4.3)
-
    * [5.5 Descàrrega d’Expedient en format ZIP](#5.5)
 		* [5.5.1 Modalitat 1: Descarregar metadades](#5.5.1)
 		* [5.5.2 Petició](#5.5.2)
@@ -57,6 +52,19 @@
 		* [5.5.3 Resposta](#5.5.3)
 		* [5.5.3 Exemple XML inclòs en el fitxer ZIP](#5.5.3)
 		* [5.5.3 Codis de resposta](#5.5.3)
+   * [5.6 Descàrrega d’Expedient en format ZIP](#5.5)
+		* [5.6.1 Modalitat 1: Descarregar metadades](#5.5.1)
+		* [5.6.2 Petició](#5.5.2)
+		* [5.6.2 Petició](#5.5.2)
+		* [5.6.2 esposta pendent](#5.5.2)
+		* [5.6.2 Resposta disponible](#5.5.2)
+		* [5.6.2 Codis de resposta](#5.5.2)
+   * [5.7 Descarrega d’Expedient en format ENI](#5.5)
+		* [5.7.1 Petició](#5.7.1)
+
+
+----------------- PER CONTINUAR
+
 
 
 ## 1 Introducció <a name="1"></a>
