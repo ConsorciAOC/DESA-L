@@ -1,190 +1,84 @@
 # DESA-L
 
-
-
-**Index**
-
-[1Introducció 5](#_Toc88579302)
-
-[1.1Definició de nomenclatura de DESA&#39;L 5](#_Toc88579303)
-
-[2Model de Metadades 6](#_Toc88579304)
-
-[2.1Metadades de fitxer 8](#_Toc88579305)
-
-[2.1Metadades d&#39;expedient 10](#_Toc88579306)
-
-[2.2Metadades de Document 14](#_Toc88579307)
-
-[3Autenticació 25](#_Toc88579308)
-
-[3.1Mètode d&#39;autenticació 25](#_Toc88579309)
-
-[3.2Permisologia DESA&#39;L - Model de Control 26](#_Toc88579310)
-
-[4Capa Fitxer 27](#_Toc88579311)
-
-[4.1Càrrega de fitxer 27](#_Toc88579312)
-
-[Petició 28](#_Toc88579313)
-
-[Resposta 28](#_Toc88579314)
-
-[Codis de resposta 29](#_Toc88579315)
-
-[4.2Descàrrega de fitxer 29](#_Toc88579316)
-
-[Petició 30](#_Toc88579317)
-
-[Resposta 30](#_Toc88579318)
-
-[Codis de resposta 31](#_Toc88579319)
-
-[5Capa Expedient 31](#_Toc88579320)
-
-[5.1Alta d&#39;Expedient 31](#_Toc88579321)
-
-[Petició Modalitat 1 31](#_Toc88579322)
-
-[Resposta Modalitat 1 32](#_Toc88579323)
-
-[Petició Modalitat 2 33](#_Toc88579324)
-
-[Resposta 36](#_Toc88579325)
-
-[Codis de resposta 37](#_Toc88579326)
-
-[5.2Modificació Expedient 37](#_Toc88579327)
-
-[Petició 37](#_Toc88579328)
-
-[Resposta 39](#_Toc88579329)
-
-[Codis de resposta 39](#_Toc88579330)
-
-[5.3Eliminació d&#39;Expedient 39](#_Toc88579331)
-
-[Petició 40](#_Toc88579332)
-
-[Resposta 40](#_Toc88579333)
-
-[Codis de resposta 41](#_Toc88579334)
-
-[5.4Descàrrega d&#39;Expedient 41](#_Toc88579335)
-
-[Petició 41](#_Toc88579336)
-
-[Resposta 41](#_Toc88579337)
-
-[Codis de resposta 43](#_Toc88579338)
-
-[5.5Descàrrega d&#39;Expedient en format ZIP 43](#_Toc88579339)
-
-[Modalitat 1: Descarregar metadades 43](#_Toc88579340)
-
-[Petició 43](#_Toc88579341)
-
-[Resposta 44](#_Toc88579342)
-
-[Modalitat 2: Descarregar metadades i Fitxers 44](#_Toc88579343)
-
-[Petició 44](#_Toc88579344)
-
-[Resposta 45](#_Toc88579345)
-
-[Exemple XML inclòs en el fitxer ZIP 45](#_Toc88579346)
-
-[Codis de resposta 46](#_Toc88579347)
-
-[5.6Consulta estat ticket 46](#_Toc88579348)
-
-[Petició 46](#_Toc88579349)
-
-[Petició 47](#_Toc88579350)
-
-[Resposta pendent 47](#_Toc88579351)
-
-[Resposta disponible 47](#_Toc88579352)
-
-[Codis de resposta 47](#_Toc88579353)
-
-[5.7Descarrega d&#39;Expedient en format ENI 48](#_Toc88579354)
-
-[Petició 48](#_Toc88579355)
-
-[Resposta 49](#_Toc88579356)
-
-[Codis de resposta 49](#_Toc88579357)
-
-[6Capa Document 49](#_Toc88579358)
-
-[6.1Alta de Document 50](#_Toc88579359)
-
-[Petició alta document basic 50](#_Toc88579360)
-
-[Resposta alta document basic 52](#_Toc88579361)
-
-[Petició alta document complet 52](#_Toc88579362)
-
-[Resposta document complert 56](#_Toc88579363)
-
-[Codis de Resposta 56](#_Toc88579364)
-
-[6.2Modificació de Document 57](#_Toc88579365)
-
-[Petició document model complet 58](#_Toc88579366)
-
-[Resposta 61](#_Toc88579367)
-
-[Codis de resposta 61](#_Toc88579368)
-
-[6.3Eliminació de Document 62](#_Toc88579369)
-
-[Petició 63](#_Toc88579370)
-
-[Resposta 63](#_Toc88579371)
-
-[Codis de resposta 63](#_Toc88579372)
-
-[6.4Descarrega Document 64](#_Toc88579373)
-
-[Petició Modalitat 1: Descarrega Document 64](#_Toc88579374)
-
-[Resposta 65](#_Toc88579375)
-
-[Petició Modalitat 2: Descarrega Document i contingut (fitxer) 65](#_Toc88579376)
-
-[Resposta 66](#_Toc88579377)
-
-[Codis de resposta 67](#_Toc88579378)
-
-[6.5Descarrega Document en format ENI 67](#_Toc88579379)
-
-[Petició 67](#_Toc88579380)
-
-[Resposta 68](#_Toc88579381)
-
-[Codis de resposta 68](#_Toc88579382)
-
-# 1Introducció
-
-DESA&#39;L és un repositori documental transversal, flexible i parametritzable que s&#39;ha habilitat a tots i cadascun dels ens als que l&#39;AOC ofereix el seu catàleg de serveis d&#39;administració electrònica. El repositori documental del DESA&#39;L ofereix funcionalitats per a la captura, catalogació, classificació, custòdia, retenció, cerca i recuperació de documents electrònics generats pels serveis d&#39;administració electrònica de l&#39;AOC, o fins i tot de tercers.
-
-DESA&#39;L garanteix en tot moment la integritat dels documents, l&#39;absència de malware, l&#39;autenticitat dels integradors i l&#39;auditoria exhaustiva de totes les operacions realitzades.
-
-DESA&#39;L permet enriquir els documents del repositori amb un llenguatge comú i compartit, anomenat model de metadades, que permet categoritzar els documents i, opcionalment, classificar-los en expedients (aquests expedients són la contrapartida als procediments administratius als que donen resposta el nostre catàleg de serveis d&#39;administració electrònica).
-
-DESA&#39;L també ofereix funcionalitats avançades de cerca d&#39;expedients i documents a partir d&#39;un conjunt determinat de metadades definides com a indexables, i també permet la compartició d&#39;expedients i documents amb serveis de tercers gràcies a les funcionalitats d&#39;exportació en format ENI (Esquema Nacional d&#39;Interoperabilitat).
-
-Totes les funcionalitats que ofereix DESA&#39;L són accessibles a través d&#39;una API REST en format JSON. Aquest manual detalla la missatgeria associada a aquesta API, així com el procediment a seguir per realitzar la integració amb el servei DESA&#39;L.
-
-**Important:** Abans d&#39;iniciar la integració amb el DESA&#39;L és imprescindible que demaneu als responsables del DESA&#39;L una reunió prèvia on us puguin assessorar i recomanar, entre d&#39;altres temes, si heu de fer servir expedients, quin model de metadades de document heu d&#39;escollir, com heu d&#39;informar les metadades, quins permisos hauran de tenir els altres serveis integradors sobre els vostres expedients o documents, etc.
-
-Els responsables del DESA&#39;L s&#39;encarregaran a la seva vegada de gestionar la vostra alta com a servei de DESA&#39;L i us proporcionaran les credencials d&#39;accés dels diferents entorns.
-
-## 1.1Definició de nomenclatura de DESA&#39;L
-
-Per tal de garantir la comprensió de la nomenclatura que s&#39;utilitza al DESA&#39;L, a continuació definim les diferents entitats que conformen la nova solució:
+### Índex
+
+- [1 Introducció](#1)
+	* [1.1	Definició de nomenclatura de DESA’L](#1.1)
+	* [2.2. Fer una descàrrega](#2.2)
+- [2 Model de Metadades](#2)
+	* [2.1	Metadades de fitxer](#2.1)
+	* [2.2	Metadades d'expedient](#2.2)
+	* [2.3	Metadades de Document](#2.3)
+- [3	Autenticació](#3)
+   * [3.1	Mètode d’autenticació](#3.1)
+   * [3.2	Permisologia DESA’L - Model de Control](#3.2)
+- [4	Capa Fitxer](#4)
+   * [4.1	Càrrega de fitxer](#4.1)
+   * [4.1.1 Petició](#4.1.1)
+   * [4.1.2 Resposta](#4.1.2)
+   * [4.1.3 Codis de resposta](#4.1.3)
+- [4. Capa Fitxer](#3)
+   * [4.1	Càrrega de fitxer](#4.1)
+		* [4.1.1 Petició](#4.1.1)
+		* [4.1.2 Resposta](#4.1.2)
+		* [4.1.3 Codis de resposta](#4.1.3)
+   * [4.2. Descàrrega de fitxer](#4.2)
+		* [4.2.1 Petició](#4.2.1)
+		* [4.2.2 Resposta](#4.2.2)
+		* [4.2.3 Codis de resposta](#4.2.3)
+- [5. Capa Expedient](#5)
+   * [5.1	Alta d’Expedient](#5.1)
+		* [5.1.1 Petició Modalitat 1](#5.1.1)
+		* [5.1.2 Resposta Modalitat 1](#5.1.2)
+		* [5.1.3 Petició Modalitat 2](#5.1.3)
+		* [5.1.3 Resposta](#5.1.3)
+		* [5.1.3 Codis de resposta](#5.1.3)
+		
+  
+   * [5.2 Modificació Expedient](#5.2)
+		* [5.2.1 Petició](#5.2.1)
+		* [5.2.2 Resposta](#5.2.2)
+		* [5.2.3 Codis de resposta](#5.2.3)
+		
+   * [5.3 Modificació Expedient](#5.3)
+		* [5.3.1 Petició](#5.3.1)
+		
+   * [5.4 Modificació Expedient](#5.4)
+		* [5.4.1 Petició](#5.4.1)
+		* [5.4.2 Resposta](#5.4.2)
+		* [5.4.3 Codis de resposta](#5.4.3)
+
+ * [5.5 Descàrrega d’Expedient en format ZIP](#5.5)
+		* [5.5.1 Modalitat 1: Descarregar metadades](#5.5.1)
+		* [5.5.2 Petició](#5.5.2)
+		* [5.5.3 Resposta](#5.5.3)
+		* [5.5.3 Modalitat 2: Descarregar metadades i Fitxers](#5.5.3)
+		* [5.5.3 Petició](#5.5.3)
+
+
+
+
+
+## 1 Introducció <a name="1"></a>
+
+DESA’L és un repositori documental transversal, flexible i parametritzable que s’ha habilitat a tots i cadascun dels ens als que l’AOC ofereix el seu catàleg de serveis d’administració electrònica. El repositori documental del DESA’L ofereix funcionalitats per a la captura, catalogació, classificació, custòdia, retenció, cerca i recuperació de documents electrònics generats pels serveis d’administració electrònica de l’AOC, o fins i tot de tercers.
+
+DESA’L garanteix en tot moment la integritat dels documents, l’absència de malware, l’autenticitat dels integradors i l’auditoria exhaustiva de totes les operacions realitzades.
+
+DESA’L permet enriquir els documents del repositori amb un llenguatge comú i compartit, anomenat model de metadades, que permet categoritzar els documents i, opcionalment, classificar-los en expedients (aquests expedients són la contrapartida als procediments administratius als que donen resposta el nostre catàleg de serveis d’administració electrònica).
+
+DESA’L també ofereix funcionalitats avançades de cerca d’expedients i documents a partir d’un conjunt determinat de metadades definides com a indexables, i també permet la compartició d’expedients i documents amb serveis de tercers gràcies a les funcionalitats d’exportació en format ENI (Esquema Nacional d’Interoperabilitat).
+
+Totes les funcionalitats que ofereix DESA’L són accessibles a través d’una API REST en format JSON. Aquest manual detalla la missatgeria associada a aquesta API, així com el procediment a seguir per realitzar la integració amb el servei DESA’L. 
+
+
+**Important:** Abans d’iniciar la integració amb el DESA’L és imprescindible que demaneu als responsables del DESA’L una reunió prèvia on us puguin assessorar i recomanar, entre d’altres temes, si heu de fer servir expedients, quin model de metadades de document heu d’escollir, com heu d’informar les metadades, quins permisos hauran de tenir els altres serveis integradors sobre els vostres expedients o documents, etc.
+
+Els responsables del DESA’L s’encarregaran a la seva vegada de gestionar la vostra alta com a servei de DESA’L i us proporcionaran les credencials d’accés dels diferents entorns.
+
+## 1.1	Definició de nomenclatura de DESA’L
+
+Per tal de garantir la comprensió de la nomenclatura que s’utilitza al DESA’L, a continuació definim les diferents entitats que conformen la nova solució:
 
 - **Servei** : cada servei d&#39;administració electrònica de l&#39;AOC, o de tercers, que requereix la integració amb el DESA&#39;L, ja sigui per nodrir el repositori amb nous documents i/o expedients, o bé per recuperar o cercar qualsevol d&#39;aquests documents o expedients. L&#39;alta d&#39;un nou servei integrador s&#39;ha de realitzar de forma exclusiva pel personal de l&#39;AOC i el procediment per fer-ho resta fora de l&#39;abast d&#39;aquest manual.
 
