@@ -48,15 +48,15 @@
 		* [5.4.2 Resposta](#5.4.2)
 		* [5.4.3 Codis de resposta](#5.4.3)
 
- * [5.5 Descàrrega d’Expedient en format ZIP](#5.5)
+   * [5.5 Descàrrega d’Expedient en format ZIP](#5.5)
 		* [5.5.1 Modalitat 1: Descarregar metadades](#5.5.1)
 		* [5.5.2 Petició](#5.5.2)
 		* [5.5.3 Resposta](#5.5.3)
 		* [5.5.3 Modalitat 2: Descarregar metadades i Fitxers](#5.5.3)
 		* [5.5.3 Petició](#5.5.3)
-
-
-
+		* [5.5.3 Resposta](#5.5.3)
+		* [5.5.3 Exemple XML inclòs en el fitxer ZIP](#5.5.3)
+		* [5.5.3 Codis de resposta](#5.5.3)
 
 
 ## 1 Introducció <a name="1"></a>
