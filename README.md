@@ -80,7 +80,7 @@ DESA’L també ofereix funcionalitats avançades de cerca d’expedients i docu
 Totes les funcionalitats que ofereix DESA’L són accessibles a través d’una API REST en format JSON. Aquest manual detalla la missatgeria associada a aquesta API, així com el procediment a seguir per realitzar la integració amb el servei DESA’L. 
 
 
-**Important:** Abans d’iniciar la integració amb el DESA’L és imprescindible que demaneu als responsables del DESA’L una reunió prèvia on us puguin assessorar i recomanar, entre d’altres temes, si heu de fer servir expedients, quin model de metadades de document heu d’escollir, com heu d’informar les metadades, quins permisos hauran de tenir els altres serveis integradors sobre els vostres expedients o documents, etc.
+**Important:** AAbans d’iniciar la integració amb el DESA’L és imprescindible que demaneu als responsables del DESA’L una reunió prèvia on us puguin assessorar i recomanar, entre d’altres temes, si heu de fer servir expedients, quin model de metadades de document heu d’escollir, com heu d’informar les metadades, quins permisos hauran de tenir els altres serveis integradors sobre els vostres expedients o documents, etc.
 
 Els responsables del DESA’L s’encarregaran a la seva vegada de gestionar la vostra alta com a servei de DESA’L i us proporcionaran les credencials d’accés dels diferents entorns.
 
@@ -88,56 +88,53 @@ Els responsables del DESA’L s’encarregaran a la seva vegada de gestionar la 
 
 Per tal de garantir la comprensió de la nomenclatura que s’utilitza al DESA’L, a continuació definim les diferents entitats que conformen la nova solució:
 
-- **Servei** : cada servei d&#39;administració electrònica de l&#39;AOC, o de tercers, que requereix la integració amb el DESA&#39;L, ja sigui per nodrir el repositori amb nous documents i/o expedients, o bé per recuperar o cercar qualsevol d&#39;aquests documents o expedients. L&#39;alta d&#39;un nou servei integrador s&#39;ha de realitzar de forma exclusiva pel personal de l&#39;AOC i el procediment per fer-ho resta fora de l&#39;abast d&#39;aquest manual.
+- **Servei** : cada servei d’administració electrònica de l’AOC, o de tercers, que requereix la integració amb el DESA’L, ja sigui per nodrir el repositori amb nous documents i/o expedients, o bé per recuperar o cercar qualsevol d’aquests documents o expedients. L’alta d’un nou servei integrador s’ha de realitzar de forma exclusiva pel personal de l’AOC i el procediment per fer-ho resta fora de l’abast d’aquest manual.
 
-- **Organisme** : cadascun dels diferents ens públics (ajuntaments, consells comarcals, diputacions, etc.) als que l&#39;AOC presta servei a través del seu catàleg de serveis d&#39;administració electrònica, i als que s&#39;ha habilitat el repositori documental del DESA&#39;L. L&#39;alta d&#39;un nou organisme al repositori documental del DESA&#39;L s&#39;ha de realitzar de forma exclusiva pel personal de l&#39;AOC i el procediment per fer-ho resta fora de l&#39;abast d&#39;aquest manual.
+- **Organisme** : cadascun dels diferents ens públics (ajuntaments, consells comarcals, diputacions, etc.) als que l’AOC presta servei a través del seu catàleg de serveis d’administració electrònica, i als que s’ha habilitat el repositori documental del DESA’L. L’alta d’un nou organisme al repositori documental del DESA’L s’ha de realitzar de forma exclusiva pel personal de l’AOC i el procediment per fer-ho resta fora de l’abast d’aquest manual.
 
-- **Expedient** : és una entitat d&#39;alt nivell formada pel conjunt ordenat de documents i actuacions que serveixen d&#39;antecedent i fonament a la resolució administrativa, així com les diligències encaminades a executar-la. De forma més pràctica podem veure-ho com una carpeta que conté les seves pròpies metadades i un conjunt ordenat de documents que estan relacionats amb el procediment administratiu al que dona resposta l&#39;expedient. L&#39;ús d&#39;expedients és opcional, però recomanem encaridament el seu ús per les funcionalitats d&#39;alt valor afegit que DESA&#39;L ofereix. DESA&#39;L no té cap limitació en quant al nombre de documents que pot contenir un únic expedient.
+- **Expedient** : és una entitat d’alt nivell formada pel conjunt ordenat de documents i actuacions que serveixen d’antecedent i fonament a la resolució administrativa, així com les diligències encaminades a executar-la. De forma més pràctica podem veure-ho com una carpeta que conté les seves pròpies metadades i un conjunt ordenat de documents que estan relacionats amb el procediment administratiu al que dona resposta l’expedient. L’ús d’expedients és opcional, però recomanem  encaridament el seu ús per les funcionalitats d’alt valor afegit que DESA’L ofereix. DESA’L no té cap limitació en quant al nombre de documents que pot contenir un únic expedient.
 
-- **Fitxer** :binari (PDF, Word, imatge, etc.) que es puja i s&#39;emmagatzema a DESA&#39;L per tal que els serveis d&#39;administració electrònica autoritzats el puguin referenciar a través d&#39;un o més documents. Es tracta d&#39;un element de baix nivell que s&#39;utilitza únicament per evitar duplicats en els binaris. El seu cicle de vida per tant anirà condicionat al cicle de vida dels documents associats. La mida màxima que admet DESA&#39;L per als fitxers és de 4,2GB.
+- **Fitxer** : binari (PDF, Word, imatge, etc.) que es puja i s’emmagatzema a DESA’L per tal que els serveis d’administració electrònica autoritzats el puguin referenciar a través d’un o més documents. Es tracta d’un element de baix nivell que s’utilitza únicament per evitar duplicats en els binaris. El seu cicle de vida per tant anirà condicionat al cicle de vida dels documents associats. La mida màxima que admet DESA’L per als fitxers és de 4,2GB.
 
-- **Document** : entitat essencial del DESA&#39;L formada per un conjunt de metadades i la relació amb un i només un fitxer de DESA&#39;L
-# 1
-. El document és l&#39;entitat d&#39;alt nivell amb la que realment han de treballar en tot moment els integradors. DESA&#39;L contempla 2 models de metadades a nivell de document: bàsic i complet. DESA&#39;L permet que un mateix fitxer (binari PDF, Word, ...) estigui referenciat per més d&#39;un document i que cadascun d&#39;aquests documents pugui tenir uns permisos i unes polítiques de retenció pròpies. D&#39;altra banda, un document de DESA&#39;L pot pertànyer de forma opcional a un, i només un, expedient.
+- **Document** : entitat essencial del DESA’L formada per un conjunt de metadades i la relació amb un i només un fitxer de DESA’L . El document és l’entitat d’alt nivell amb la que realment han de treballar en tot moment els integradors. DESA’L contempla 2 models de metadades a nivell de document: bàsic i complet. DESA’L permet que un mateix fitxer (binari PDF, Word, ...) estigui referenciat per més d’un document i que cadascun d’aquests documents pugui tenir uns permisos i unes polítiques de retenció pròpies. D’altra banda, un document de DESA’L pot pertànyer de forma opcional a un, i només un, expedient.
 
-# 2Model de Metadades
+# 2 Model de Metadades
 
-El model de metadades de cadascuna de les entitats (fitxer, document i expedient) ve definit pel conjunt de metadades que tindran associades cadascuna d&#39;aquestes entitats, la seva tipologia i mida, si poden ser o no editables, així com si es poden fer servir per a les cerques.
+El model de metadades de cadascuna de les entitats (fitxer, document i expedient) ve definit pel conjunt de metadades que tindran associades cadascuna d’aquestes entitats, la seva tipologia i mida, si poden ser o no editables, així com si es poden fer servir per a les cerques.
 
 En el model de metadades es podem distingir tres grups diferents de tipus de metadades:
 
-**Metadades que ha d&#39;aportar l&#39;integrador**.
+**Metadades que ha d’aportar l’integrador.**
 
-Es tracta de metadades que ha d&#39;informar l&#39;integrador en el moment de crear l&#39;entitat.
+Es tracta de metadades que ha d’informar l’integrador en el moment de crear l’entitat. 
 
-**Metadades que crea DESA&#39;L automàticament**.
+**Metadades que crea DESA’L automàticament.**
 
-Es tracta de metadades que genera automàticament DESA&#39;L en el moment de crear l&#39;entitat i són metadades que DESA&#39;L retorna en la resposta del mètode corresponent d&#39;alta o modificació de l&#39;entitat.
+Es tracta de metadades que genera automàticament DESA’L en el moment de crear l’entitat i són metadades que DESA’L retorna en la resposta del mètode corresponent d’alta o modificació de l’entitat.
 
-**Metadades ENI**.
+**Metadades ENI.**
 
-Es tracta de metadades que genera automàticament DESA&#39;L en el moment d&#39;exportar un expedient o document en format ENI, d&#39;acord a les especificacions tècniques publicades a les normes tècniques d&#39;interoperabilitat corresponents.
+Es tracta de metadades que genera automàticament DESA’L en el moment d’exportar un expedient o document en format ENI, d’acord a les especificacions tècniques publicades a les normes tècniques d’interoperabilitat corresponents. 
 
-**Ampliació del model de metadades**. _ **InfoAddicional** _.
+**Ampliació del model de metadades** **_InfoAddicional_** 
 
-El servei integrador pot estendre els models de metadades d&#39;expedient o document fent ús de la metadada infoAddicional. Aquesta metadada és de tipus Text, no té cap limitació de mida i està pensada per emmagatzemar en ella una llista de claus – valor d&#39;acord a les necessitats específiques del servei integrador.
+El servei integrador pot estendre els models de metadades d’expedient o document fent ús de la metadada infoAddicional. Aquesta metadada és de tipus Text, no té cap limitació de mida i està pensada per emmagatzemar en ella una llista de claus – valor d’acord a les necessitats específiques del servei integrador.
 
-A continuació es presenten els diferents models de metadades que utilitza DESA&#39;L per a cada tipus d&#39;entitat. Per cada metadada s&#39;especifica les següents característiques que determina el seu comportament:
+A continuació es presenten els diferents models de metadades que utilitza DESA’L per a cada tipus d’entitat. Per cada metadada s’especifica les següents característiques que determina el seu comportament:
 
 | **Camp** | **Descripció** |
 | --- | --- |
 | **Nom element** | Variable que indica el nom de la metadada |
-| **Consignació** | Variable que indica si és obligatòria o opcional. També existeix la possibilitat que sigui obligatòria, però condicionada al valor d&#39;una alta metadada (la metadada relacionada es detalla en el camp observacions).
- |
+| **Consignació** | Variable que indica si és obligatòria o opcional. També existeix la possibilitat que sigui obligatòria, però condicionada al valor d’una alta metadada (la metadada relacionada es detalla en el camp observacions). |
 | **Longitud camp** | Variable que indica la longitud màxima permesa |
-| **Tipus de camp** | Variable que indica el format que ha de tenir el camp. Poden ser de tipus
-- **Text**
-- **Número**
-- **Data i Hora.** S&#39;utilitzarà format DD/MM/AAAA HH24:MI:SS
-- **Taula validada.** Taula predefinida amb uns valors determinats que poden ser ampliats en qualsevol moment per par dels administradors de DESA&#39;L. Sempre es podran afegir nous valors a la taula, però mai es podran eliminar valors per evitar cap tipus d&#39;inconsistència.
-- **URI**
-- **Booleà**
- |
+| **Tipus de camp** | Variable que indica el format que ha de tenir el camp. Poden ser de tipus:
+•	<ul><li>**Text**</li>
+•	<li>**Número**</li>
+•	<li>**Data i Hora.** S’utilitzarà format DD/MM/AAAA HH24:MI:SS</li>
+•	<li>**Taula validada.** Taula predefinida amb uns valors determinats que poden ser ampliats en qualsevol moment per par dels administradors de DESA’L. Sempre es podran afegir nous valors a la taula, però mai es podran eliminar valors per evitar cap tipus d’inconsistència.</li>
+•	<li>**URI**</li>
+•	<li>**Booleà**</li></ul>|
+
 | **Validació o procedència de dades** | Variable que identifica com s&#39;ha d&#39;obtenir el valor en cas de necessari. |
 | **Equivalència ENI** | Nom de la metadada a la missatgeria ENI. |
 | Equivalència MUX | Nom de la metadada a la missatgeria de MUXv3. |
