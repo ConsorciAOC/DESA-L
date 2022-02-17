@@ -2,72 +2,92 @@
 
 ### Índex
 
-- [1 Introducció](#1)
-	* [1.1	Definició de nomenclatura de DESA’L](#1.1)
-	* [2.2. Fer una descàrrega](#2.2)
-- [2 Model de Metadades](#2)
-	* [2.1	Metadades de fitxer](#2.1)
-	* [2.2	Metadades d'expedient](#2.2)
-	* [2.3	Metadades de Document](#2.3)
-- [3	Autenticació](#3)
-   * [3.1	Mètode d’autenticació](#3.1)
-   * [3.2	Permisologia DESA’L - Model de Control](#3.2)
-- [4	Capa Fitxer](#4)
-   * [4.1	Càrrega de fitxer](#4.1)
-   * [4.1.1 Petició](#4.1.1)
-   * [4.1.2 Resposta](#4.1.2)
-   * [4.1.3 Codis de resposta](#4.1.3)
-- [4. Capa Fitxer](#3)
-   * [4.1	Càrrega de fitxer](#4.1)
-		* [4.1.1 Petició](#4.1.1)
-		* [4.1.2 Resposta](#4.1.2)
-		* [4.1.3 Codis de resposta](#4.1.3)
-   * [4.2. Descàrrega de fitxer](#4.2)
-		* [4.2.1 Petició](#4.2.1)
-		* [4.2.2 Resposta](#4.2.2)
-		* [4.2.3 Codis de resposta](#4.2.3)
-- [5. Capa Expedient](#5)
-   * [5.1	Alta d’Expedient](#5.1)
-		* [5.1.1 Petició Modalitat 1](#5.1.1)
-		* [5.1.2 Resposta Modalitat 1](#5.1.2)
-		* [5.1.3 Petició Modalitat 2](#5.1.3)
-		* [5.1.3 Resposta](#5.1.3)
-		* [5.1.3 Codis de resposta](#5.1.3)
-   * [5.2 Modificació Expedient](#5.2)
-		* [5.2.1 Petició](#5.2.1)
-		* [5.2.2 Resposta](#5.2.2)
-		* [5.2.3 Codis de resposta](#5.2.3)	
-   * [5.3 Modificació Expedient](#5.3)
-		* [5.3.1 Petició](#5.3.1)		
-   * [5.4 Modificació Expedient](#5.4)
-		* [5.4.1 Petició](#5.4.1)
-		* [5.4.2 Resposta](#5.4.2)
-		* [5.4.3 Codis de resposta](#5.4.3)
-   * [5.5 Descàrrega d’Expedient en format ZIP](#5.5)
-		* [5.5.1 Modalitat 1: Descarregar metadades](#5.5.1)
-		* [5.5.2 Petició](#5.5.2)
-		* [5.5.3 Resposta](#5.5.3)
-		* [5.5.3 Modalitat 2: Descarregar metadades i Fitxers](#5.5.3)
-		* [5.5.3 Petició](#5.5.3)
-		* [5.5.3 Resposta](#5.5.3)
-		* [5.5.3 Exemple XML inclòs en el fitxer ZIP](#5.5.3)
-		* [5.5.3 Codis de resposta](#5.5.3)
-   * [5.6 Descàrrega d’Expedient en format ZIP](#5.5)
-		* [5.6.1 Modalitat 1: Descarregar metadades](#5.5.1)
-		* [5.6.2 Petició](#5.5.2)
-		* [5.6.2 Petició](#5.5.2)
-		* [5.6.2 esposta pendent](#5.5.2)
-		* [5.6.2 Resposta disponible](#5.5.2)
-		* [5.6.2 Codis de resposta](#5.5.2)
-   * [5.7 Descarrega d’Expedient en format ENI](#5.5)
-		* [5.7.1 Petició](#5.7.1)
+- [DESA-L](#desa-l)
+		- [Índex](#índex)
+- [1 Introducció <a name="1"></a>](#1-introducció-)
+	- [1.1	Definició de nomenclatura de DESA’L <a name="1.1"></a>](#11definició-de-nomenclatura-de-desal-)
+- [2 Model de Metadades <a name="2"></a>](#2-model-de-metadades-)
+	- [2.1 Metadades de fitxer <a name="2.1"></a>](#21-metadades-de-fitxer-)
+	- [2.1 Metadades d&#39;expedient <a name="2.1"></a>](#21-metadades-dexpedient-)
+	- [2.2 Metadades de Document <a name="2.2"></a>](#22-metadades-de-document-)
+- [3 Autenticació <a name="3"></a>](#3-autenticació-)
+	- [3.1 Mètode d&#39;autenticació <a name="3.1"></a>](#31-mètode-dautenticació-)
+	- [3.2 Permisologia DESA&#39;L - Model de Control <a name="3.2"></a>](#32-permisologia-desal---model-de-control-)
+- [4 Capa Fitxer <a name="4"></a>](#4-capa-fitxer-)
+	- [4.1 Càrrega de fitxer <a name="4.1"></a>](#41-càrrega-de-fitxer-)
+		- [Petició](#petició)
+		- [Resposta](#resposta)
+		- [Codis de resposta](#codis-de-resposta)
+	- [4.2 Descàrrega de fitxer <a name="4.1"></a>](#42-descàrrega-de-fitxer-)
+		- [Petició](#petició-1)
+		- [Resposta](#resposta-1)
+		- [Codis de resposta](#codis-de-resposta-1)
+- [5 Capa Expedient <a name="5"></a>](#5-capa-expedient-)
+	- [5.1 Alta d&#39;Expedient <a name="5.1"></a>](#51-alta-dexpedient-)
+		- [Petició Modalitat 1](#petició-modalitat-1)
+		- [Resposta Modalitat 1](#resposta-modalitat-1)
+		- [Petició Modalitat 2](#petició-modalitat-2)
+		- [Resposta](#resposta-2)
+		- [Codis de resposta](#codis-de-resposta-2)
+	- [5.2 Modificació Expedient <a name="5.2"></a>](#52-modificació-expedient-)
+		- [Petició](#petició-2)
+		- [Resposta](#resposta-3)
+		- [Codis de resposta](#codis-de-resposta-3)
+	- [5.3 Eliminació d&#39;Expedient <a name="5.3"></a>](#53-eliminació-dexpedient-)
+		- [Petició](#petició-3)
+		- [Resposta](#resposta-4)
+		- [Codis de resposta](#codis-de-resposta-4)
+	- [5.4 Descàrrega d&#39;Expedient <a name="5.4"></a>](#54-descàrrega-dexpedient-)
+		- [Petició](#petició-4)
+		- [Resposta](#resposta-5)
+		- [Codis de resposta](#codis-de-resposta-5)
+	- [5.5 Descàrrega d&#39;Expedient en format ZIP <a name="5.5"></a>](#55-descàrrega-dexpedient-en-format-zip-)
+		- [Modalitat 1: Descarregar metadades](#modalitat-1-descarregar-metadades)
+		- [Petició](#petició-5)
+		- [Resposta](#resposta-6)
+		- [Modalitat 2: Descarregar metadades i Fitxers](#modalitat-2-descarregar-metadades-i-fitxers)
+		- [Petició](#petició-6)
+		- [Resposta](#resposta-7)
+		- [Exemple XML inclòs en el fitxer ZIP](#exemple-xml-inclòs-en-el-fitxer-zip)
+		- [Codis de resposta](#codis-de-resposta-6)
+	- [5.6 Consulta estat ticket <a name="5.6"></a>](#56-consulta-estat-ticket-)
+		- [Petició](#petició-7)
+		- [Petició](#petició-8)
+		- [Resposta pendent](#resposta-pendent)
+		- [Resposta disponible](#resposta-disponible)
+		- [Codis de resposta](#codis-de-resposta-7)
+	- [5.7 Descarrega d&#39;Expedient en format ENI <a name="5.7"></a>](#57-descarrega-dexpedient-en-format-eni-)
+		- [Petició](#petició-9)
+		- [Resposta](#resposta-8)
+		- [Codis de resposta](#codis-de-resposta-8)
+- [6 Capa Document <a name="6"></a>](#6-capa-document-)
+	- [6.1 Alta de Document <a name="6.1"></a>](#61-alta-de-document-)
+		- [Petició alta document basic](#petició-alta-document-basic)
+		- [Resposta alta document basic](#resposta-alta-document-basic)
+		- [Petició alta document complet](#petició-alta-document-complet)
+		- [Resposta document complert](#resposta-document-complert)
+		- [Codis de Resposta](#codis-de-resposta-9)
+	- [6.2 Modificació de Document <a name="6.2"></a>](#62-modificació-de-document-)
+		- [Petició document model complet](#petició-document-model-complet)
+		- [Resposta](#resposta-9)
+		- [Codis de resposta](#codis-de-resposta-10)
+	- [6.3 Eliminació de Document <a name="6.3"></a>](#63-eliminació-de-document-)
+		- [Petició](#petició-10)
+		- [Resposta](#resposta-10)
+		- [Codis de resposta](#codis-de-resposta-11)
+	- [6.4 Descarrega Document <a name="6.4"></a>](#64-descarrega-document-)
+		- [Petició Modalitat 1: Descarrega Document](#petició-modalitat-1-descarrega-document)
+		- [Resposta](#resposta-11)
+		- [Petició Modalitat 2: Descarrega Document i contingut (fitxer)](#petició-modalitat-2-descarrega-document-i-contingut-fitxer)
+		- [Resposta](#resposta-12)
+		- [Codis de resposta](#codis-de-resposta-12)
+	- [6.5 Descarrega Document en format ENI <a name="6.5"></a>](#65-descarrega-document-en-format-eni-)
+		- [Petició](#petició-11)
+		- [Resposta](#resposta-13)
+		- [Codis de resposta](#codis-de-resposta-13)
 
 
------------------ PER CONTINUAR
-
-
-
-## 1 Introducció <a name="1"></a>
+# 1 Introducció <a name="1"></a>
 
 DESA’L és un repositori documental transversal, flexible i parametritzable que s’ha habilitat a tots i cadascun dels ens als que l’AOC ofereix el seu catàleg de serveis d’administració electrònica. El repositori documental del DESA’L ofereix funcionalitats per a la captura, catalogació, classificació, custòdia, retenció, cerca i recuperació de documents electrònics generats pels serveis d’administració electrònica de l’AOC, o fins i tot de tercers.
 
@@ -84,7 +104,7 @@ Totes les funcionalitats que ofereix DESA’L són accessibles a través d’una
 
 Els responsables del DESA’L s’encarregaran a la seva vegada de gestionar la vostra alta com a servei de DESA’L i us proporcionaran les credencials d’accés dels diferents entorns.
 
-## 1.1	Definició de nomenclatura de DESA’L
+## 1.1	Definició de nomenclatura de DESA’L <a name="1.1"></a>
 
 Per tal de garantir la comprensió de la nomenclatura que s’utilitza al DESA’L, a continuació definim les diferents entitats que conformen la nova solució:
 
@@ -98,7 +118,7 @@ Per tal de garantir la comprensió de la nomenclatura que s’utilitza al DESA�
 
 - **Document** : entitat essencial del DESA’L formada per un conjunt de metadades i la relació amb un i només un fitxer de DESA’L . El document és l’entitat d’alt nivell amb la que realment han de treballar en tot moment els integradors. DESA’L contempla 2 models de metadades a nivell de document: bàsic i complet. DESA’L permet que un mateix fitxer (binari PDF, Word, ...) estigui referenciat per més d’un document i que cadascun d’aquests documents pugui tenir uns permisos i unes polítiques de retenció pròpies. D’altra banda, un document de DESA’L pot pertànyer de forma opcional a un, i només un, expedient.
 
-# 2 Model de Metadades
+# 2 Model de Metadades <a name="2"></a>
 
 El model de metadades de cadascuna de les entitats (fitxer, document i expedient) ve definit pel conjunt de metadades que tindran associades cadascuna d’aquestes entitats, la seva tipologia i mida, si poden ser o no editables, així com si es poden fer servir per a les cerques.
 
@@ -125,32 +145,20 @@ A continuació es presenten els diferents models de metadades que utilitza DESA�
 | **Camp** | **Descripció** |
 | --- | --- |
 | **Nom element** | Variable que indica el nom de la metadada |
-| **Consignació** | Variable que indica si és obligatòria o opcional. També existeix la possibilitat que sigui obligatòria, però condicionada al valor d’una alta metadada (la metadada relacionada es detalla en el camp observacions). |
-| **Longitud camp** | Variable que indica la longitud màxima permesa |
-| **Tipus de camp** | Variable que indica el format que ha de tenir el camp. Poden ser de tipus:
-•	<ul><li>**Text**</li>
-•	<li>**Número**</li>
-•	<li>**Data i Hora.** S’utilitzarà format DD/MM/AAAA HH24:MI:SS</li>
-•	<li>**Taula validada.** Taula predefinida amb uns valors determinats que poden ser ampliats en qualsevol moment per par dels administradors de DESA’L. Sempre es podran afegir nous valors a la taula, però mai es podran eliminar valors per evitar cap tipus d’inconsistència.</li>
-•	<li>**URI**</li>
-•	<li>**Booleà**</li></ul>|
-
-| **Validació o procedència de dades** | Variable que identifica com s&#39;ha d&#39;obtenir el valor en cas de necessari. |
+| **Consignació** | Variable que indica si és obligatòria o opcional. També existeix la possibilitat que sigui obligatòria, però condicionada al valor d’una alta metadada (la metadada relacionada es detalla en el camp observacions).|| **Longitud camp** | Variable que indica la longitud màxima permesa |
+| **Tipus de camp** | Variable que indica el format que ha de tenir el camp. Poden ser de tipus:<ul><li>**Text**</li><li>**Número**</li><li>**Data i Hora.** S’utilitzarà format DD/MM/AAAA HH24:MI:SS</li><li>**Taula validada.** Taula predefinida amb uns valors determinats que poden ser ampliats en qualsevol moment per par dels administradors de DESA’L. Sempre es podran afegir nous valors a la taula, però mai es podran eliminar valors per evitar cap tipus d’inconsistència.</li><li>**URI**</li><li>**Booleà**</li></ul>|| **Validació o procedència de dades** | Variable que identifica com s&#39;ha d&#39;obtenir el valor en cas de necessari. |
 | **Equivalència ENI** | Nom de la metadada a la missatgeria ENI. |
-| Equivalència MUX | Nom de la metadada a la missatgeria de MUXv3. |
-| Qui informa | Variable que identifica qui ha de aportar aquest valor. Es definiran dues opcions:
-- **Aplicació que s&#39;integra**. Metadades que ha d&#39;aportar l&#39;integrador en el moment de crear l&#39;entitat.
-- **DESA&#39;L**. Metadades que crea DESA&#39;L automàticament i que retorna a l&#39;integrador en la resposta del mètode de creació
- |
-| Automàtic | Variable que indica si l&#39;ha de crear el sistema de manera automàtica o el sistema espera rebre aquesta dada |
+| **Equivalència MUX** | Nom de la metadada a la missatgeria de MUXv3. |
+| **Qui informa** | Variable que identifica qui ha de aportar aquest valor. Es definiran dues opcions:<lu><li> **Aplicació que s&#39;integra**. Metadades que ha d&#39;aportar l&#39;integrador en el moment de crear l&#39;entitat.</li><li>- **DESA&#39;L**. Metadades que crea DESA&#39;L automàticament i que retorna a l&#39;integrador en la resposta del mètode de creació</li></lu>|
+| **Automàtic** | Variable que indica si l&#39;ha de crear el sistema de manera automàtica o el sistema espera rebre aquesta dada |
 | **Únic** | Variable que indica si el valor ha de ser únic dins el repositori documental o si es pot repetir. |
-| Repetitiu | Variable que indica si la metadada pot tenir més d&#39;un valor o ha de ser únic. És a dir, si la metadada és de tipus llista. |
-| Indexable | Variable que indica si internament, DESA&#39;L ha d&#39;indexar aquesta metadada per tal que es pugui incorporar en un futur com a criteri de cerca. |
-| Cercable | Variable que indica si la metadada pot ser utilitzada com a criteri de filtre en els mètodes de cerca de document i expedient. |
-| Modificable en edició | Variable que indica si el valor es podrà modificar un cop creada l&#39;entitat. L&#39;integrador només podrà modificar les dades que tinguin la variables Qui l&#39;informa igual a &quot;Aplicació que s&#39;integra&quot;. |
-| Observacions | Variable que dona més detalls o que aclareix d&#39;algun aspecte important a tenir en compte de la metadada. |
+| **Repetitiu** | Variable que indica si la metadada pot tenir més d&#39;un valor o ha de ser únic. És a dir, si la metadada és de tipus llista. |
+| **Indexable** | Variable que indica si internament, DESA&#39;L ha d&#39;indexar aquesta metadada per tal que es pugui incorporar en un futur com a criteri de cerca. |
+| **Cercable** | Variable que indica si la metadada pot ser utilitzada com a criteri de filtre en els mètodes de cerca de document i expedient. |
+| **Modificable en edició** | Variable que indica si el valor es podrà modificar un cop creada l&#39;entitat. L&#39;integrador només podrà modificar les dades que tinguin la variables Qui l&#39;informa igual a &quot;Aplicació que s&#39;integra&quot;. |
+| **Observacions** | Variable que dona més detalls o que aclareix d&#39;algun aspecte important a tenir en compte de la metadada. |
 
-## 2.1Metadades de fitxer
+## 2.1 Metadades de fitxer <a name="2.1"></a>
 
 | **Nom Element** | **Consignació** | **Longitud camp** | **Tipus de camp** | **Validació i procedència dades** | **Equivalencia ENI** | **Equivalencia MUX** | **Qui l&#39;informa** | **Automàtic** | **Únic** | **Repetitiu** | **Indexable** | **Cercable** | **Modificable edició** | **Observacions** |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -175,8 +183,8 @@ A continuació es presenten els diferents models de metadades que utilitza DESA�
  - acceptat (ha passat totes les validacions i ja es pot utilitzar)
  - rebutjat (no ha passat els controls) |
 
-  1.
-## Metadades d&#39;expedient
+  
+## 2.1 Metadades d&#39;expedient <a name="2.1"></a>
 
 | **Nom element** | **Consignació** | **Longitud** | **Tipus de camp** | **Equivalencia ENI** | **Qui l&#39;informa** | **Automàtic** | **Únic** | **Repetitiu** | **Indexable** | **Cercable** | **Modificable en edició** | **Observacions** |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -253,7 +261,7 @@ A continuació detallem les diferents metadades i la seva definició per Exporta
 | **estado** | Obligatori |   | Text | DESA&#39;L | EstatExpedient | DESA&#39;L | Si | No | N/A | N/A |   |
 | **interesado** | Opcional |   | Text | DESA&#39;L | Interessat | DESA&#39;L | Si | Si | N/A | N/A |   |
 
-## 2.2Metadades de Document
+## 2.2 Metadades de Document <a name="2.2"></a>
 
 DESA&#39;L disposa de 2 models de metadades per als documents: el model bàsic i el model complet. Cada servei integrador utilitzarà un i només un d&#39;aquests 2 models per a tots els documents que generi. Un cop donat d&#39;alta el servei i definit el model de metadades dels seus documents no es podrà canviar de model. D&#39;aquesta forma en el moment de crear el document aquest heretarà el model de metadades que ha d&#39;utilitzar en funció del servei propietari al que pertanyi i aquest model de metadades es mantindrà al llarg de tot el seu cicle de vida (és a dir no podrà canviar de cap manera el model de metadades d&#39;un document un cop aquest hagi estat creat).
 
@@ -413,9 +421,9 @@ Es tracta del model de metadades que majoritàriament han d&#39;utilitzar els se
 | **nomClassificacio** | Opcional | 250 | Text | DenominacionClase |   | Aplicació que s&#39;integra | No | No | No | No | No | Si |   |
 | **codiSIA** | Opcional | 50 | Text |   |   | Aplicació que s&#39;integra | No | No | No | Si | Si | Si |   |
 
-# 3Autenticació
+# 3 Autenticació <a name="3"></a>
 
-## 3.1Mètode d&#39;autenticació
+## 3.1 Mètode d&#39;autenticació <a name="3.1"></a>
 
 DESA&#39;L implementa un mètode d&#39;autenticació segur que permet garantir l&#39;autenticitat del servei integrador, i la seva legitimitat per executar la petició, abans de procedir a executar qualsevol dels mètodes de l&#39;API i abans d&#39;accedir a qualsevol de les dades del repositori documental.
 
@@ -441,7 +449,7 @@ També estan disponibles els SDKs d&#39;AWS en diferents tipus de llenguatge que
 
 **Important:** l&#39;AOC disposa d&#39;un client Java que facilita molt tant la implementació del procés d&#39;autenticació amb l&#39;API del DESA&#39;L com la pròpia invocació dels diferents mètodes. Si creieu que pot ser del vostre interès, sol·liciteu als responsables del DESA&#39;L que us el facilitin.
 
-## 3.2Permisologia DESA&#39;L - Model de Control
+## 3.2 Permisologia DESA&#39;L - Model de Control <a name="3.2"></a>
 
 Tot i que els serveis integradors amb DESA&#39;L no us heu de preocupar de gestionar les autoritzacions i els permisos sobre els expedients i documents que doneu d&#39;alta en el repositori documental del DESA&#39;L, sí que creiem que és necessari que conegueu com funciona el sistema de permisos de DESA&#39;L per tal que consensueu amb els responsables del DESA&#39;L les autoritzacions que DESA&#39;L haurà d&#39;aplicar sobre els vostres expedients i documents.
 
@@ -469,7 +477,7 @@ A mode de resum, i per facilitar l&#39;enteniment de la configuració de permiso
 - Permetre únicament a un conjunt reduït de serveis transversals (p. ex. el MyGov, el Portal de Transparència o el MUXv3) la cerca i/o descàrrega de documents o expedients d&#39;un determinat servei (p. ex. l&#39;eNotum), però no permetre en cap cas als serveis transversals la possibilitat de crear, modificar o esborrar els documents de l&#39;eNotum.
 - Garantir a un servei que ell gestioni de forma exclusiva els seus propis documents/expedients i que exclogui a qualsevol altre servei integrador (incloent els serveis transversals de l&#39;AOC com MUXv3, MyGov o el Portal de Transparència) qualsevol tipus d&#39;accés a aquests documents/expedients.
 
-# 4Capa Fitxer
+# 4 Capa Fitxer <a name="4"></a>
 
 A continuació es descriu en detall la capa de fitxers que DESA&#39;L ofereix als integradors. Aquesta capa és responsable de la gestió dels binaris (PDF, Word, ...) que hem d&#39;hostatjar a DESA&#39;L. Es tracta d&#39;una capa de baix nivell que hem d&#39;utilitzar exclusivament mentre no disposem del document de DESA&#39;L.
 
@@ -485,7 +493,7 @@ En cas de voler pujar una nova versió d&#39;un fitxer, s&#39;haurà de carregar
 
 Cal destacar que tot i que DESA&#39;L podria arribar a permetre el seu ús com a simple capa d&#39;emmagatzematge a través de l&#39;ús exclusiu de la capa de Fitxer, realment no es tractaria d&#39;un ús natural i el servei integrador hauria de tenir molt en compte aquesta política de purga automàtica.
 
-## 4.1Càrrega de fitxer
+## 4.1 Càrrega de fitxer <a name="4.1"></a>
 
 La càrrega d&#39;un fitxer a DESA&#39;L s&#39;ha de realitzar en 2 passos. Inicialment l&#39;integrador ha d&#39;executar el mètode de càrrega de fitxer del DESA&#39;L per tal d&#39;obtenir la URL presignada de S3 i a continuació haurà de realitzar la posterior càrrega del fitxer al bucket de S3 de DESA&#39;L a partir d&#39;aquesta URL.
 
@@ -581,13 +589,13 @@ A continuació es detallen els possibles codis d&#39;error per càrrega de fitxe
 | 15 | Error: el MIME/Type indicat no és vàlid. Operació NO realitzada. |
 | 100 | Error no controlat: XXXXXX. Si us plau, reintenti l&#39;operació en uns minuts. Operació NO realitzada. |
 
-## 4.2Descàrrega de fitxer
+## 4.2 Descàrrega de fitxer <a name="4.1"></a>
 
 Aquest mètode permet demanar la descàrrega d&#39;un fitxer allotjat al repositori documental del DESA&#39;L, sempre i quan aquest fitxer no estigui encara referenciat per cap document de DESA&#39;L. La descarrega d&#39;un fitxer es farà també en 2 passos: una primera petició síncrona a a l&#39;API de DESA&#39;L que a partir de l&#39;UUIDFitxer retornarà l&#39;URL presignada de S3 i a continuació la descàrrega pròpiament del binari a partir de la URL presignada de S3.
 
 **Important:** la descàrrega de fitxer només es pot executar mentre el fitxer no estigui referenciat per un document de DESA&#39;L. Un cop el fitxer estigui vinculat a un document, la recuperació només es podrà fer a través dels mètodes de document (p. ex. _ **6.4Descarregar Document** _)
 
-### Petició
+### Petició 
 
 A continuació es detallen els camps que han d&#39;informar el servei integrador per poder realitzar la descàrrega del fitxer i un exemple de resposta:
 
@@ -661,13 +669,13 @@ A continuació es detallen els possibles codis d&#39;error per a la descàrrega 
 | 14 | Error: el document físic conté virus i ha estat eliminat. Operació NO realitzada. |
 | 100 | Error no controlat: XXXXXX. Si us plau, reintenti l&#39;operació en uns minuts. Operació NO realitzada. |
 
-# 5Capa Expedient
+# 5 Capa Expedient <a name="5"></a>
 
 L&#39;expedient és una entitat d&#39;alt nivell formada pel conjunt ordenat de documents i actuacions que serveixen d&#39;antecedent i fonament a la resolució administrativa, així com les diligències encaminades a executar-la. De forma més pràctica podem veure-ho com una carpeta que conté les seves pròpies metadades i un conjunt ordenat de documents que estan relacionats amb el procediment administratiu al que dona resposta l&#39;expedient. L&#39;ús d&#39;expedients és opcional, però recomanem encaridament el seu ús per les funcionalitats d&#39;alt valor afegit que DESA&#39;L ofereix. DESA&#39;L no té cap limitació en quant al nombre de documents que pot contenir un únic expedient.
 
 A continuació es detallen tots els mètodes de l&#39;API de DESA&#39;L que permeten la gestió d&#39;expedients.
 
-## 5.1Alta d&#39;Expedient
+## 5.1 Alta d&#39;Expedient <a name="5.1"></a>
 
 L&#39;alta d&#39;expedient és un mètode síncron que presenta 2 modalitats:
 
@@ -1227,7 +1235,7 @@ A continuació es detallen els possibles codis de resposta per l&#39;alta d&#39;
 | 12 | Error: el número d&#39;expedient ja existeix en el servei i organismo indicats. Operació NO realitzada. |
 | 100 | Error no controlat: XXXXXX. Si us plau, reintenti l&#39;operació en uns minuts. Operació NO realitzada.. |
 
-## 5.2Modificació Expedient
+## 5.2 Modificació Expedient <a name="5.2"></a>
 
 Aquest mètode permet la modificació de qualsevol metadada identificada com a editable de l&#39;expedient. Es permetrà la modificació de l&#39;expedient independentment del seu estat (fins i tot si l&#39;expedient es troba en _ **Estat Tancat** _).
 
@@ -1411,7 +1419,7 @@ A continuació es detallen els possibles codis de resposta per a la modificació
 | 12 | Error: l&#39;expedient no existetix al servei o organisme indicats. Operació NO realitzada. |
 | 100 | Error no controlat: XXXXXX. Si us plau, reintenti l&#39;operació en uns minuts. Operació NO realitzada. |
 
-## 5.3Eliminació d&#39;Expedient
+## 5.3 Eliminació d&#39;Expedient <a name="5.3"></a>
 
 Aquest mètode permet realitzar l&#39;esborrat d&#39;un expedient. L&#39;esborrat de l&#39;expedient es pot realitzar independentment de l&#39;estat de l&#39;expedient (fins i tot si l&#39;expedient es troba en _ **Estat Obert** _).
 
@@ -1474,7 +1482,7 @@ A continuació es detallen els possibles codis de resposta de la petició d&#39;
 | 12 | Error: l&#39;expedient indicat no existeix al servei i organisme indicats. Operació NO realitzada. |
 | 100 | Error no controlat: XXXXXX. Si us plau, reintenti l&#39;operació en uns minuts. Operació NO realitzada. |
 
-## 5.4Descàrrega d&#39;Expedient
+## 5.4 Descàrrega d&#39;Expedient <a name="5.4"></a>
 
 Aquest mètode síncron permet obtenir les metadades de l&#39;expedient i dels documents associats a partir de l&#39;UUIDExpedient.
 
@@ -1675,7 +1683,7 @@ A continuació es detallen els possibles codis de resposta per a la descàrrega 
 | 12 | Error: l&#39;expedient indicat no existeix en el servei i organisme indicats. Operació NO realitzada. |
 | 100 | Error no controlat: XXXXXX. Si us plau, reintenti l&#39;operació en uns minuts. Operació NO realitzada. |
 
-## 5.5Descàrrega d&#39;Expedient en format ZIP
+## 5.5 Descàrrega d&#39;Expedient en format ZIP <a name="5.5"></a>
 
 Aquest mètode asíncron permet obtenir i descarregar en un fitxer ZIP les metadades de l&#39;expedient i dels documents associats a partir de l&#39;UUIDExpedient (Modalitat 1). De forma opcional permet també recuperar l&#39;URL per poder descarregar tots els binaris dels documents (Modalitat 2). A diferència de la majoria de mètodes de l&#39;API del DESA&#39;L que treballen en format JSON, aquest mètode retorna la metadades en un fitxer XML que es troba dins el fitxer ZIP a descarregar.
 
@@ -1941,7 +1949,7 @@ A continuació es detallen els possibles codis de resposta per a la descàrrega 
 | 12 | Error: l&#39;expedient indicat no existeix en el servei i organisme indicats. Operació NO realitzada. |
 | 100 | Error no controlat: XXXXXX. Si us plau, reintenti l&#39;operació en uns minuts. Operació NO realitzada. |
 
-## 5.6Consulta estat ticket
+## 5.6 Consulta estat ticket <a name="5.6"></a>
 
 Per obtenir la URL del fitxer ZIP dels mètodes asíncrons de l&#39;API de DESA&#39;L com la descàrrega d&#39;expedient en format ZIP, la descàrrega d&#39;expedient en format ENI o la descàrrega de document en format ENI, l&#39;integrador haurà de realitzar un polling sobre el mètode de consulta de l&#39;estat del ticket que retornen aquests mètodes asíncrons.
 
@@ -2017,7 +2025,7 @@ A continuació es detallen els possibles codis de resposta per a la modificació
 | 11 | Error: la petició no és correcta (XXXXXX). Operació NO realitzada. |
 | 100 | Error no controlat: XXXXXX. Si us plau, reintenti l`operació en uns minuts. Operació NO realitzada. |
 
-## 5.7Descarrega d&#39;Expedient en format ENI
+## 5.7 Descarrega d&#39;Expedient en format ENI <a name="5.7"></a>
 
 Aquest mètode asíncron permet obtenir i descarregar l&#39;expedient en format ENI (Esquema Nacional de Interoperabilidad) per poder exportar-ho i compartir-ho amb tercers. Les especificacions del format ENI per a expedients estan disponibles al següent enllaç:
 
@@ -2078,7 +2086,7 @@ A continuació es detallen els possibles codis de resposta per a la descàrrega 
 | 12 | Error: l&#39;expedient indicat no existeix en el servei i organisme indicats. Operació NO realitzada. |
 | 100 | Error no controlat: XXXXXX. Si us plau, reintenti l&#39;operació en uns minuts. Operació NO realitzada. |
 
-# 6Capa Document
+# 6 Capa Document <a name="6"></a>
 
 El document és l&#39;entitat essencial del DESA&#39;L. Està format per un conjunt de metadades i la relació amb un i només un fitxer de DESA&#39;L. DESA&#39;L també permet gestionar documents on el binari no es custodia al propi repositori del DESA&#39;L, sinó que està hostatjat en un repositori extern. En aquests casos al document de DESA&#39;L només es guarda la referència al repositori extern ja sigui a través d&#39;una URL externa o d&#39;un CSV del repositori extern.
 
@@ -2088,7 +2096,7 @@ Per poder crear un document a DESA&#39;L prèviament cal carregar el seu conting
 
 DESA&#39;L contempla 2 models de metadades a nivell de document: bàsic i complet (el model complet hereta del model bàsic i per tant incorpora totes les seves metadades). El servei integrador haurà de consensuar amb els responsables del DESA&#39;L quin d&#39;aquests 2 models de metadades ha de fer servir per a la creació dels seus documents. Aquesta decisió es molt important per què un cop enregistrat el servei integrador a DESA&#39;L no es podrà modificar el model de metadades dels seus documents.
 
-## 6.1Alta de Document
+## 6.1 Alta de Document <a name="6.1"></a>
 
 Aquest mètode de l&#39;API permet la creació d&#39;un nou document associat a un servei, incorporant les seves metadades.
 
@@ -2623,7 +2631,7 @@ A continuació es detallen els possibles codis de resposta per l&#39;alta de doc
 | 100 | Error no controlat: XXXXXX. Si us plau, reintenti l&#39;operació en uns minuts. Operació NO realitzada. |
 | 101 | Error: el document físic indicat està en procés de validació. Si us plau, reintenta l&#39;operació en uns minuts. Operació NO realitzada. |
 
-## 6.2Modificació de Document
+## 6.2 Modificació de Document <a name="6.2"></a>
 
 Aquest mètode permet realitzar la modificació de les metadades editables d&#39;un document. Donat que el vincle entre el document i l&#39;expedient al que està associat (_ **IdentificadorExpedientDesal** _), o el vincle entre el document i el fitxer que defineix el contingut (_ **UUIDFitxer** _) són metadades, aquest és el mètode que el servei integrador ha d&#39;executar per poder actualitzar el contingut binari del document o l&#39;expedient amb el que està associat el document.
 
@@ -2903,7 +2911,7 @@ A continuació es detallen els possibles codis de resposta per la modificació d
 | 100 | Error no controlat: XXXXXX. Si us plau, reintenti l&#39;operació en uns minuts. Operació NO realitzada. |
 | 101 | Error: el document físic indicat està en procés de validació. Si us plau, reintenta l&#39;operació en uns minuts. Operació NO realitzada. |
 
-## 6.3Eliminació de Document
+## 6.3 Eliminació de Document <a name="6.3"></a>
 
 Aquest mètode permet eliminar un document, i en cascada, el propi fitxer associat si aquest només està referenciat pel document en qüestió.
 
@@ -2970,7 +2978,7 @@ A continuació es detallen els possibles codis de resposta per l&#39;eliminació
 | 100 | Error no controlat: XXXXXX. Si us plau, reintenti l&#39;operació en uns minuts. Operació NO realitzada. |
 | 101 | Error: el document físic indicat està en procés de validació. Si us plau, reintenta l&#39;operació en uns minuts. Operació NO realitzada. |
 
-## 6.4Descarrega Document
+## 6.4 Descarrega Document <a name="6.4"></a>
 
 Aquest mètode permet obtenir de forma síncrona les metadades d&#39;un document a partir del seu _ **UUIDDocument** _ (Modalitat 1) i de forma opcional l&#39;URL presignada per poder descarregar el contingut (Modalitat 2).
 
@@ -3274,7 +3282,7 @@ A continuació es detallen els possibles codis de resposta per a la descàrrega 
 | 12 | Error: el document indicat no existeix en el servei i organisme indicats. Operació NO realitzada. |
 | 100 | Error no controlat: XXXXXX. Si us plau, reintenti l&#39;operació en uns minuts. Operació NO realitzada. |
 
-## 6.5Descarrega Document en format ENI
+## 6.5 Descarrega Document en format ENI <a name="6.5"></a>
 
 Aquest mètode permetrà obtenir i descarregar un document en format ENI per tal de poder compartir-ho amb un tercer.
 
