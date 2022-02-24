@@ -182,12 +182,10 @@ A continuació es presenten els diferents models de metadades que utilitza DESA�
 ## 2.1	Metadades d'expedient <a name="2.1"></a>
 
 
-| **1Nom element** | **2Consignació** | **3Longitud** | **4Tipus de  camp** | **5Equivalencia ENI** | **6Qui l'informa** | **7Automàtic** | **8Únic** | **9Repetitiu**  | **10Indexable** | **11Cercable** | **12Modificable en edició** | **13Observacions** |
+| **1Nom element HOLA** | **2Consignació** | **3Longitud** | **4Tipus de  camp** | **5Equivalencia ENI** | **6Qui l'informa** | **7Automàtic** | **8Únic** | **9Repetitiu**  | **10Indexable** | **11Cercable** | **12Modificable en edició** | **13Observacions** |
 | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
 | **codiINE**	| Obligatori | 10 | Text | -- | Aplicació que s'integra	| No | No | No	| Si | Si | No | Codi INE de l’ens propietari de l’expedient |
-
-
-|**codiServei**|	Obligatori|	10|	Taula|--|	 	Aplicació que s'integra	|No	|No|	No	|Si	|Si	|No	|Codi del servei propietari de l’expedient|
+| **codiServei** | Obligatori |	10 | Taula | -- | Aplicació que s'integra | No | No | No |Si	| Si | No | Codi del servei propietari de l’expedient |
 |**identificador**|	Obligatori|	50|	Text|--|	 	Aplicació que s'integra	|No	|No|	No	|Si|	Si|	Si|	Número d’expedient |
 |**titol** |	Obligatori|	500	|Text|	NombreNatural	|Aplicació que s'integra	|No|	No|	No|	Si|	Si|	Si|	Títol o assumpte de l'expedient|
 |**dataInici**|	Obligatori|--|	 	Data i hora	|FechaAperturaExpediente|	Aplicació que s'integra	|Si|	No|	No	|Si	|Si|	Si|	Data d’obertura de l’expedient |
