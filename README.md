@@ -11,7 +11,7 @@
 	- [2.1	Metadades d'expedient <a name="2.1"></a>](#21metadades-dexpedient-)
 	- [2.2 Metadades de Document <a name="2.2"></a>](#22-metadades-de-document-)
 - [3 Autenticació <a name="3"></a>](#3-autenticació-)
-	- [3.1 Mètode d&#39;autenticació <a name="3.1"></a>](#31-mètode-dautenticació-)
+	- [3.1	Mètode d’autenticació <a name="3.1"></a>](#31mètode-dautenticació-)
 	- [3.2	Permisologia DESA’L - Model de Control <a name="3.2"></a>](#32permisologia-desal---model-de-control-)
 - [4 Capa Fitxer <a name="4"></a>](#4-capa-fitxer-)
 	- [4.1 Càrrega de fitxer <a name="4.1"></a>](#41-càrrega-de-fitxer-)
@@ -181,11 +181,48 @@ A continuació es presenten els diferents models de metadades que utilitza DESA�
 
 ## 2.1	Metadades d'expedient <a name="2.1"></a>
 
-  --**VIGILA AQUI, FALTA FER TAULA**---
+
+ | Nom element |	Consignació	 |Longitud |	Tipus de  camp |	Equivalencia ENI	 |Qui l'informa	 |Automàtic |	Únic |	Repetitiu	 |Indexable	 |Cercable	 |Modificable en edició	 |Observacions |
+|-- |-- |-- |-- |-- |-- |-- |-- |-- |-- |-- |-- |-- |
+| **codiINE**	|Obligatori	|10	|Text|--|	 	Aplicació que s'integra	|No	|No	|No	|Si	|Si	|No	|Codi INE de l’ens propietari de l’expedient|
+|**codiServei**|	Obligatori|	10|	Taula|--|	 	Aplicació que s'integra	|No	|No|	No	|Si	|Si	|No	|Codi del servei propietari de l’expedient|
+|**identificador**|	Obligatori|	50|	Text|--|	 	Aplicació que s'integra	|No	|No|	No	|Si|	Si|	Si|	Número d’expedient |
+|**titol** |	Obligatori|	500	|Text|	NombreNatural	|Aplicació que s'integra	|No|	No|	No|	Si|	Si|	Si|	Títol o assumpte de l'expedient|
+|**dataInici**|	Obligatori|--|	 	Data i hora	|FechaAperturaExpediente|	Aplicació que s'integra	|Si|	No|	No	|Si	|Si|	Si|	Data d’obertura de l’expedient |
+|**dataFi**	|Opcional|	validar formato data|	Data i hora	 |--|	Aplicació que s'integra|	No|	No	|No	|Si	|Si	|Si	| Data de tancament de l’expedient|
+| **usuari** |	Opcional	|100	|Text	|--| 	Aplicació que s'integra	|No	|No	|No	|Si|	No|	No|	Dades identificatives de l’usuari que crea l'expedient|
+|**unitatResponsable**|	Opcional|	250	|Text|--|	 	Aplicació que s'integra	|No	|No	|No|	Si|	No|	Si	|--|
+| **codiClassificacio**	|Obligatori|	50|	Text|	CodigoClasificacion	|Aplicació que s'integra|	No|	No|	No|	Si|	Si|	Si	|--|
+|**nomClassificacio**	|Obligatori|	250|	Text|	DenominacionClase	|Aplicació que s'integra|	No|	No|	No|	No|	No|	Si	|--|
+|  **codiSIA**|	Opcional|	50	|Text	|CodigoClasificacion|	Aplicació que s'integra	|No	|No	|No	|Si	|Si	|Si	  |--|
+|**nivellAcces**|	Opcional	| --|	Text|	NivelAcceso	|Aplicació que s'integra|	No|	No|	No	|Si	|No| 	Si	| <ul><li>A-Secret</li><li>B-Reservat</li><li>C-Confidencial</li><li>E-No classificat</li> </li>|
+|**clasificacioENS**|	Opcional|	--| 	Text	|ClasificacionENS|	Aplicació que s'integra	|No	|No	|No	|Si|No|	Si|	Baix,Mig, Alt|
+|**sensibilitatDadesCaracterPersonal**|	Opcional	| 	--|Text	|SensibilidadDatosCaracterPersonal	|Aplicació que s'integra|	No|	No|	No|	Si|	No|	Si|	Basic, Mig, Alt|
+| **estatExpedient**|	Obligatori|	 --|	Text	|Estado|	Aplicació que s'integra	|No	|No	|No	|Si|	No|	Si| <ul><li>	E01 (Abierto)</li><li>E02 (Cerrado)</li><li>E03 (Índice para remisión cerrado).</li></ul>|
+|**interessat**|	Opcional|	15	|Text|	Interesado|	Aplicació que s'integra|	No|	No	|Si|	Si|	Si|	Si|	Llista de ciutadans/persones jurídiques o administracions vinculades amb l’expedient<ul><li>a) Si ciudadà informar:DNI, NIE, NIF</li><li>b) Si administració informar: <Órgano> (DIR3)</li></ul>|
+|**descripcio** |	Opcional|	500	|Text|	Descripcio|	Aplicació que s'integra	|No	|No|	No	|Si	|Si	|Si	 |--|
+| **infoAddicional** | 	Opcional|--	| 	Text |--|	 	Aplicació que s'integra	|No|	No|	Si|	No|	No	|Si|	Llista de claus-valors que l’integrador pot fer servir per ampliar el model de metadades d’acord a les seves necessitats específiques|
+|-- |-- |-- |-- |-- |-- |METADADES QUE CREA DESA'L AUTOMÀTICAMENT |-- |-- |-- |-- |-- |-- |
+| **UUIDExpedient**|	Obligatori|	36	|Text|	SecuenciaIdentificador|	DESA'L|	Si|	Si|	No|	Si|	Si|	No|	Identificador únic de l'expedient|
+|**dataAlta**	|Obligatori	 |--|	Data i hora	 |--|	DESA'L|	Si|	No|	No|	Si|	Si|	No|	Data d'alta de l'expedient a DESA'L|
+| **versioNTI**	|Obligatori	 |--|	URI	|VersionNTI	|DESA'L|	Si|	No|	No	|No	|No	|No	|Valor per defecte: http://administracionelectronica.gob.es/ENI/XSD/v1.0/expediente-e |
+|**identificadorENI**	|Obligatori	|52|	Text|	Identificador|	DESA'L|	Si|	No|	No|	Si|	No|	No	|Identificador utilitzat per a les exportacions ENI amb el format: ES_<Órgano>_<AAAA>_<UUIDExpedient>|
+| **organ**	|Obligatori	|20	|Text|	Organo	|DESA'L|	Si|	No|	Si|	Si|	No|	No|	Equivalència codi INE amb el DIR3 |
+
 
 A continuació detallem les diferents metadades i la seva definició per Exportació ENI:
 
-  --**VIGILA AQUI, FALTA FER TAULA**---
+  | Nom element|	Consignació	|Longitud camp|	Tipus de camp|	Validació i procedència dades	|Equivalencia DESA'L|	Qui l'informa	|Automàtic|	Repetitiu	|Cercable|	Modificable en edició	|Observacions|
+  |--|--|--|--|--|--|--|--|--|--|--|--|
+  |--|--|--|--|--|METADADES QUE CREA DESA'L AUTOMÀTICAMENT AL FER UNA EXPORTACIÓ ENI|--|--|--|--|--|--|
+  | **versionNTI**|	Obligatori	|--| 	URI	|DESA'L|	N/A	|DESA'L|	Si|	No|	N/A	|N/A|	Valor per defecte: http://administracionelectronica.gob.es/ENI/XSD/v1.0/expediente-e|
+|**identificador**|	Obligatori|	52|	Text	|DESA'L|	N/A	|DESA'L|	Si|	No|	N/A	|N/A|	L'element s'informa a partir d'altres metadades: ES_<Órgano>_<AAAA>_<Identificador>|
+|**organo**|	Obligatori|	20	|Text	|DESA'L	|N/A|	DESA'L|	Si|	Si	|N/A|	N/A	|Equivalència codi INE amb el DIR3 |
+|**fechaAperturaExpediente**|	Obligatori	|-- |	Data i hora|	DESA'L|	DataInici|	DESA'L|	Si|	No	|N/A|	N/A	 |--|
+|**clasificacion**|	Obligatori	 |--|	Text|	DESA'L|	CodiSIA/CodiClassificacio|	DESA'L|	Si|	No|	N/A|	N/A	|Si existeix el codi SIA s'agafa aquest sinó el codi de classificació|
+|**estado**|	Obligatori	|--| 	Text|	DESA'L	|EstatExpedient	|DESA'L|	Si|	No	|N/A|	N/A	 |--|
+|**interesado**|	Opcional|--|	 	Text	|DESA'L	|Interessat	|DESA'L	|Si|	Si|	N/A	|N/A	|--| 
+
 
 ## 2.2 Metadades de Document <a name="2.2"></a>
 
@@ -212,6 +249,28 @@ A continuació es detallen les diferents metadades del model bàsic:
 |**nomNatural**|	Obligatori|	500	|Text|	NombreNatural|	nomNatural|	Aplicació que s'integra	|No|	No|	No	|Si	|Si|	Si|	Nom natural (sense extensió)|
 |**dataDocument** |Obligatori	 	|--|Data i hora|	FechaInicio	| 	-- | Aplicació que s'integra|	No	|No	|No	|Si	|Si	|Si|--|
 |**contingut**|	Obligatori	 |--|	Text	|--|--| 	 	Aplicació que s'integra|	No|	No|	No|	Si|	No|	No|	<ul><li>1) fitxer</li><li>2)URL</li><li>3) identificador extern</li></ul>|
+|**interessat**|	Opcional|	20	|Text|	Interesado	|--| 	Aplicació que s'integra|	No|	No|	Si|	Si|	Si|	Si|	Llista de ciutadans/persones jurídiques o administracions vinculades amb l’expedient<ul><li>a) Si ciudadà informar:DNI, NIE, NIF</li><li>b) Si administració informar: <Órgano> (DIR3)</li></ul>|
+|**usuari**|	Opcional|	250	|Text	|--|--| 	 	Aplicació que s'integra	|No	|No	|No	|Si	|No	|No	|Dades identificatives qui crea el document|
+|**numeroRegistre**|	Opcional|	100	|Text|--|--|	 	 	Aplicació que s'integra	|No	|No	|No	|Si|	Si|	Si	 |--|
+|**CSV**|	Opcional|	100	|Text	|--|--| 	 	Aplicació que s'integra|	No|	Si	|No	|Si	|Si	|No|Si el servei integrador informa el CSV, DESA’L comprovarà que sigui únic i en cas contrari retornarà un error.|
+|**identificadorExpedientDesal**|Opcional|	100	|Text	|idEntidadRelacionada	|--| 	Aplicació que s'integra|	No|	No|	No|	No|	No|	Si|	Identificador de l'expedient de DESA'L al que pertany el document. DESA’L comprovarà que l'expedient existeixi i en cas contrari retornarà un error.|
+| **identificadorExpedientExtern**|	Opcional|	100|	Text|	idEntidadRelacionada|--|	 	Aplicació que s'integra|	No|	No|	No|	Si|	Si|	Si|	Identificador informatiu, l'expedient no ha d'estar donat d'alta a DESA'L i DESA’L no farà cap tipus de valició d’aquest camp.|
+|**UUIDFitxer**	|Obligatori i condicional|	20	|Text	|idEntidadRelacionada	 	|--|Aplicació que s'integra|	No|	No	|No	|Si	|Si|	Si|	Pensat per aquells documents que están relacionats amb un fitxer. Només s'ha d’informar si  contingut és 1.|
+|**URLDocumentExtern**|	Obligatori i condicional	| --|	URI	|idEntidadRelacionada	|URL|	Aplicació que s'integra	|No	|No	|No	|No	|No	|Si	|Pensat per aquells documents que no tenen un fitxer associat i que el contingut del document está ubicat en un repositori extern. Només s'informa si contingut és 2|
+|**identificadorDocumentExtern**|	Obligatori i condicional|	100|	Text|	idEntidadRelacionada|	identificador|	Aplicació que s'integra|	No|	No|	No	|Si|	Si|	Si|	Pensat per aquells documents que no tenen un fitxer associat i que el contingut del document está ubicat en un repositori extern. Només s'informa si contingut és 3|
+|**infoAddicional**|	Opcional|	--| 	Text	| 	--|--| 	Aplicació que s'integra|	No|	No|	Si|	No|	No	|Si	|Llista de claus-valors que l’integrador pot fer servir per ampliar el model de metadades d’acord a les seves necessitats específiques|
+|-- |-- |-- |-- |-- |-- |-- |METADADES QUE CREA DESA'L AUTOMÀTICAMENT |-- |-- |-- |-- |-- |-- |-- |
+| **UUIDDocument**|	Obligatori|	36	|Text|	SecuenciaIdentificador|	uuid|	DESA'L|	Si|	Si|	No|	Si|	Si|	No|	Identificador únic del document|
+|**CSV**|	Obligatori i condicional|	100|	Text|--|--|	 DESA'L	|Si	|Si	|No	|Si	|Si	|No	|CSV únic del document. Si l’integrador no l’inforna, DESA’L el generarà automàticament.|
+|**formatFitxer**|	Obligatori i condicional|	200	|Text|	NombreFormato|	tipusMIME	|DESA'L	|Si	|No	|No	|Si|	No|	No	|Content Type del fitxer. Només es retorna si contingut és 1.|
+|**hash**|	Obligatori i condicional|	100	|Text|	Valor	|hash	|DESA'L	|Si|	No|	No|	No	|No	|Si	|Valor hash del fitxer. Només es retorna si contingut és 1.|
+|**hashAlgoritme** |	Obligatori i condicional|	100	|Text|	Algoritmo	 |--|	DESA'L|	Si|	No|	No|	No|	No|	Si	|Algoritme de hash utilitzat per calcular el hash del fitxer. Només es retorna si contingut és 1|
+| **tamany**|	Obligatori i condicional|	100|	Número|	TamanoLogico	|Mida|	DESA'L|	Si|	No|	No|	Si|	No|	Si|	Mida del fitxer. Només es retorna si contingut és 1|
+|**dataAlta**|	Obligatori	 |--|	Data i hora	 |--|	dataCapturaDocument	|DESA'L|	Si|	No|	No	|Si	|Si|	No|	Data d'alta del document a DESA'L|
+|**identificadorExpedientDesal**|	opcional i condicional|	100	|Text|	idEntidadRelacionada	|--| 	DESA'L|	Si|	No|	Si|	No	|No	|No	|UUID de l’expedient amb el que està vinculat el document.|
+| **versioNTI**|	Obligatori	 |--|	URI	|VersionNTI|	VersionNTI	|DESA'L|	Si|	No|	No|	No|	No|	No|	Valor per defecte: http://administracionelectronica.gob. es/ENI/XSD/v1.0/documento-e|
+|**identificador**|	Obligatori|	52|	Text|	Identificador	|Identificador|	DESA'L|	Si|	No|	No	|Si	|No	|No	|Identificador del document en format ENI: ES_<Órgano>_<AAAA>_<UUIDDocument>|
+|**organ**|	Obligatori|	20	|Text|	Organo|	Organo|	DESA'L|	Si|	No|	Si|	Si|	No	|No	|Equivalència codi INE amb el DIR3 del ens propietari del document.|
 
 
 
@@ -219,7 +278,6 @@ A continuació es detallen les diferents metadades del model bàsic:
 
 Es tracta del model de metadades que majoritàriament han d’utilitzar els serveis integradors. Aquest model inclou totes les metadades del document bàsic (amb les mateixes tipologies i validacions) i n’afegeix d’altres específiques que a continuació es detallen. El model complet sí que permet l’exportació en format ENI.      
 
---**VIGILA, AQUI FALTA UNA TAULA**--
 | **Nom element** | **Consignació** | **Longitud camp** | **Tipus de camp** |  **Equivalencia ENI** | **Equivalencia MUX** | **Qui l&#39;informa** | **Automàtic** | **Únic** | **Repetitiu** | **Indexable** | **Cercable** | **Modificable edició** | **Observacions** |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | **estatElaboracio** | Obligatori | -- | Text | EstadoElaboracion | estatElaboracio | Aplicació que s'integra | No | No | No | Si | No | Si | <ul><li>EE01 - Original</li><li>EE02 - Copia electrónica auténtica con cambio de formato</li><li>EE04 - Copia electrónica parcial auténtica</li><li>EE99 - Otros.</li></ul>|
@@ -242,10 +300,9 @@ Es tracta del model de metadades que majoritàriament han d’utilitzar els serv
 |**codiSIA**|	Opcional|	50|	Text	| --| --|	 	Aplicació que s'integra	|No	|No	|No	|Si|	Si	|Si	 |-- |
 
 
-
 # 3 Autenticació <a name="3"></a>
 
-## 3.1 Mètode d&#39;autenticació <a name="3.1"></a>
+## 3.1	Mètode d’autenticació <a name="3.1"></a>
 
 DESA’L implementa un mètode d’autenticació segur que permet garantir l’autenticitat del servei integrador, i la seva legitimitat per executar la petició, abans de procedir a executar qualsevol dels mètodes de l’API i abans d’accedir a qualsevol de les dades del repositori documental. 
 
