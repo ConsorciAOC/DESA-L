@@ -299,7 +299,7 @@ Es tracta del model de metadades que majoritàriament han d’utilitzar els serv
 |**nomClassificacio**|	Opcional|	250	|Text|	DenominacionClase	 |--|	Aplicació que s'integra|	No|	No|	No|	No|	No	|Si	 |--|
 |**codiSIA**|	Opcional|	50|	Text	| --| --|	 	Aplicació que s'integra	|No	|No	|No	|Si|	Si	|Si	 |-- |
 
-
+ 
 # 3 Autenticació <a name="3"></a>
 
 ## 3.1	Mètode d’autenticació <a name="3.1"></a>
