@@ -242,7 +242,7 @@ A continuació es detallen les diferents metadades del model bàsic:
 
 
 | **Nom element** | **Consignació**	| **Longitud camp** | **Tipus de camp** | **Equivalencia ENI** | **Equivalencia MUX** | **Qui l'informa** | **Automàtic** | **Únic** | **Repetitiu** | **Indexable**	| **Cercable**	| **Modificable edició** | **Observacions** |
-| -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |-- |
+| -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
 |**codiINE**	|Obligatori	|10|	Text|--|--|	 	 	Aplicació que s'integra|	No|	No|	No|	Si|	Si|	No	|Codi INE de l'ens propietari del document |
 |**codiServei**|	Obligatori	|10	|Taula	|--|--| 	 	Aplicació que s'integra	|No	|No|	No|	Si|	Si|	No|	Codi del servei propietari del document|
 |**nomFitxer**|	Obligatori i condicional|	250	|Text	|NombreFichero|	nomFitxer	|Aplicació que s'integra|	No|	No	|No	|Si	|No	|Si	|Nom del fitxer amb extensió. Només s'ha d’informar si contingut és 1|
