@@ -212,7 +212,7 @@ A continuació es presenten els diferents models de metadades que utilitza DESA�
 
 A continuació detallem les diferents metadades i la seva definició per Exportació ENI:
 
-| **Nom element** |**Consignació**|**Longitud camp**|	Tipus de camp|	Validació i procedència dades	|Equivalencia DESA'L|	Qui l'informa	|Automàtic|	Repetitiu	|Cercable|	Modificable en edició	|Observacions|
+| **Nom element** |**Consignació**|**Longitud camp**|	**Tipus de camp**|	**Validació i procedència dades**	|**Equivalencia DESA'L**|	**Qui l'informa**	|**Automàtic**|	**Repetitiu**	|**Cercable**|	**Modificable en edició**	|**Observacions**|
 |--|--|--|--|--|--|--|--|--|--|--|--|
 |--|--|--|--|--|METADADES QUE CREA DESA'L AUTOMÀTICAMENT AL FER UNA EXPORTACIÓ ENI|--|--|--|--|--|--|
 | **versionNTI**|	Obligatori	|--| 	URI	|DESA'L|	N/A	|DESA'L|	Si|	No|	N/A	|N/A|	Valor per defecte: http://administracionelectronica.gob.es/ENI/XSD/v1.0/expediente-e|
@@ -241,8 +241,8 @@ Es tracta del model de metadades mínim per poder donar d'alta un document al re
 A continuació es detallen les diferents metadades del model bàsic:
 
 
-| Nom element |	Consignació	|Longitud camp |	Tipus de camp|	Equivalencia ENI|	Equivalencia MUX	|Qui l'informa|	Automàtic|	Únic|	Repetitiu	|Indexable	|Cercable	|Modificable edició|	Observacions|
-|-- |-- |-- |-- |-- |-- |-- |-- |-- |-- |-- |-- |-- |-- |-- |
+| **Nom element** | **Consignació**	| **Longitud camp** | **Tipus de camp** | **Equivalencia ENI** | **Equivalencia MUX** | **Qui l'informa** | **Automàtic** | **Únic** | **Repetitiu** | **Indexable**	| **Cercable**	| **Modificable edició** | **Observacions** |
+| -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |-- |
 |**codiINE**	|Obligatori	|10|	Text|--|--|	 	 	Aplicació que s'integra|	No|	No|	No|	Si|	Si|	No	|Codi INE de l'ens propietari del document |
 |**codiServei**|	Obligatori	|10	|Taula	|--|--| 	 	Aplicació que s'integra	|No	|No|	No|	Si|	Si|	No|	Codi del servei propietari del document|
 |**nomFitxer**|	Obligatori i condicional|	250	|Text	|NombreFichero|	nomFitxer	|Aplicació que s'integra|	No|	No	|No	|Si	|No	|Si	|Nom del fitxer amb extensió. Només s'ha d’informar si contingut és 1|
