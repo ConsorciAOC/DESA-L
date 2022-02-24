@@ -182,7 +182,7 @@ A continuació es presenten els diferents models de metadades que utilitza DESA�
 ## 2.1	Metadades d'expedient <a name="2.1"></a>
 
 
-| **1Nom element HOLA** | **2Consignació** | **3Longitud** | **4Tipus de  camp** | **5Equivalencia ENI** | **6Qui l'informa** | **7Automàtic** | **8Únic** | **9Repetitiu**  | **10Indexable** | **11Cercable** | **12Modificable en edició** | **13Observacions** |
+| **Nom element** | **Consignació** | **Longitud** | **Tipus de  camp** | **Equivalencia ENI** | **Qui l'informa** | **Automàtic** | **Únic** | **Repetitiu**  | **Indexable** | **Cercable** | **Modificable en edició** | **Observacions** |
 | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
 | **codiINE**	| Obligatori | 10 | Text | -- | Aplicació que s'integra	| No | No | No	| Si | Si | No | Codi INE de l’ens propietari de l’expedient |
 | **codiServei** | Obligatori |	10 | Taula | -- | Aplicació que s'integra | No | No | No |Si	| Si | No | Codi del servei propietari de l’expedient |
@@ -212,10 +212,10 @@ A continuació es presenten els diferents models de metadades que utilitza DESA�
 
 A continuació detallem les diferents metadades i la seva definició per Exportació ENI:
 
-  | Nom element|	Consignació	|Longitud camp|	Tipus de camp|	Validació i procedència dades	|Equivalencia DESA'L|	Qui l'informa	|Automàtic|	Repetitiu	|Cercable|	Modificable en edició	|Observacions|
-  |--|--|--|--|--|--|--|--|--|--|--|--|
-  |--|--|--|--|--|METADADES QUE CREA DESA'L AUTOMÀTICAMENT AL FER UNA EXPORTACIÓ ENI|--|--|--|--|--|--|
-  | **versionNTI**|	Obligatori	|--| 	URI	|DESA'L|	N/A	|DESA'L|	Si|	No|	N/A	|N/A|	Valor per defecte: http://administracionelectronica.gob.es/ENI/XSD/v1.0/expediente-e|
+| **Nom element** |**Consignació**|**Longitud camp**|	Tipus de camp|	Validació i procedència dades	|Equivalencia DESA'L|	Qui l'informa	|Automàtic|	Repetitiu	|Cercable|	Modificable en edició	|Observacions|
+|--|--|--|--|--|--|--|--|--|--|--|--|
+|--|--|--|--|--|METADADES QUE CREA DESA'L AUTOMÀTICAMENT AL FER UNA EXPORTACIÓ ENI|--|--|--|--|--|--|
+| **versionNTI**|	Obligatori	|--| 	URI	|DESA'L|	N/A	|DESA'L|	Si|	No|	N/A	|N/A|	Valor per defecte: http://administracionelectronica.gob.es/ENI/XSD/v1.0/expediente-e|
 |**identificador**|	Obligatori|	52|	Text	|DESA'L|	N/A	|DESA'L|	Si|	No|	N/A	|N/A|	L'element s'informa a partir d'altres metadades: ES_<Órgano>_<AAAA>_<Identificador>|
 |**organo**|	Obligatori|	20	|Text	|DESA'L	|N/A|	DESA'L|	Si|	Si	|N/A|	N/A	|Equivalència codi INE amb el DIR3 |
 |**fechaAperturaExpediente**|	Obligatori	|-- |	Data i hora|	DESA'L|	DataInici|	DESA'L|	Si|	No	|N/A|	N/A	 |--|
