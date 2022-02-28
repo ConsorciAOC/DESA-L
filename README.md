@@ -403,64 +403,13 @@ A continuació es detallen els camps que el servei integrador ha d’informar en
 | mida | Body | Si | Número | - | Unitat en bytes |
 | formatFitxer | Body | Si | Text | 200 | N/A |
 
---**CONTINUAR AQUI**--
-
-**URL** :[https://v04y86nmj2.execute-api.eu-west-1.amazonaws.com/pro/fitxer](https://v04y86nmj2.execute-api.eu-west-1.amazonaws.com/pro/fitxer)
-
-**Method** : POST
-
-**Auth** :&quot;AWS Signature&quot;
-
-**AccessKey** : XXXXXXXXXXX
-
-**SecretKey** : YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
-**AWSRegion** : eu-west-1
-
-**Body** :
-
-{
-
-&quot;codiINE&quot;: &quot;0123456789&quot;,
-
-&quot;codiServei&quot;: &quot;eVALISA&quot;,
-
-&quot;mida&quot;: 651720,
-
-&quot;nomFitxer&quot;: &quot;exemple1.pdf&quot;,
-
-&quot;formatFitxer&quot;: &quot;pdf&quot;
-
-}
-
- ![Shape17](RackMultipart20220211-4-2fc1qu_html_96bc06e22c4bead4.gif)
+![image](https://user-images.githubusercontent.com/32306731/155975311-6ba9a8e8-fae8-4fff-a6a7-e9d767f9679d.png)
 
 ### Resposta
 
 I també un exemple de resposta:
 
-{
-
-&quot;uuidFitxer&quot;: &quot;915844f3-ea3c-4c22-a1ec-1ab222d34301&quot;,
-
-&quot;codiINE&quot;: &quot;0123456789&quot;,
-
-&quot;codiServei&quot;: &quot;eVALISA&quot;,
-
-&quot;nomFitxer&quot;: &quot;exemple1.pdf&quot;,
-
-&quot;mida&quot;: &quot;651720&quot;,
-
-&quot;formatFitxer&quot;: &quot;pdf&quot;,
-
-&quot;urlPresignada&quot;: &quot;https://desal-temp-bucket.s3.eu-west-1.amazonaws.com/a7a4bb56-6086-4321-94eb-0d173666b3b2?X-Amz-Security-Token=IQoJb3JpZ2luX2VjELX%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCWV1LXdlc3QtMSJHMEUCIQCFcW%2F8QxhOycfciphk%2F5LQQKetZjrQ09KvOkGqZkWh6wIgWB6hn%2Bj7sugyk8%2FCFx%2B0r8WUAwU%2BT6d%2BXYzbCjm2ED8qxAIIXhABGgwyNTA3NTM4MDYyNjYiDM%2FB68K8p8alV1qK8yqhAorv7ISwSZXPaoohuTUVSgA7fRahRdoLkMNJKDxB95f73qlv03QvmNmq5cgAzbnYC20rQRbrUhzV1SA7jq9%2BKf44eQ6k0gAaNe%2BekzRaU3fe6boJxEFc8BY90EXXjRTJdXk%2Be5uDK8sGId1MZDFwplOVtQwfylr9shecQ%2BqwcP4zlRrshMgf1zM%2BMOWsRPt2xXIyW8sOvrNXPhGf68NwMLjfzjhVfqsWwOKVNa9wRHlcFIIshJlzJmLCjzGy%2Fi%2FNEZR1cd9JhSGsfp3yXelYaEp%2Fn%2B2NHFbSW1zCzTuXbDPhJd6W29qmlgWmB5JwdwhJ1N5yrFmNWs1s7jKqCLucqL04ETNa2tE02bKs66Ecp0bu7hhIJOhlpN8PNc%2Bn3DtU5UAwuaOPjAY6mgG%2FTmfyXhbCTz%2FceBiFcjJ6h1KY0Jcvzqq1WjnZbN47fu88PZnnB3pxT3428Bco3Ow9Xo5ag3U5PVWs14p8OFjcQ0SRt%2B2WP92N9rOxv180UNc9i6A%2Ban88El6%2FT6EApqMdC16r0agnN8aufQ3gv7gFwGH9z%2Fob5a4hmFcbQWrSDUThnpyZ4k4RLm2mTVTSMN5M%2Fp%2Bz%2Fr399q4t&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Date=20211104T122745Z&amp;X-Amz-SignedHeaders=content-length%3Bhost&amp;X-Amz-Expires=3599&amp;X-Amz-Credential=ASIATUYQXN65MSBM33L3%2F20211104%2Feu-west-1%2Fs3%2Faws4\_request&amp;X-Amz-Signature=c00aae9ad9db7f2898633a0d9994ba965aba2a0855d0f79f0d52ba918b386fdd&quot;,
-
-&quot;codiResposta&quot;: &quot;0&quot;,
-
-&quot;descripcioResposta&quot;: &quot;Operació realitzada correctament&quot;
-
-}
-
- ![Shape18](RackMultipart20220211-4-2fc1qu_html_d1e15b72eb885b83.gif)
+![image](https://user-images.githubusercontent.com/32306731/155975395-32c057b3-4dee-4ae9-bb31-34184517cf17.png)
 
 ### Codis de resposta
 
@@ -479,7 +428,7 @@ A continuació es detallen els possibles codis d&#39;error per càrrega de fitxe
 
 ## 4.2 Descàrrega de fitxer <a name="4.1"></a>
 
-Aquest mètode permet demanar la descàrrega d&#39;un fitxer allotjat al repositori documental del DESA&#39;L, sempre i quan aquest fitxer no estigui encara referenciat per cap document de DESA&#39;L. La descarrega d&#39;un fitxer es farà també en 2 passos: una primera petició síncrona a a l&#39;API de DESA&#39;L que a partir de l&#39;UUIDFitxer retornarà l&#39;URL presignada de S3 i a continuació la descàrrega pròpiament del binari a partir de la URL presignada de S3.
+Aquest mètode permet demanar la descàrrega d’un fitxer allotjat al repositori documental del DESA’L, sempre i quan aquest fitxer no estigui encara referenciat per cap document de DESA’L. La descarrega d’un fitxer es farà també en 2 passos: una primera petició síncrona a a l’API de DESA’L que a partir de l’UUIDFitxer retornarà l’URL presignada de S3 i a continuació la descàrrega pròpiament del binari a partir de la URL presignada de S3. 
 
 **Important:** la descàrrega de fitxer només es pot executar mentre el fitxer no estigui referenciat per un document de DESA&#39;L. Un cop el fitxer estigui vinculat a un document, la recuperació només es podrà fer a través dels mètodes de document (p. ex. _ **6.4Descarregar Document** _)
 
@@ -492,8 +441,6 @@ A continuació es detallen els camps que han d&#39;informar el servei integrador
 | uuidFitxer | QueryParam | Si | Text | - | N/A |
 | codiINE | QueryParam | Si | Text | 10 | N/A |
 | codiServei | QueryParam | Si | Text | 10 |
-
- |
 
 A continuació detallem un exemple de petició per a descàrrega de fitxer:
 
@@ -516,37 +463,11 @@ A continuació detallem un exemple de petició per a descàrrega de fitxer:
 
 A continuació detallem un exemple de resposta per a descàrrega de fitxer:
 
-{
-
-&quot;uuidFitxer&quot;: &quot;18e4a137-5c35-423e-b183-c68816a79006&quot;,
-
-&quot;codiINE&quot;: &quot;0000000000&quot;,
-
-&quot;codiServei&quot;: &quot;enojordi&quot;,
-
-&quot;nomFitxer&quot;: &quot;DESA&#39;L-Functional requirements English.pdf&quot;,
-
-&quot;mida&quot;: &quot;651720&quot;,
-
-&quot;formatFitxer&quot;: &quot;pdf&quot;,
-
-&quot;urlPresignada&quot;: &quot;https://desal-download-bucket.s3.eu-west-1.amazonaws.com/2928c5a7-d729-4d16-b85a-c192c6755705/b970f2dd-24ce-4b8b-8b85-eaa2b9b81061?X-Amz-Security-Token=IQoJb3JpZ2luX2VjELn%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCWV1LXdlc3QtMSJHMEUCIQDK2n%2BMusQYqClBQSiGWmG%2BaKiOzGMTMl9%2Bv6VmX%2Bjv1wIgakoApPpXqAP%2B4VSIRGwGCmx%2Fq%2FB7khatzOtTwyNDE74qxAIIYhABGgwyNTA3NTM4MDYyNjYiDH%2FaIqcOyk8%2BF2ViqCqhAkfBwkDm1e6MDpHCImBJLOi%2BpaEYcIRBXvep9NB2PG4o3esRrUQ8bQCYXRUAd6zKX1wdQUVHQnclPAKbBOVVdh7doTqiUePLMvRwWhaRcO3TaA%2FItnVhpD5st9MkR2Imp87bAJNEXCxAj5cv5DLpe9y3Z3m1h%2BxkEhHPRPRKTm7gEeRS4OncZ0Q4FLV9I47FoFmixpPyRbqc6YfTDmNw%2BZQguLrDbbyjKHnSy1qqer0Ea0UQ1j6qnsxULDK3U2IwLeUfpIAH%2BN3bNyg28N51NHwc9aS2mnW3aDiym%2BCtTPhUYCmfclToPRBSRSgG6riiAKAHnJYGxVvcTjwKgiITAkDjF3GEmAhrBQa4JoPOL%2BwMEsqoZXTJD2TkaLqf3km%2FjPEwzZ6QjAY6mgGuWeatNPC12yd4QL0Yhx5WAFLU6vg%2Bz3r5RPiIrHSc2%2FSo34mY1v5jUCTFtzfyB9nCsf3uYd%2FIV64PGXN0apcMr0Cdp1sUBvv9JMkzhxoVx0CH7JLY6MGQnZVx9CYdY%2FKNxSbfXV%2FeEOnvhXJnJmxzYBtnTUsVYydWNs%2BpFSyRiEcIFx0FTog2Zpxs6RLckfhq02Xe6KAEazGT&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Date=20211104T165030Z&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Expires=3599&amp;X-Amz-Credential=ASIATUYQXN65CIDT26RK%2F20211104%2Feu-west-1%2Fs3%2Faws4\_request&amp;X-Amz-Signature=6be64e14e9bbcb4fe14fc21975b8948f5271cc8e3e4c6c7e0c57f5113ae9a0d3&quot;,
-
-&quot;codiResposta&quot;: &quot;0&quot;,
-
-&quot;hash&quot;: &quot;e3b199ba3d1c77660481c78f79f509ac272f35304f9b5a9c662caa7f336d6897&quot;,
-
-&quot;hashAlgoritme&quot;: &quot;SHA-256&quot;,
-
-&quot;descripcioResposta&quot;: &quot;Operació realitzada correctament&quot;
-
-}
-
- ![Shape20](RackMultipart20220211-4-2fc1qu_html_4bd309b30d208a1b.gif)
+![image](https://user-images.githubusercontent.com/32306731/155975656-d45043f3-e53d-406a-9118-d3929ef42828.png)
 
 ### Codis de resposta
 
-A continuació es detallen els possibles codis d&#39;error per a la descàrrega del fitxer (XXXXXX ofereix més detalls de l&#39;error no controlat):
+A continuació es detallen els possibles codis d’error per a la descàrrega del fitxer (XXXXXX ofereix més detalls de l’error no controlat):
 
 | **Codi** | **Missatge** |
 | --- | --- |
@@ -578,9 +499,7 @@ A continuació es defineixen els camps que l&#39;integrador ha d&#39;informar pe
 | --- | --- | --- | --- | --- | --- |
 | codiINE | Body | Sí | Text | 10 | N/A |
 | codiServei | Body | Sí | Text | 10 | N/A |
-| identificador | Body |
- |
- | 50 | N/A |
+| identificador | Body | -- | -- | 50 | N/A |
 | titol | Body | Sí | Text | 500 | N/A |
 | dataInici | Body | Sí | Data | - | Format: DD/MM/AAAA HH:mm:SS |
 | dataFi | Body | No | Data | - | Format: DD/MM/AAAA HH:mm:SS |
@@ -589,160 +508,21 @@ A continuació es defineixen els camps que l&#39;integrador ha d&#39;informar pe
 | codiClassificacio | Body | Sí | Text | 50 | N/A |
 | nomClassificacio | Body | Sí | Text | 250 | N/A |
 | codiSIA | Body | No | Text | 50 | N/A |
-| nivellAccess | Body | No | Text |
- | N/A |
-| clasificacioENS | Body | No | Text |
- | N/A |
-| sensibilitatDadesCaracterPersonal | Body | No | Text |
- | N/A |
-| estatExpedient | Body | Sí | Text |
- | N/A |
+| nivellAccess | Body | No | Text | -- | N/A |
+| clasificacioENS | Body | No | Text | -- | N/A |
+| sensibilitatDadesCaracterPersonal | Body | No | Text | -- | N/A |
+| estatExpedient | Body | Sí | Text | -- | N/A |
 | interessat | Body | No | Llista | - | Llista d&#39;interessats |
 | descripció | Body | No | Text | 500 | N/A |
 | infoAddicional | Body | No | Llista | - | Llista d&#39;elements clau/valor |
 
 A continuació es detalla un exemple de petició:
 
-**URL** :[https://v04y86nmj2.execute-api.eu-west-1.amazonaws.com/pro/expedient](https://v04y86nmj2.execute-api.eu-west-1.amazonaws.com/pro/expedient)
-
-**Method** : POST
-
-**Auth** :&quot;AWS Signature&quot;
-
-**AccessKey** : XXXXXXXXXXX
-
-**SecretKey** : YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
-**AWSRegion** : eu-west-1
-
-**Body** :
-
-{
-
-&quot;codiINE&quot;: &quot;0123456789&quot;,
-
-&quot;codiServei&quot;: &quot;eVALISA&quot;,
-
-&quot;identificador&quot;: &quot;ident123&quot;,
-
-&quot;titol&quot;: &quot;titol123&quot;,
-
-&quot;dataInici&quot;: &quot;12/05/2021 22:45:15&quot;,
-
-&quot;dataFi&quot;: &quot;07/06/2021 22:45:15&quot;,
-
-&quot;usuari&quot;: &quot;usuari123&quot;,
-
-&quot;unitatResponsable&quot;: &quot;unitatResponsable123&quot;,
-
-&quot;codiClassificacio&quot;: &quot;codiClassificacio123&quot;,
-
-&quot;nomClassificacio&quot;: &quot;nomClassificacio123&quot;,
-
-&quot;codiSIA&quot;: &quot;codiSia123&quot;,
-
-&quot;nivellAcces&quot;: &quot;C&quot;,
-
-&quot;clasificacioENS&quot;: &quot;Baix&quot;,
-
-&quot;sensibilitatDadesCaracterPersonal&quot;: &quot;Basic&quot;,
-
-&quot;estatExpedient&quot;: &quot;E01&quot;,
-
-&quot;interessat&quot;: [
-
-&quot;82828282S&quot;
-
-],
- &quot;descripcio&quot;: &quot;descripcio123&quot;,
-
-&quot;infoAddicional&quot;: [
-
-{
-
-&quot;key&quot;: &quot;info1&quot;,
-
-&quot;value&quot;: &quot;text1&quot;
-
-}
-
-]
- }
-
- ![Shape21](RackMultipart20220211-4-2fc1qu_html_2fbee4912b8588be.gif)
+![image](https://user-images.githubusercontent.com/32306731/155976066-b464e1e8-29c7-4de2-b14b-2ae8177528f4.png)
 
 ### Resposta Modalitat 1
 
-{
-
-&quot;uuidExpedient&quot;: &quot;19ecec92-5a70-4a9c-9eb1-1f10051614ae&quot;,
-
-&quot;codiServei&quot;: &quot;eVALISA&quot;,
-
-&quot;codiINE&quot;: &quot;00123456789&quot;,
-
-&quot;titol&quot;: &quot;titol123&quot;,
-
-&quot;dataInici&quot;: &quot;12/05/2021 22:45:15&quot;,
-
-&quot;dataFi&quot;: &quot;07/06/2021 22:45:15&quot;,
-
-&quot;usuari&quot;: &quot;usuari123&quot;,
-
-&quot;unitatResponsable&quot;: &quot;unitatResponsable123&quot;,
-
-&quot;codiClassificacio&quot;: &quot;codiClassificacio123&quot;,
-
-&quot;nomClassificacio&quot;: &quot;nomClassificacio123&quot;,
-
-&quot;codiSIA&quot;: &quot;codiSia123&quot;,
-
-&quot;nivellAcces&quot;: &quot;C&quot;,
-
-&quot;clasificacioENS&quot;: &quot;Baix&quot;,
-
-&quot;sensibilitatDadesCaracterPersonal&quot;: &quot;Basic&quot;,
-
-&quot;estatExpedient&quot;: &quot;E01&quot;,
-
-&quot;interessat&quot;: [
-
-&quot;82828282S&quot;
-
-],
-
-&quot;descripcio&quot;: &quot;descripcio123&quot;,
-
-&quot;infoAddicional&quot;: [
-
-{
-
-&quot;key&quot;: &quot;82828282S&quot;,
-
-&quot;value&quot;: &quot;11118282S&quot;
-
-}
-
-],
-
-&quot;dataAlta&quot;: &quot;04/11/2021 18:20:16&quot;,
-
-&quot;versioNTI&quot;: &quot;http://administracionelectronica.gob. es/ENI/XSD/v1.0/documento-e&quot;,
-
-&quot;identificador&quot;: &quot;ident123&quot;,
-
-&quot;organ&quot;: &quot;DIR3&quot;,
-
-&quot;identificadorDesal&quot;: &quot;ES\_0000000000\_2021\_19ecec92-5a70-4a9c-9eb1-1f10051614ae&quot;,
-
-&quot;codiResposta&quot;: &quot;0&quot;,
-
-&quot;descripcioResposta&quot;: &quot;Operació realitzada correctament&quot;,
-
-&quot;documents&quot;: null
-
-}
-
- ![Shape22](RackMultipart20220211-4-2fc1qu_html_f9a4e57f4fc9e10a.gif)
+![image](https://user-images.githubusercontent.com/32306731/155976147-5201489f-bb96-4cc4-8422-08995f85f88b.png)
 
 ### Petició Modalitat 2
 
@@ -754,360 +534,32 @@ Abans de procedir a l&#39;alta de l&#39;expedient i del/s document/s, DESA&#39;L
 | --- | --- | --- | --- | --- | --- |
 | codiINE | Body | Sí | Text | 10 | N/A |
 | codiServei | Body | Sí | Text | 10 | N/A |
-| identificador | Body |
- |
- | 50 | N/A |
+| identificador | Body | -- | -- | 50 | N/A |
 | titol | Body | Sí | Text | 500 | N/A |
-| dataInici | Body | Sí | Data | - | Format: DD/MM/AAAA HH:mm:SS |
-| dataFi | Body | No | Data | - | Format: DD/MM/AAAA HH:mm:SS |
+| dataInici | Body | Sí | Data | -- | Format: DD/MM/AAAA HH:mm:SS |
+| dataFi | Body | No | Data | -- | Format: DD/MM/AAAA HH:mm:SS |
 | Usuari | Body | No | Text | 100 | N/A |
 | unitatResponsable | Body | No | Text | 250 | N/A |
 | codiClassificacio | Body | Sí | Text | 50 | N/A |
 | nomClassificacio | Body | Sí | Text | 250 | N/A |
 | codiSIA | Body | No | Text | 50 | N/A |
-| nivellAccess | Body | No | Text |
- | N/A |
-| clasificacioENS | Body | No | Text |
- | N/A |
-| sensibilitatDadesCaracterPersonal | Body | No | Text |
- | N/A |
-| estatExpedient | Body | Sí | Text |
- | N/A |
-| interessat | Body | No | Llista | - | Llista d&#39;interessats |
+| nivellAccess | Body | No | Text | -- | N/A |
+| clasificacioENS | Body | No | Text | -- | N/A |
+| sensibilitatDadesCaracterPersonal | Body | No | Text | -- | N/A |
+| estatExpedient | Body | Sí | Text | -- | N/A |
+| interessat | Body | No | Llista | -- | Llista d&#39;interessats |
 | descripció | Body | No | Text | 500 | N/A |
 | infoAddicional | Body | No | Llista | - | Llista d&#39;elements clau/valor |
-| documents | Body |
- | Llista |
- | Llista de documents. Model del document definit a l&#39;apartat _ **6.1** _ |
+| documents | Body | -- | Llista | -- | Llista de documents. Model del document definit a l&#39;apartat _ **6.1** _ |
 
-**URL** :[https://v04y86nmj2.execute-api.eu-west-1.amazonaws.com/pro/expedient](https://v04y86nmj2.execute-api.eu-west-1.amazonaws.com/pro/expedient)
+![image](https://user-images.githubusercontent.com/32306731/155976586-f28df982-bdf2-4163-8d38-a4c0b3117497.png)
+![image](https://user-images.githubusercontent.com/32306731/155976658-097905e3-ea0d-4e3d-9643-c11bcb67ac34.png)
 
-**Method** : POST
-
-**Auth** :&quot;AWS Signature&quot;
-
-**AccessKey** : XXXXXXXXXXX
-
-**SecretKey** : YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
-**AWSRegion** : eu-west-1
-
-**Body** :
-
-{
-
-&quot;codiINE&quot;: &quot;0123456789&quot;,
-
-&quot;codiServei&quot;: &quot;eVALISA&quot;,
-
-&quot;identificador&quot;: &quot;ident123&quot;,
-
-&quot;titol&quot;: &quot;titol123&quot;,
-
-&quot;dataInici&quot;: &quot;12/05/2021 22:45:15&quot;,
-
-&quot;dataFi&quot;: &quot;07/06/2021 22:45:15&quot;,
-
-&quot;usuari&quot;: &quot;usuari123&quot;,
-
-&quot;unitatResponsable&quot;: &quot;unitatResponsable123&quot;,
-
-&quot;codiClassificacio&quot;: &quot;codiClassificacio123&quot;,
-
-&quot;nomClassificacio&quot;: &quot;nomClassificacio123&quot;,
-
-&quot;codiSIA&quot;: &quot;codiSia123&quot;,
-
-&quot;nivellAcces&quot;: &quot;C&quot;,
-
-&quot;clasificacioENS&quot;: &quot;Baix&quot;,
-
-&quot;sensibilitatDadesCaracterPersonal&quot;: &quot;Basic&quot;,
-
-&quot;estatExpedient&quot;: &quot;E01&quot;,
-
-&quot;interessat&quot;: [
-
-&quot;82828282S&quot;
-
-],
- &quot;descripcio&quot;: &quot;descripcio123&quot;,
-
-&quot;infoAddicional&quot;: [
-
-{
-
-&quot;key&quot;: &quot;info1&quot;,
-
-&quot;value&quot;: &quot;text1&quot;
-
-}
-
-],
-
-&quot;documents&quot;: [
-
-{
-
-&quot;codiINE&quot;: &quot;0123456789&quot;,
-
-&quot;codiServei&quot;: &quot;eVALISA&quot;,
-
-&quot;nomFitxer&quot;: &quot;DESA&#39;L-Functional requirements English.pdf&quot;,
-
-&quot;nomNatural&quot;: &quot;DESA&#39;L-Functional requirements English&quot;,
-
-&quot;dataDocument&quot;: &quot;20/04/2121 22:45:15&quot;,
-
-&quot;contingut&quot;: &quot;1&quot;,
-
-&quot;interessat&quot;: [
-
-&quot;82828282S&quot;
-
-],
-
-&quot;usuari&quot;: &quot;Joan Ningú&quot;,
-
-&quot;numeroRegistre&quot;: &quot;1234&quot;,
-
-&quot;csv&quot;: null,
-
-&quot;identificadorExpedientDesal&quot;: &quot;&quot;,
-
-&quot;identificadorExpedientExtern&quot;: null,
-
-&quot;uuidFitxer&quot;: &quot;158a0ba3-ed06-42f8-8fc2-08f858428ab0&quot;,
-
-&quot;urlDocumentExtern&quot;: null,
-
-&quot;identificadorDocumentExtern&quot;: null,
-
-&quot;infoAddicional&quot;: [
-
-{
-
-&quot;key&quot;: &quot;82828282S&quot;,
-
-&quot;value&quot;: &quot;11118282S&quot;
-
-}
-
-],
-
-&quot;estatElaboracio&quot;: &quot;EE01&quot;,
-
-&quot;origen&quot;: true,
-
-&quot;tipusDocumental&quot;: &quot;TD01&quot;,
-
-&quot;tipusSignatura&quot;: &quot;TF01&quot;,
-
-&quot;cSVSignatura&quot;: &quot;csvSigEx&quot;,
-
-&quot;regulacioGeneracioCSVSignatura&quot;: &quot;regGen5345&quot;,
-
-&quot;referenciaSignatura&quot;: null,
-
-&quot;identificadorDocumentOrigen&quot;: null,
-
-&quot;tipusDocumentalSICRESD&quot;: &quot;01&quot;,
-
-&quot;descripcio&quot;: &quot;descripció d&#39;exemple&quot;,
-
-&quot;nivellAcces&quot;: &quot;A&quot;,
-
-&quot;clasificacioENS&quot;: &quot;Baix&quot;,
-
-&quot;sensibilitatDadesCaracterPersonal&quot;: &quot;Basic&quot;,
-
-&quot;documentEssencial&quot;: true,
-
-&quot;idioma&quot;: &quot;es-ES&quot;,
-
-&quot;codiClassificacio&quot;: &quot;25&quot;,
-
-&quot;nomClassificacio&quot;: &quot;prioritari&quot;,
-
-&quot;codiSIA&quot;: &quot;5512&quot;
-
-}
-
-]
- }
-
- ![Shape23](RackMultipart20220211-4-2fc1qu_html_29dd5646f4d34e49.gif)
 
 ### Resposta
 
-{
-
-&quot;uuidExpedient&quot;: &quot;a920d3e7-cfac-4c28-8bdf-6f911ea0fc31&quot;,
-
-&quot;codiServei&quot;: &quot;eVALISA&quot;,
-
-&quot;codiINE&quot;: &quot;0123456789&quot;,
-
-&quot;titol&quot;: &quot;titol123&quot;,
-
-&quot;dataInici&quot;: &quot;12/05/2021 22:45:15&quot;,
-
-&quot;dataFi&quot;: &quot;07/06/2021 22:45:15&quot;,
-
-&quot;usuari&quot;: &quot;usuari123&quot;,
-
-&quot;unitatResponsable&quot;: &quot;unitatResponsable123&quot;,
-
-&quot;codiClassificacio&quot;: &quot;codiClassificacio123&quot;,
-
-&quot;nomClassificacio&quot;: &quot;nomClassificacio123&quot;,
-
-&quot;codiSIA&quot;: &quot;codiSia123&quot;,
-
-&quot;nivellAcces&quot;: &quot;C&quot;,
-
-&quot;clasificacioENS&quot;: &quot;Baix&quot;,
-
-&quot;sensibilitatDadesCaracterPersonal&quot;: &quot;Basic&quot;,
-
-&quot;estatExpedient&quot;: &quot;E01&quot;,
-
-&quot;interessat&quot;: null,
-
-&quot;descripcio&quot;: &quot;descripcio123&quot;,
-
-&quot;infoAddicional&quot;: null,
-
-&quot;dataAlta&quot;: &quot;05/11/2021 07:30:24&quot;,
-
-&quot;versioNTI&quot;: &quot;http://administracionelectronica.gob. es/ENI/XSD/v1.0/documento-e&quot;,
-
-&quot;identificador&quot;: &quot;ident123&quot;,
-
-&quot;organ&quot;: &quot;DIR3&quot;,
-
-&quot;identificadorDesal&quot;: &quot;ES\_0000000000\_2021\_a920d3e7-cfac-4c28-8bdf-6f911ea0fc31&quot;,
-
-&quot;codiResposta&quot;: &quot;0&quot;,
-
-&quot;descripcioResposta&quot;: &quot;Operació realitzada correctament&quot;,
-
-&quot;documents&quot;: [
-
-{
-
-&quot;uuidDocument&quot;: &quot;c9f6a4f0-1b1c-4ffe-82d4-3320db6faff4&quot;,
-
-&quot;uuidFitxer&quot;: &quot;158a0ba3-ed06-42f8-8fc2-08f858428ab0&quot;,
-
-&quot;codiINE&quot;: &quot;0123456789&quot;,
-
-&quot;codiServei&quot;: &quot;eVALISA&quot;,
-
-&quot;nomNatural&quot;: &quot;DESA&#39;L-Functional requirements English&quot;,
-
-&quot;sensibilitatDadesCaracterPersonal&quot;: &quot;Basic&quot;,
-
-&quot;documentEssencial&quot;: true,
-
-&quot;idioma&quot;: &quot;es-ES&quot;,
-
-&quot;codiClassificacio&quot;: &quot;25&quot;,
-
-&quot;nomClassificacio&quot;: &quot;prioritari&quot;,
-
-&quot;codiSIA&quot;: &quot;5512&quot;,
-
-&quot;infoAddicional&quot;: [
-
-{
-
-&quot;key&quot;: &quot;82828282S&quot;,
-
-&quot;value&quot;: &quot;11118282S&quot;
-
-}
-
-],
-
-&quot;csv&quot;: &quot;00000000000511202163351D4B5740&quot;,
-
-&quot;formatFitxer&quot;: &quot;iso&quot;,
-
-&quot;hash&quot;: &quot;e3b199ba3d1c77660481c78f79f509ac272f35304f9b5a9c662caa7f336d6897&quot;,
-
-&quot;hashAlgoritme&quot;: &quot;SHA-256&quot;,
-
-&quot;mida&quot;: &quot;651720&quot;,
-
-&quot;nomFitxer&quot;: &quot;DESA&#39;L-Functional requirements English.pdf&quot;,
-
-&quot;uRLDocumentExtern&quot;: null,
-
-&quot;dataAlta&quot;: &quot;05/11/2021 07:30:25&quot;,
-
-&quot;dataDocument&quot;: &quot;20/04/2121 22:45:15&quot;,
-
-&quot;contingut&quot;: &quot;1&quot;,
-
-&quot;identificadorExpedientDesal&quot;: &quot;a920d3e7-cfac-4c28-8bdf-6f911ea0fc31&quot;,
-
-&quot;identificadorExpedientExtern&quot;: null,
-
-&quot;versioNTI&quot;: &quot;http://administracionelectronica.gob. es/ENI/XSD/v1.0/documento-e&quot;,
-
-&quot;identificador&quot;: &quot;ES\_0000000000\_2021\_c9f6a4f0-1b1c-4ffe-82d4-3320db6faff4&quot;,
-
-&quot;organ&quot;: &quot;DIR3&quot;,
-
-&quot;estatElaboracio&quot;: &quot;EE01&quot;,
-
-&quot;origen&quot;: true,
-
-&quot;tipusDocumental&quot;: &quot;TD01&quot;,
-
-&quot;tipusSignatura&quot;: &quot;TF01&quot;,
-
-&quot;cSVSignatura&quot;: &quot;csvSigEx&quot;,
-
-&quot;regulacioGeneracioCSVSignatura&quot;: &quot;regGen5345&quot;,
-
-&quot;referenciaSignatura&quot;: null,
-
-&quot;identificadorDocumentOrigen&quot;: null,
-
-&quot;tipusDocumentalSICRESD&quot;: &quot;01&quot;,
-
-&quot;descripcio&quot;: &quot;descripció d&#39;exemple&quot;,
-
-&quot;nivellAcces&quot;: &quot;A&quot;,
-
-&quot;clasificacioENS&quot;: &quot;Baix&quot;,
-
-&quot;identificadorDocumentExtern&quot;: null,
-
-&quot;codiResposta&quot;: &quot;0&quot;,
-
-&quot;descripcioResposta&quot;: &quot;Operació realitzada correctament&quot;,
-
-&quot;urlPresignada&quot;: null,
-
-&quot;interessat&quot;: [
-
-&quot;82828282S&quot;
-
-],
-
-&quot;usuari&quot;: &quot;Joan Ningú&quot;,
-
-&quot;numeroRegistre&quot;: &quot;1234&quot;
-
-}
-
-]
-
-}
-
- ![Shape24](RackMultipart20220211-4-2fc1qu_html_2af8ed997e3cebd6.gif)
+![image](https://user-images.githubusercontent.com/32306731/155976750-9f159dfe-c951-4a1e-b8c8-44602e481e97.png)
+![image](https://user-images.githubusercontent.com/32306731/155976895-903239b2-6a22-46c6-86db-0bc546629946.png)
 
 Destaquem com en la Modalitat 2 tenim un codi de resposta i una descripció resposta global de tota l&#39;operació (remarcada en color groc) i un codi de resposta i una descripció resposta individual (remarcada en color verd) per a cada document que permet a l&#39;integrador saber exactament quin document no és vàlid i per què.
 
@@ -1135,12 +587,9 @@ En el cas que l&#39;integrador necessiti esborrar una metadada, podrà fer-ho in
 
 | **Element** | **Tipus paràmetre** | **Obligatori** | **Tipus camps** | **Mida màxima** | **Observacions** |
 | --- | --- | --- | --- | --- | --- |
-| uuidExpedient | PathParam | Sí | Text | - |
- |
-| codiINE | QueryParam | Sí | Text | 10 |
- |
-| identificador | Body | No |
- | 50 | N/A |
+| uuidExpedient | PathParam | Sí | Text | -- | -- |
+| codiINE | QueryParam | Sí | Text | 10 | -- | -- |
+| identificador | Body | No | -- | 50 | N/A |
 | titol | Body | No | Text | 500 | N/A |
 | dataInici | Body | No | Data | - | Format: DD/MM/AAAA HH:mm:SS |
 | dataFi | Body | No | Data | - | Format: DD/MM/AAAA HH:mm:SS |
@@ -1148,152 +597,19 @@ En el cas que l&#39;integrador necessiti esborrar una metadada, podrà fer-ho in
 | codiClassificacio | Body | No | Text | 50 | N/A |
 | nomClassificacio | Body | No | Text | 250 | N/A |
 | codiSIA | Body | No | Text | 50 | N/A |
-| nivellAccess | Body | No | Text |
- | N/A |
-| clasificacioENS | Body | No | Text |
- | N/A |
-| sensibilitatDadesCaracterPersonal | Body | No | Text |
- | N/A |
-| estatExpedient | Body | No | Text |
- | N/A |
-| interessat | Body | No | Llista | - | Llista de literals |
+| nivellAccess | Body | No | Text | -- | N/A |
+| clasificacioENS | Body | No | Text | -- | N/A |
+| sensibilitatDadesCaracterPersonal | Body | No | Text | -- | N/A |
+| estatExpedient | Body | No | Text | -- | N/A |
+| interessat | Body | No | Llista | -- | Llista de literals |
 | descripció | Body | No | Text | 500 | N/A |
-| infoAddicional | Body | No | Llista | - | Llista de literals |
+| infoAddicional | Body | No | Llista | -- | Llista de literals |
 
-**URL** :[https://v04y86nmj2.execute-api.eu-west-1.amazonaws.com/pro/expedient](https://v04y86nmj2.execute-api.eu-west-1.amazonaws.com/pro/expedient)/{uuidExpedient}?codiINE=0123456789
-
-**Method** : PUT
-
-**Auth** :&quot;AWS Signature&quot;
-
-**AccessKey** : XXXXXXXXXXX
-
-**SecretKey** : YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
-**AWSRegion** : eu-west-1
-
-**Body** :
-
-{
-
-&quot;identificador&quot;: &quot;Testident123&quot;,
-
-&quot;titol&quot;: &quot;Testtitol123&quot;,
-
-&quot;dataInici&quot;: &quot;12/05/2021 22:45:15&quot;,
-
-&quot;dataFi&quot;: &quot;07/06/2021 22:45:15&quot;,
-
-&quot;unitatResponsable&quot;: &quot;unitatResponsable123&quot;,
-
-&quot;codiClassificacio&quot;: &quot;codiClassificacio123&quot;,
-
-&quot;nomClassificacio&quot;: &quot;nomClassificacio123&quot;,
-
-&quot;codiSIA&quot;: &quot;codiSia123&quot;,
-
-&quot;nivellAcces&quot;: &quot;C&quot;,
-
-&quot;clasificacioENS&quot;: &quot;Baix&quot;,
-
-&quot;sensibilitatDadesCaracterPersonal&quot;: &quot;Basic&quot;,
-
-&quot;estatExpedient&quot;: &quot;E01&quot;,
-
-&quot;interessat&quot;: [
-
-&quot;82828282S&quot;
-
-],
-
-&quot;descripcio&quot;: &quot;descripcio123&quot;,
-
-&quot;infoAddicional&quot;: [
-
-{
-
-&quot;key&quot;: &quot;82828282S&quot;,
-
-&quot;value&quot;: &quot;11118282S&quot;
-
-}
-
-]
-
-}
-
- ![Shape25](RackMultipart20220211-4-2fc1qu_html_4ba42b1760d39657.gif)
+![image](https://user-images.githubusercontent.com/32306731/155977453-40016d57-0190-4d02-bc05-8e5eba9e2630.png)
 
 ### Resposta
 
-{
-
-&quot;uuidExpedient&quot;: &quot;7b1941b5-39c7-46ee-8d39-6f87547bc477&quot;,
-
-&quot;codiServei&quot;: &quot;eVALISA&quot;,
-
-&quot;codiINE&quot;: &quot;0123456789&quot;,
-
-&quot;titol&quot;: &quot;Testtitol123&quot;,
-
-&quot;dataInici&quot;: &quot;12/05/2021 22:45:15&quot;,
-
-&quot;dataFi&quot;: &quot;07/06/2021 22:45:15&quot;,
-
-&quot;usuari&quot;: &quot;usuari123&quot;,
-
-&quot;unitatResponsable&quot;: &quot;unitatResponsable123&quot;,
-
-&quot;codiClassificacio&quot;: &quot;codiClassificacio123&quot;,
-
-&quot;nomClassificacio&quot;: &quot;nomClassificacio123&quot;,
-
-&quot;codiSIA&quot;: &quot;codiSia123&quot;,
-
-&quot;nivellAcces&quot;: &quot;C&quot;,
-
-&quot;clasificacioENS&quot;: &quot;Baix&quot;,
-
-&quot;sensibilitatDadesCaracterPersonal&quot;: &quot;Basic&quot;,
-
-&quot;estatExpedient&quot;: &quot;E01&quot;,
-
-&quot;interessat&quot;: [
-
-&quot;82828282S&quot;
-
-],
-
-&quot;descripcio&quot;: &quot;descripcio123&quot;,
-
-&quot;infoAddicional&quot;: [
-
-{
-
-&quot;key&quot;: &quot;82828282S&quot;,
-
-&quot;value&quot;: &quot;11118282S&quot;
-
-}
-
-],
-
-&quot;dataAlta&quot;: &quot;06/08/2021 12:42:03&quot;,
-
-&quot;versioNTI&quot;: &quot;http://administracionelectronica.gob. es/ENI/XSD/v1.0/documento-e&quot;,
-
-&quot;identificador&quot;: &quot;Testident123&quot;,
-
-&quot;organ&quot;: &quot;DIR3&quot;,
-
-&quot;identificadorDesal&quot;: &quot;Teste&quot;,
-
-&quot;codiResposta&quot;: &quot;0&quot;,
-
-&quot;descripcioResposta&quot;: &quot;Operació realitzada correctament&quot;
-
-}
-
- ![Shape26](RackMultipart20220211-4-2fc1qu_html_e576da95cd5a3277.gif)
+![image](https://user-images.githubusercontent.com/32306731/155977537-3eeb7b7a-eb8e-467a-a2ce-b59972c1f72f.png)
 
 ### Codis de resposta
 
@@ -1327,36 +643,11 @@ Així doncs, és responsabilitat del servei integrador implementar qualsevol pol
 | codiINE | QueryParam | Sí | Text | 10 | N/A |
 | codiServei | QueryParam | Sí | Text | 10 | N/A |
 
-**URL** :[https://v04y86nmj2.execute-api.eu-west-1.amazonaws.com/pro/expedient](https://v04y86nmj2.execute-api.eu-west-1.amazonaws.com/pro/expedient)/{uuidExpedient}?codiINE=0123456789&amp;codiServei=eVALISA
-
-**Method** : DELETE
-
-**Auth** :&quot;AWS Signature&quot;
-
-**AccessKey** : XXXXXXXXXXX
-
-**SecretKey** : YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
-**AWSRegion** : eu-west-1
-
-**Body** : (buit)
-
- ![Shape27](RackMultipart20220211-4-2fc1qu_html_faac99e2c4046f83.gif)
+![image](https://user-images.githubusercontent.com/32306731/155977638-3589ed67-1789-48d9-8103-60daceed0f25.png)
 
 ### Resposta
 
-{
-
-&quot;uuidExpedient&quot;: &quot;e12d9a61-6c98-4a1e-9e0f-96e97755d77c&quot;,
-
-&quot;codiServei&quot;: &quot;eVALISA&quot;,
-
-&quot;codiResposta&quot;: &quot;0&quot;,
-
-&quot;descripcioResposta&quot;: &quot;Operació realitzada correctament&quot;
-
-}
-
- ![Shape28](RackMultipart20220211-4-2fc1qu_html_8adf05a7a5ad809a.gif)
+![image](https://user-images.githubusercontent.com/32306731/155977715-6531d18a-f173-4efe-bf2a-454b90bf4496.png)
 
 ### Codis de resposta
 
@@ -1384,180 +675,12 @@ La descàrrega d&#39;expedients es pot realitzar independentment de l&#39;estat 
 | codiINE | QueryParam | Sí | Text | 10 | N/A |
 | codiServei | QueryParam | Sí | Text | 10 | N/A |
 
-**URL** : https://goo1q9s080.execute-api.eu-west-1.amazonaws.com/pre/expedient/f176b0fd-9194-4068-877f-0f3eb80ad3fa?codiINE=9821920002&amp;codiServei=eVALISA
-
-**Method** : GET
-
-**Auth** :&quot;AWS Signature&quot;
-
-**AccessKey** : XXXXXXXXXXX
-
-**SecretKey** : YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
-**AWSRegion** : eu-west-1
-
-**Body** : (buit)
-
-**Body** : (buit)
-
- ![Shape29](RackMultipart20220211-4-2fc1qu_html_d1e93335dc0314cd.gif)
+![image](https://user-images.githubusercontent.com/32306731/155977813-cc6a7866-6796-478f-94cf-9e41b2088d1f.png)
 
 ### Resposta
 
-{
-
-&quot;codiServei&quot; : &quot;eVALISA&quot;,
-
-&quot;codiINE&quot; : &quot;9821920002&quot;,
-
-&quot;uuidExpedient&quot; : &quot;3f90e981-8161-46c6-b15b-b3b4b646aad0&quot;,
-
-&quot;titol&quot; : &quot;reenviar de nou url i pdf&quot;,
-
-&quot;dataInici&quot; : &quot;08/11/2021 16:28:43&quot;,
-
-&quot;usuari&quot; : &quot;82828282S&quot;,
-
-&quot;codiClassificacio&quot; : &quot;IC00091&quot;,
-
-&quot;nomClassificacio&quot; : &quot;Gestió dels serveis de tramitació interadministrativa&quot;,
-
-&quot;estatExpedient&quot; : &quot;E01&quot;,
-
-&quot;interessat&quot; : [],
-
-&quot;infoAddicional&quot; : [],
-
-&quot;dataAlta&quot; : &quot;08/11/2021 17:28:52&quot;,
-
-&quot;versioNTI&quot; : &quot;http://administracionelectronica.gob.es/ENI/XSD/v1.0/documento-e&quot;,
-
-&quot;identificador&quot; : &quot;35055&quot;,
-
-&quot;organ&quot; : &quot;A09018933&quot;,
-
-&quot;identificadorDesal&quot; : &quot;ES\_9821920002\_2021\_3f90e981-8161-46c6-b15b-b3b4b646aad0&quot;,
-
-&quot;documents&quot; : [ {
-
-&quot;codiServei&quot; : &quot;eVALISA&quot;,
-
-&quot;codiINE&quot; : &quot;9821920002&quot;,
-
-&quot;uuidDocument&quot; : &quot;9ac44522-2278-4159-bde8-e590eebebca1&quot;,
-
-&quot;nomNatural&quot; : &quot;URL&quot;,
-
-&quot;idioma&quot; : &quot;Català&quot;,
-
-&quot;infoAddicional&quot; : [],
-
-&quot;dataAlta&quot; : &quot;08/11/2021 17:28:54&quot;,
-
-&quot;dataDocument&quot; : &quot;08/11/2021 16:28:43&quot;,
-
-&quot;contingut&quot; : &quot;2&quot;,
-
-&quot;identificadorExpedientDesal&quot; : &quot;3f90e981-8161-46c6-b15b-b3b4b646aad0&quot;,
-
-&quot;versioNTI&quot; : &quot;http://administracionelectronica.gob.es/ENI/XSD/v1.0/documento-e&quot;,
-
-&quot;identificador&quot; : &quot;ES\_9821920002\_2021\_9ac44522-2278-4159-bde8-e590eebebca1&quot;,
-
-&quot;organ&quot; : &quot;A09018933&quot;,
-
-&quot;estatElaboracio&quot; : &quot;EE01&quot;,
-
-&quot;origen&quot; : true,
-
-&quot;tipusDocumental&quot; : &quot;TD99&quot;,
-
-&quot;tipusSignatura&quot; : &quot;TF01&quot;,
-
-&quot;regulacioGeneracioCSVSignatura&quot; : &quot;Resolució sobre l&#39;ús del sistema de codi segur de verificació del Consorci AOC&quot;,
-
-&quot;tipusDocumentalSICRESD&quot; : &quot;02&quot;,
-
-&quot;nivellAcces&quot; : &quot;E&quot;,
-
-&quot;interessat&quot; : [],
-
-&quot;usuari&quot; : &quot;82828282S&quot;,
-
-&quot;codiResposta&quot; : 0,
-
-&quot;descripcioResposta&quot; : &quot;Operació realitzada correctament.&quot;,
-
-&quot;csv&quot; : &quot;98219200020811202132T8M3IE3OUU&quot;,
-
-&quot;urlDocumentExtern&quot; : &quot;http://www.google.es&quot;,
-
-&quot;cSVSignatura&quot; : &quot;98219200020811202132T8M3IE3OUU&quot;
-
-}, {
-
-&quot;codiServei&quot; : &quot;eVALISA&quot;,
-
-&quot;codiINE&quot; : &quot;9821920002&quot;,
-
-&quot;uuidDocument&quot; : &quot;dc99e82b-0341-435f-881b-7ed55bb885a2&quot;,
-
-&quot;nomNatural&quot; : &quot;URL&quot;,
-
-&quot;idioma&quot; : &quot;Català&quot;,
-
-&quot;infoAddicional&quot; : [],
-
-&quot;dataAlta&quot; : &quot;08/11/2021 17:28:54&quot;,
-
-&quot;dataDocument&quot; : &quot;08/11/2021 16:28:43&quot;,
-
-&quot;contingut&quot; : &quot;2&quot;,
-
-&quot;identificadorExpedientDesal&quot; : &quot;3f90e981-8161-46c6-b15b-b3b4b646aad0&quot;,
-
-&quot;versioNTI&quot; : &quot;http://administracionelectronica.gob.es/ENI/XSD/v1.0/documento-e&quot;,
-
-&quot;identificador&quot; : &quot;ES\_9821920002\_2021\_dc99e82b-0341-435f-881b-7ed55bb885a2&quot;,
-
-&quot;organ&quot; : &quot;A09018933&quot;,
-
-&quot;estatElaboracio&quot; : &quot;EE01&quot;,
-
-&quot;origen&quot; : true,
-
-&quot;tipusDocumental&quot; : &quot;TD99&quot;,
-
-&quot;tipusSignatura&quot; : &quot;TF01&quot;,
-
-&quot;regulacioGeneracioCSVSignatura&quot; : &quot;Resolució sobre l&#39;ús del sistema de codi segur de verificació del Consorci AOC&quot;,
-
-&quot;tipusDocumentalSICRESD&quot; : &quot;02&quot;,
-
-&quot;nivellAcces&quot; : &quot;E&quot;,
-
-&quot;interessat&quot; : [],
-
-&quot;usuari&quot; : &quot;82828282S&quot;,
-
-&quot;codiResposta&quot; : 0,
-
-&quot;descripcioResposta&quot; : &quot;Operació realitzada correctament.&quot;,
-
-&quot;csv&quot; : &quot;9821920002081120213URJ3PE513TO&quot;,
-
-&quot;urlDocumentExtern&quot; : &quot;http://www.aoc.cat&quot;,
-
-&quot;cSVSignatura&quot; : &quot;9821920002081120213URJ3PE513TO&quot;
-
-}],
-
-&quot;codiResposta&quot; : 0,
-
-&quot;descripcioResposta&quot; : &quot;Operació realitzada correctament.&quot;
-
-}
-
- ![Shape30](RackMultipart20220211-4-2fc1qu_html_2c79acab5706f21b.gif)
+![image](https://user-images.githubusercontent.com/32306731/155977994-9c518c3e-cd81-4c26-a1b1-8997f9e3088d.png)
+![image](https://user-images.githubusercontent.com/32306731/155978050-6e111d39-279a-4063-ac86-2a8837819956.png)
 
 ### Codis de resposta
 
@@ -1587,41 +710,16 @@ Aquesta modalitat permet descarregar un fitxer ZIP que conté únicament un fitx
 
 | **Element** | **Tipus paràmetre** | **Obligatori** | **Tipus camps** | **Mida màxima** | **Observacions** |
 | --- | --- | --- | --- | --- | --- |
-| uuidExpedient | PathParam | Sí | Text | - | N/A |
+| uuidExpedient | PathParam | Sí | Text | -- | N/A |
 | codiINE | QueryParam | Sí | Text | 10 | N/A |
 | codiServei | QueryParam | Sí | Text | 10 | N/A |
-| modality | QueryParam | Sí | Número | - | Per a modalitat 1, indicar &quot;1&quot; |
+| modality | QueryParam | Sí | Número | -- | Per a modalitat 1, indicar “1” |
 
-**URL** : [https://v04y86nmj2.execute-api.eu-west-1.amazonaws.com/pro/expedient/{uuidExpedient}/download?codiServei=eVALISA&amp;codiINE=0123456789&amp;modality=1](https://v04y86nmj2.execute-api.eu-west-1.amazonaws.com/pro/expedient/%7BuuidExpedient%7D/download?codiServei=eVALISA&amp;codiINE=123456789&amp;modality=1)
-
-**Method** : GET
-
-**Auth** :&quot;AWS Signature&quot;
-
-**AccessKey** : XXXXXXXXXXX
-
-**SecretKey** : YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
-**AWSRegion** : eu-west-1
-
-**Body** : (buit)
-
-**Body** : (buit)
-
- ![Shape31](RackMultipart20220211-4-2fc1qu_html_d1e93335dc0314cd.gif)
+![image](https://user-images.githubusercontent.com/32306731/155978255-c6a8dc1b-ee6b-4738-926e-b1c11b51c49e.png)
 
 ### Resposta
 
-{
-
-&quot;codiResposta&quot;: &quot;0&quot;,
-
-&quot;descripcioResposta&quot;: &quot;Operació realitzada correctament&quot;,
-
-&quot;idTicket&quot;: &quot;f22fd5d3-ced5-4022-a407-389101fc3286&quot;
-
-}
-
- ![Shape32](RackMultipart20220211-4-2fc1qu_html_3783de7c95a508d7.gif)
+![image](https://user-images.githubusercontent.com/32306731/155978356-1a9650d4-500c-4cd2-b3e4-ff06e77bc8dd.png)
 
 ### Modalitat 2: Descarregar metadades i Fitxers
 
@@ -1636,194 +734,19 @@ Aquesta modalitat permet descarregar també un fitxer ZIP que conté el fitxer X
 | codiServei | QueryParam | Sí | Text | 10 | N/A |
 | modality | QueryParam | Sí | Número | - | Per a modalitat 2, indicar &quot;2&quot; |
 
-**URL** : [https://v04y86nmj2.execute-api.eu-west-1.amazonaws.com/pro/expedient/{uuidExpedient}/download?codiServei=eVALISA&amp;codiINE=0123456789&amp;modality=2](https://v04y86nmj2.execute-api.eu-west-1.amazonaws.com/pro/expedient/%7BuuidExpedient%7D/download?codiServei=eVALISA&amp;codiINE=123456789&amp;modality=2)
-
-**Method** : GET
-
-**Auth** :&quot;AWS Signature&quot;
-
-**AccessKey** : XXXXXXXXXXX
-
-**SecretKey** : YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
-**AWSRegion** : eu-west-1
-
-**Body** : (buit)
-
-**Body** : (buit)
-
- ![Shape33](RackMultipart20220211-4-2fc1qu_html_d1e93335dc0314cd.gif)
+![image](https://user-images.githubusercontent.com/32306731/155978592-e43ae86b-c291-4ef5-815c-f03e238066dd.png)
 
 ### Resposta
 
-{
-
-&quot;codiResposta&quot;: &quot;0&quot;,
-
-&quot;descripcioResposta&quot;: &quot;Operació realitzada correctament&quot;,
-
-&quot;idTicket&quot;: &quot;fasdfd5d3-c34d5-4652-a987-987101fc3286&quot;
-
-}
-
- ![Shape34](RackMultipart20220211-4-2fc1qu_html_3783de7c95a508d7.gif)
+![image](https://user-images.githubusercontent.com/32306731/155978681-8f84fd0d-f6ab-4ff6-90d3-91533d0d37bc.png)
 
 ### Exemple XML inclòs en el fitxer ZIP
 
-\&lt;XmlExpedient\&gt;
+![image](https://user-images.githubusercontent.com/32306731/155989879-e50e730e-c3af-4735-a6b8-08c3c8a80493.png)
+![image](https://user-images.githubusercontent.com/32306731/155989985-ed59544f-43b7-4dec-9877-2248690265e7.png)
+![image](https://user-images.githubusercontent.com/32306731/155990044-d60cac0d-c9ab-4e90-a09e-5aaf65256e71.png)
 
-\&lt;uuidExpedient\&gt;985e4e19-01f3-4819-8f13-7be6b95185e3\&lt;/uuidExpedient\&gt;
 
-\&lt;codiServei\&gt;eVALISA\&lt;/codiServei\&gt;
-
-\&lt;codiIne\&gt;7515090124\&lt;/codiIne\&gt;
-
-\&lt;titol\&gt;prova nova versió de DESA&#39;L PRE\&lt;/titol\&gt;
-
-\&lt;dataInici\&gt;16/11/2021 12:46:45\&lt;/dataInici\&gt;
-
-\&lt;usuari\&gt;45541608K\&lt;/usuari\&gt;
-
-\&lt;codiClassificacio\&gt;IC00091\&lt;/codiClassificacio\&gt;
-
-\&lt;nomClassificacio\&gt;Gestió dels serveis de tramitació interadministrativa\&lt;/nomClassificacio\&gt;
-
-\&lt;estatExpedient\&gt;E01\&lt;/estatExpedient\&gt;
-
-\&lt;dataAlta\&gt;16/11/2021 13:46:52\&lt;/dataAlta\&gt;
-
-\&lt;versioNTI\&gt;http://administracionelectronica.gob.es/ENI/XSD/v1.0/documento-e\&lt;/versioNTI\&gt;
-
-\&lt;identificador\&gt;1416811\&lt;/identificador\&gt;
-
-\&lt;organ\&gt;A09018845\&lt;/organ\&gt;
-
-\&lt;identificadorDesal\&gt;ES\_7515090124\_2021\_985e4e19-01f3-4819-8f13-7be6b95185e3\&lt;/identificadorDesal\&gt;
-
-\&lt;documents\&gt;
-
-\&lt;document\&gt;
-
-\&lt;uuidDocument\&gt;fc9041c2-e730-44b7-b812-05b131efed3e\&lt;/uuidDocument\&gt;
-
-\&lt;uuidService\&gt;eVALISA\&lt;/uuidService\&gt;
-
-\&lt;idioma\&gt;Català\&lt;/idioma\&gt;
-
-\&lt;nomNatural\&gt;ORGANISMS\_DIR3\_v1\&lt;/nomNatural\&gt;
-
-\&lt;csv\&gt;751509012416112021PRN084GP4JF\&lt;/csv\&gt;
-
-\&lt;formatFitxer\&gt;text/plain\&lt;/formatFitxer\&gt;
-
-\&lt;has\&gt;1847d151f72f5d4e12b80815076725047c4972472fc905bd0a5de2d19891f618\&lt;/has\&gt;
-
-\&lt;hashAlgoritme\&gt;SHA-256\&lt;/hashAlgoritme\&gt;
-
-\&lt;mida\&gt;33894\&lt;/mida\&gt;
-
-\&lt;nomFitxer\&gt;ORGANISMS\_DIR3\_v1.txt\&lt;/nomFitxer\&gt;
-
-\&lt;uuidFitxer\&gt;61b8480d-10a4-4403-b6dd-ef68c23f4f4a\&lt;/uuidFitxer\&gt;
-
-\&lt;dataAlta\&gt;16/11/2021 13:46:53\&lt;/dataAlta\&gt;
-
-\&lt;dataDocument\&gt;16/11/2021 12:46:45\&lt;/dataDocument\&gt;
-
-\&lt;identificadorExpedientDesal\&gt;985e4e19-01f3-4819-8f13-7be6b95185e3\&lt;/identificadorExpedientDesal\&gt;
-
-\&lt;versionNTI\&gt;http://administracionelectronica.gob.es/ENI/XSD/v1.0/documento-e\&lt;/versionNTI\&gt;
-
-\&lt;identificador\&gt;ES\_7515090124\_2021\_fc9041c2-e730-44b7-b812-05b131efed3e\&lt;/identificador\&gt;
-
-\&lt;organ\&gt;A09018845\&lt;/organ\&gt;
-
-\&lt;estatElaboracio\&gt;EE01\&lt;/estatElaboracio\&gt;
-
-\&lt;origen\&gt;true\&lt;/origen\&gt;
-
-\&lt;tipusDocumental\&gt;TD99\&lt;/tipusDocumental\&gt;
-
-\&lt;tipusSignatura\&gt;TF01\&lt;/tipusSignatura\&gt;
-
-\&lt;cSVSignatura\&gt;751509012416112021PRN084GP4JF\&lt;/cSVSignatura\&gt;
-
-\&lt;regulacioGeneracioCSVSignatura\&gt;Resolució sobre l&#39;ús del sistema de codi segur de verificació del Consorci AOC\&lt;/regulacioGeneracioCSVSignatura\&gt;
-
-\&lt;tipusDocumentalSICRESD\&gt;02\&lt;/tipusDocumentalSICRESD\&gt;
-
-\&lt;nivellAcces\&gt;E\&lt;/nivellAcces\&gt;
-
-\&lt;usuari\&gt;82828282S\&lt;/usuari\&gt;
-
-\&lt;codiINE\&gt;7515090124\&lt;/codiINE\&gt;
-
-\&lt;contingut\&gt;1\&lt;/contingut\&gt;
-
-\&lt;/document\&gt;
-
-\&lt;document\&gt;
-
-\&lt;uuidDocument\&gt;0a2b2ddd-d68b-40d5-98d4-24b07805f972\&lt;/uuidDocument\&gt;
-
-\&lt;uuidService\&gt;eVALISA\&lt;/uuidService\&gt;
-
-\&lt;idioma\&gt;Català\&lt;/idioma\&gt;
-
-\&lt;nomNatural\&gt;fitxer de log\&lt;/nomNatural\&gt;
-
-\&lt;csv\&gt;751509012416112021UUQHC7V7E028\&lt;/csv\&gt;
-
-\&lt;formatFitxer\&gt;text/plain\&lt;/formatFitxer\&gt;
-
-\&lt;has\&gt;8cefb75231f0910873aff2854031d2fc8a6a4108818cdbbc9737a0b2f0f6ef4f\&lt;/has\&gt;
-
-\&lt;hashAlgoritme\&gt;SHA-256\&lt;/hashAlgoritme\&gt;
-
-\&lt;mida\&gt;10254\&lt;/mida\&gt;
-
-\&lt;nomFitxer\&gt;fitxer de log.txt\&lt;/nomFitxer\&gt;
-
-\&lt;uuidFitxer\&gt;7aeea8d1-63c1-443f-8c54-625ca9713eb7\&lt;/uuidFitxer\&gt;
-
-\&lt;dataAlta\&gt;16/11/2021 13:46:53\&lt;/dataAlta\&gt;
-
-\&lt;dataDocument\&gt;16/11/2021 12:46:45\&lt;/dataDocument\&gt;
-
-\&lt;identificadorExpedientDesal\&gt;985e4e19-01f3-4819-8f13-7be6b95185e3\&lt;/identificadorExpedientDesal\&gt;
-
-\&lt;versionNTI\&gt;http://administracionelectronica.gob.es/ENI/XSD/v1.0/documento-e\&lt;/versionNTI\&gt;
-
-\&lt;identificador\&gt;ES\_7515090124\_2021\_0a2b2ddd-d68b-40d5-98d4-24b07805f972\&lt;/identificador\&gt;
-
-\&lt;organ\&gt;A09018845\&lt;/organ\&gt;
-
-\&lt;estatElaboracio\&gt;EE01\&lt;/estatElaboracio\&gt;
-
-\&lt;origen\&gt;true\&lt;/origen\&gt;
-
-\&lt;tipusDocumental\&gt;TD99\&lt;/tipusDocumental\&gt;
-
-\&lt;tipusSignatura\&gt;TF01\&lt;/tipusSignatura\&gt;
-
-\&lt;cSVSignatura\&gt;751509012416112021UUQHC7V7E028\&lt;/cSVSignatura\&gt;
-
-\&lt;regulacioGeneracioCSVSignatura\&gt;Resolució sobre l&#39;ús del sistema de codi segur de verificació del Consorci AOC\&lt;/regulacioGeneracioCSVSignatura\&gt;
-
-\&lt;tipusDocumentalSICRESD\&gt;02\&lt;/tipusDocumentalSICRESD\&gt;
-
-\&lt;nivellAcces\&gt;E\&lt;/nivellAcces\&gt;
-
-\&lt;usuari\&gt;82828282S \&lt;/usuari\&gt;
-
-\&lt;codiINE\&gt;7515090124\&lt;/codiINE\&gt;
-
-\&lt;contingut\&gt;1\&lt;/contingut\&gt;
-
-\&lt;/document\&gt;
-
-\&lt;/documents\&gt;
-
-\&lt;/XmlExpedient\&gt;
 
 ### Codis de resposta
 
@@ -1854,52 +777,17 @@ En el moment en que el fitxer ZIP estigui disponible, el mètode de consulta d&#
 
 ### Petició
 
-**URL** : [https://v04y86nmj2.execute-api.eu-west-1.amazonaws.com/pro/expedient/{uuidExpedient}/statusdownload?codiServei=eVALISA&amp;codiINE=0123456789&amp;idTicket=36904808-2de9-4a56-a443-b09eb407548a](https://v04y86nmj2.execute-api.eu-west-1.amazonaws.com/pro/expedient/%7BuuidExpedient%7D/statusdownload?codiServei=eVALISA&amp;codiINE=123456789&amp;idTicket=36904808-2de9-4a56-a443-b09eb407548a)
+![image](https://user-images.githubusercontent.com/32306731/155990290-b467e977-5d5e-47ed-95bf-1b7555ba1fe1.png)
 
-**Method** : GET
-
-**Auth** :&quot;AWS Signature&quot;
-
-**AccessKey** : XXXXXXXXXXX
-
-**SecretKey** : YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
-**AWSRegion** : eu-west-1
-
-**Body** : (buit)
-
-**Body** : (buit)
-
- ![Shape35](RackMultipart20220211-4-2fc1qu_html_d1e93335dc0314cd.gif)
 
 ### Resposta pendent
 
-{
+![image](https://user-images.githubusercontent.com/32306731/155990632-02954f93-1da8-4a1f-a63a-9ddac07370b2.png)
 
-&quot;idTicket&quot;: &quot;8b7d65d3-1d37-412e-a650-2341298389a1&quot;,
-
-&quot;codiResposta&quot;: &quot;1&quot;,
-
-&quot;descripcioResposta&quot;: &quot;Petició pendent&quot;
-
-}
-
- ![Shape36](RackMultipart20220211-4-2fc1qu_html_6ad2da954b677fd5.gif)
 
 ### Resposta disponible
 
-{
-
-&quot;idTicket&quot;: &quot;36904808-2de9-4a56-a443-b09eb407548a&quot;,
-
-&quot;urlPresignada&quot;: &quot;https://desal-download-expedient-bucket.s3.amazonaws.com/36904808-2de9-4a56-a443-b09eb407548a.zip?AWSAccessKeyId=ASIATUYQXN65OKN6BROJ&amp;Signature=sqC1n1POqvVsPvJLHRwV2cZL7BQ%3D&amp;x-amz-security-token=IQoJb3JpZ2luX2VjEH0aCWV1LXdlc3QtMSJGMEQCICXu%2BewPSHFZtJ0dUtjjOGGrhglTDt1YEPG%2FBeJql70kAiBMBSbvl%2BywlIj%2FOHLbOfdXdWF0T07mruKOoKpDEkf2xSqDBAim%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAAaDDI1MDc1MzgwNjI2NiIMH0r8Utb7unDLaW7sKtcDBrTDl%2Bd8c7SN%2FQ4RpW1cyo3KusIJD%2BSZvgJp4sT9sjlmuIBFSVXm%2F%2BRJM1uEZZowdGLmFiauZA3xDW36a15A9kdN1WllBzXptWM0Ui%2FOs04UYYf2oH4kXhoKkMMXDp9pqEwoApu069ilWmnbZdKRtPlFwYPVMpH49xSLHg9dlstqmJn6tpnUNt8Xa1So%2Fxz9FaSe9WqKeDE0jZjqFNITmJvwMp2K8YL79lku7Ob22cQyWODeZuZw6jK53f2ZPanDbmdrfwJnLLDbWQeHVfJxrtuqa3Zv%2FD1Gexa7yiTcWMAvu%2FzZ54TddDR1BbDOvvMU52ter3ncHsNVLajksTbfxO%2FQTaFG2tjZaTocig3Xh2%2BY3IEj0P%2BQp1u7kX07uGmDUkytWBF7Ghay%2BCBO7dGnTdaArOxqYDutTz9j8gFAfw3MKJYlFc5v%2BnK3J20EG2f8g9e6BSPeHn3nqkHjV3w7vXq2FBHUqLKdadL14wUQKUZienAOEg2WblU4auRhdAIgkPanalCrtOdDEc%2F3JGvkOrRQRXXWk4bWhOkiGzNn5Go0%2BocNbQaQHYw9glVo%2BK%2BRUOEyzyjcFAD6SGdJtZ9eZC760sY3IA0XStcJEIUT5GyKESDk4HN5MKSo%2BYgGOqYB6Ew6NKDP9lHhqXYuySYys8eFqqdvS7tczp9MxUM5M9GyYKaHn5SEfGFGUvY9S5BaxygkF6RVTnyIvzzxJiaBYlUmL9NTDtj8no9gRiHwoL1T%2BFoO4W9Duv4%2B5tQtrBruXka3%2FDOyThDQ8RaZQyOG6yiSd6Agyq2cwf6tgpXbzufHimbYe5TkxlisK9mPiB2zFgiO98urTOtdQny2XPu%2FA1D%2BQhtL0w%3D%3D&amp;Expires=1629471100&quot;,
-
-&quot;codiResposta&quot;: &quot;0&quot;,
-
-&quot;descripcioResposta&quot;: &quot;Petició disponible&quot;
-
-}
-
- ![Shape37](RackMultipart20220211-4-2fc1qu_html_edee770fd7454f67.gif)
+![image](https://user-images.githubusercontent.com/32306731/155990708-166c3f69-9a68-4c55-a220-bdceaafb4f7e.png)
 
 ### Codis de resposta
 
@@ -1913,6 +801,8 @@ A continuació es detallen els possibles codis de resposta per a la modificació
 | 11 | Error: la petició no és correcta (XXXXXX). Operació NO realitzada. |
 | 100 | Error no controlat: XXXXXX. Si us plau, reintenti l`operació en uns minuts. Operació NO realitzada. |
 
+	-----------SEGUIR AQUI
+	
 ## 5.7 Descarrega d&#39;Expedient en format ENI <a name="5.7"></a>
 
 Aquest mètode asíncron permet obtenir i descarregar l&#39;expedient en format ENI (Esquema Nacional de Interoperabilidad) per poder exportar-ho i compartir-ho amb tercers. Les especificacions del format ENI per a expedients estan disponibles al següent enllaç:
