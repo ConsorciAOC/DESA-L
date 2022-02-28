@@ -774,7 +774,7 @@ En el moment en que el fitxer ZIP estigui disponible, el mètode de consulta d&#
 
 ### Resposta disponible
 
-![image](https://user-images.githubusercontent.com/32306731/155990708-166c3f69-9a68-4c55-a220-bdceaafb4f7e.png)
+![image](https://user-images.githubusercontent.com/32306731/156005221-18c9ac7a-2f47-4cf3-8a0f-7b2dcadc4980.png)
 
 ### Codis de resposta
 
@@ -787,8 +787,6 @@ A continuació es detallen els possibles codis de resposta per a la modificació
 | 10 | Error: no tens autorització per realitzar aquesta operació. Operació NO realitzada. |
 | 11 | Error: la petició no és correcta (XXXXXX). Operació NO realitzada. |
 | 100 | Error no controlat: XXXXXX. Si us plau, reintenti l`operació en uns minuts. Operació NO realitzada. |
-
-	-----------SEGUIR AQUI
 	
 ## 5.7 Descarrega d&#39;Expedient en format ENI <a name="5.7"></a>
 
@@ -808,36 +806,11 @@ De forma anàloga a la descàrrega de l&#39;expedient en format ZIP, el procés 
 | codiINE | QueryParam | Sí | Text | 10 | N/A |
 | codiServei | QueryParam | Sí | Text | 10 | N/A |
 
-**URL** : [https://v04y86nmj2.execute-api.eu-west-1.amazonaws.com/pro/expedientENI/{uuidExpedient}/download?codiServei=eVALISA&amp;codiINE=0123456789](https://v04y86nmj2.execute-api.eu-west-1.amazonaws.com/pro/expedientENI/%7BuuidExpedient%7D/download?codiServei=eVALISA&amp;codiINE=123456789)
-
-**Method** : GET
-
-**Auth** :&quot;AWS Signature&quot;
-
-**AccessKey** : XXXXXXXXXXX
-
-**SecretKey** : YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
-**AWSRegion** : eu-west-1
-
-**Body** : (buit)
-
-**Body** : (buit)
-
- ![Shape38](RackMultipart20220211-4-2fc1qu_html_d1e93335dc0314cd.gif)
+![image](https://user-images.githubusercontent.com/32306731/156005955-d5e41a09-b84d-4187-b5b6-c0b6284eaef0.png)
 
 ### Resposta
 
-{
-
-&quot;codiResposta&quot;: &quot;0&quot;,
-
-&quot;descripcioResposta&quot;: &quot;Operació realitzada correctament&quot;,
-
-&quot;idTicket&quot;: &quot;6c534ef1-74f3-4dbc-9a4c-1c51f5a56d2b&quot;
-
-}
-
- ![Shape39](RackMultipart20220211-4-2fc1qu_html_64542e98126c8a92.gif)
+![image](https://user-images.githubusercontent.com/32306731/156006058-9068d58f-71bc-49dc-a42e-7170154ffada.png)
 
 ### Codis de resposta
 
@@ -878,508 +851,73 @@ La relació entre un document i el seu contingut (fitxer) es realitza a partir d
 
 | **Element** | **Tipus paràmetre** | **Obligatori** | **Tipus camps** | **Mida màxima** | **Observacions** |
 | --- | --- | --- | --- | --- | --- |
-| codiINE | Body | Si | Text | 10 |
- |
-| codiServei | Body | Si | Taula | 10 |
- |
+| codiINE | Body | Si | Text | 10 | -- |
+| codiServei | Body | Si | Taula | 10 | -- |
 | nomFitxer | Body | Condicional | Text | 250 | Només s&#39;informa si contingut igual a 1 |
 | nomNatural | Body | Si | Text | 500 | Nom natural (sense extensió) |
-| dataDocument | Body | Si | Data i hora |
- | Format: DD/MM/AAAA HH:mm:SS |
-| contingut | Body | Si | Text |
- |
- |
+| dataDocument | Body | Si | Data i hora | -- | Format: DD/MM/AAAA HH:mm:SS |
+| contingut | Body | Si | Text | -- | -- |
 | interessat | Body | Si | Llista | 20 | Llista d&#39;interessats |
 | usuari | Body | Si | Text | 250 | Dades identificatives qui crea el document |
-| numeroRegistre | Body | Si | Text | 100 |   |
-| CSV | Body | Si | Text | 100 |   |
-| identificadorExpedientDesal | Body | Si | Text | 100 |   |
-| identificadorExpedientExtern | Body | Si | Text | 100 |   |
+| numeroRegistre | Body | Si | Text | 100 | -- |
+| CSV | Body | Si | Text | 100 | -- |
+| identificadorExpedientDesal | Body | Si | Text | 100 | -- |
+| identificadorExpedientExtern | Body | Si | Text | 100 | -- |
 | UUIDFitxer | Body | Condicional | Text | 20 | Només s&#39;informa si contingut igual a 1 |
 | URLDocumentExtern | Body | Condicional | URI |   | Només s&#39;informa si contingut igual a 2 |
 | identificadorDocumentExtern | Body | Condicional | Text | 100 | Només s&#39;informa si contingut igual a 3 |
-| infoAddicional | Body | No | Llista |   | Llista d&#39;elements clau/valor |
+| infoAddicional | Body | No | Llista | -- | Llista d&#39;elements clau/valor |
 
-**URL** : [https://v04y86nmj2.execute-api.eu-west-1.amazonaws.com/pro/document](https://v04y86nmj2.execute-api.eu-west-1.amazonaws.com/pro/document)
-
-**Method** : POST
-
-**Auth** :&quot;AWS Signature&quot;
-
-**AccessKey** : XXXXXXXXXXX
-
-**SecretKey** : YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
-**AWSRegion** : eu-west-1
-
-**Body** :
-
-{
-
-&quot;codiINE&quot;: &quot;0123456789&quot;,
-
-&quot;codiServei&quot;: &quot;eVALISA&quot;,
-
-&quot;nomFitxer&quot;: &quot;exemple.pdf&quot;,
-
-&quot;nomNatural&quot;: &quot;exemple&quot;,
-
-&quot;dataDocument&quot; : &quot;20/07/2021 11:29:03&quot;,
-
-&quot;contingut&quot;: &quot;1&quot;,
-
-&quot;interessat&quot;: [
-
-&quot;82828282S&quot;
-
-],
-
-&quot;usuari&quot;: &quot;Joan Ningú&quot;,
-
-&quot;numeroRegistre&quot;: &quot;1234&quot;,
-
-&quot;csv&quot;: null,
-
-&quot;identificadorExpedientDesal&quot;: &quot;fb3a2d2f-b778-45be-bfad-1a8e4c4bd867&quot;,
-
-&quot;uuidFitxer&quot;: &quot;98ae4860-766b-4546-aeee-e32f581073af&quot;,
-
-&quot;infoAddicional&quot;: [
-
-{
-
-&quot;key&quot;: &quot;titolkey&quot;,
-
-&quot;value&quot;: &quot;valor&quot;
-
-}
-
-]
-
-}
-
- ![Shape40](RackMultipart20220211-4-2fc1qu_html_667d31ad63295b57.gif)
-
+![image](https://user-images.githubusercontent.com/32306731/156006549-311b9c95-86d1-42e2-90a8-09be88d20bef.png)
+	
 ### Resposta alta document basic
 
-{
-
-&quot;uuidDocument&quot;: &quot;969a05d0-61e3-4f7a-aba7-109ee529aa5a&quot;,
-
-&quot;uuidFitxer&quot;: &quot;98ae4860-766b-4546-aeee-e32f581073af&quot;,
-
-&quot;codiINE&quot;: &quot;0123456789&quot;,
-
-&quot;codiServei&quot;: &quot;eVALISA&quot;,
-
-&quot;nomNatural&quot;: &quot;exemple&quot;,
-
-&quot;sensibilitatDadesCaracterPersonal&quot;: null,
-
-&quot;documentEssencial&quot;: null,
-
-&quot;idioma&quot;: null,
-
-&quot;codiClassificacio&quot;: null,
-
-&quot;nomClassificacio&quot;: null,
-
-&quot;codiSIA&quot;: null,
-
-&quot;infoAddicional&quot;: [
-
-{
-
-&quot;key&quot;: &quot;titolkey&quot;,
-
-&quot;value&quot;: &quot;valor&quot;
-
-}
-
-],
-
-&quot;csv&quot;: &quot;00000000000911202133956E16A1D7&quot;,
-
-&quot;formatFitxer&quot;: &quot;application/pdf&quot;,
-
-&quot;hash&quot;: &quot;28f1d6e79edec9224a37bcfeb5c70b3e64ce05fad25ac311da305eb42d4594c8&quot;,
-
-&quot;hashAlgoritme&quot;: &quot;SHA-256&quot;,
-
-&quot;mida&quot;: &quot;615339&quot;,
-
-&quot;nomFitxer&quot;: &quot;exemple.pdf&quot;,
-
-&quot;uRLDocumentExtern&quot;: null,
-
-&quot;dataAlta&quot;: &quot;09/11/2021 15:36:05&quot;,
-
-&quot;dataDocument&quot;: &quot;20/07/2021 11:29:03&quot;,
-
-&quot;contingut&quot;: &quot;1&quot;,
-
-&quot;identificadorExpedientDesal&quot;: &quot;fb3a2d2f-b778-45be-bfad-1a8e4c4bd867&quot;,
-
-&quot;identificadorExpedientExtern&quot;: null,
-
-&quot;versioNTI&quot;: &quot;http://administracionelectronica.gob.es/ENI/XSD/v1.0/documento-e&quot;,
-
-&quot;identificador&quot;: &quot;ES\_0000000000\_2021\_969a05d0-61e3-4f7a-aba7-109ee529aa5a&quot;,
-
-&quot;organ&quot;: &quot;DIR3&quot;,
-
-&quot;estatElaboracio&quot;: null,
-
-&quot;origen&quot;: null,
-
-&quot;tipusDocumental&quot;: null,
-
-&quot;tipusSignatura&quot;: null,
-
-&quot;cSVSignatura&quot;: null,
-
-&quot;regulacioGeneracioCSVSignatura&quot;: null,
-
-&quot;referenciaSignatura&quot;: null,
-
-&quot;identificadorDocumentOrigen&quot;: null,
-
-&quot;tipusDocumentalSICRESD&quot;: null,
-
-&quot;descripcio&quot;: null,
-
-&quot;nivellAcces&quot;: null,
-
-&quot;clasificacioENS&quot;: null,
-
-&quot;identificadorDocumentExtern&quot;: null,
-
-&quot;codiResposta&quot;: &quot;0&quot;,
-
-&quot;descripcioResposta&quot;: &quot;Operació realitzada correctament&quot;,
-
-&quot;urlPresignada&quot;: null,
-
-&quot;interessat&quot;: [
-
-&quot;82828282S&quot;
-
-],
-
-&quot;usuari&quot;: &quot;Joan Ningú&quot;,
-
-&quot;numeroRegistre&quot;: &quot;1234&quot;
-
-}
-
- ![Shape41](RackMultipart20220211-4-2fc1qu_html_274f5ae720911b00.gif)
+![image](https://user-images.githubusercontent.com/32306731/156006669-af4b4cb2-d0ce-43a7-9a1e-a0007bd70f99.png)
 
 ### Petició alta document complet
 
 | **Element** | **Tipus paràmetre** | **Obligatori** | **Tipus camps** | **Mida màxima** | **Observacions** |
 | --- | --- | --- | --- | --- | --- |
-| codiINE |  Body | Si | Text | 10 |   |
-| codiServei | Body | Si | Taula | 10 |   |
+| codiINE |  Body | Si | Text | 10 | -- |
+| codiServei | Body | Si | Taula | 10 | -- |
 | nomFitxer | Body | Condicional | Text | 250 | Només s&#39;informa si contingut igual a 1 |
 | nomNatural | Body | Si | Text | 500 | Nom natural (sense extensió) |
-| dataDocument | Body | Si | Data i hora |   | Format: DD/MM/AAAA HH:mm:SS |
-| contingut | Body | Si | Text |   |   |
+| dataDocument | Body | Si | Data i hora | -- | Format: DD/MM/AAAA HH:mm:SS |
+| contingut | Body | Si | Text | -- | -- |
 | interessat | Body | Si | Llista | 20 | Llista d&#39;interessats |
 | usuari | Body | Si | Text | 250 | Dades identificatives qui crea el document |
-| numeroRegistre | Body | Si | Text | 100 |   |
-| CSV | Body | Si | Text | 100 |   |
-| identificadorExpedientDesal | Body | Si | Text | 100 |   |
-| identificadorExpedientExtern | Body | Si | Text | 100 |   |
+| numeroRegistre | Body | Si | Text | 100 | -- |
+| CSV | Body | Si | Text | 100 | -- |
+| identificadorExpedientDesal | Body | Si | Text | 100 | -- |
+| identificadorExpedientExtern | Body | Si | Text | 100 | -- |
 | UUIDFitxer | Body | Condicional | Text | 20 | Només s&#39;informa si contingut igual a 1 |
 | URLDocumentExtern | Body | Condicional | URI |   | Només s&#39;informa si contingut igual a 2 |
 | identificadorDocumentExtern | Body | Condicional | Text | 100 | Només s&#39;informa si contingut igual a 3 |
-| infoAddicional | Body | No | Llista |   | Llista d&#39;elements clau/valor |
-| estatElaboracio | Body | Si | Text |   | EE01 - Original
- EE02 - Copia electrónica auténtica con cambio de formato
- EE03 - Copia electrónica auténtica de documento papel
- EE04 - Copia electrónica parcial auténtica
- EE99 - Otros. |
-| origen | Body | Si | boolea |   | false= Ciutadà
- true=Administració |
-| tipusDocumental | Body  | Si | Text |   | TD01 - Resolución
- TD02 - Acuerdo
- TD03 - Contrato
- TD04 - Convenio
- TD05 - Declaración
- TD06 - Comunicación
- TD07 - Notificación
- TD08 - Publicación
- TD09 - Acuse de recibo
- TD10 - Acta
- TD11 - Certificado
- TD12 - Diligencia
- TD13 - Informe
- TD14 - Solicitud
- TD15 - Denuncia
- TD16 - Alegación
- TD17 - Recursos
- TD18 - Comunicación ciudadano
- TD19 - Factura
- TD20 - Otros incautados
- TD51 - Ley
- TD52 - Moción
- TD53 - Instrucción
- TD54 - Convocatoria
- TD55 - Orden del día
- TD56 - Informe de Ponencia
- TD57 - Dictamen de Comisión
- TD58 - Iniciativa legislativa
- TD59 - Pregunta
- TD60 - Interpelación
- TD61 - Respuesta
- TD62 - Proposición no de ley
- TD63 - Enmienda
- TD64 - Propuesta de resolución
- TD65 - Comparecencia
- TD66 - Solicitud de información
- TD67 - Escrito
- TD68 - Iniciativa legislativa
- TD69 - Petición
- TD99 - Otros. |
-| tipusSignatura | Body  | Si | Text |   | TF01 - CSV
- TF02 - XAdES internally detached signature
- TF03 - XAdES enveloped signature
- TF04 - CAdES detached/explicit signature
- TF05 - CAdES attached/implicit signature
- TF06 - PAdES
- TF07 - XAdES Manifest |
+| infoAddicional | Body | No | Llista | -- | Llista d&#39;elements clau/valor |
+| estatElaboracio | Body | Si | Text | -- | <ul><li>EE01 - Original</li><li>EE02 - Copia electrónica auténtica con cambio de formato</li><li>EE03 - Copia electrónica auténtica de documento papel</li><li>EE04 - Copia electrónica parcial auténtica</li><li>EE99 - Otros.</li></ul> |
+| origen | Body | Si | boolea | -- | false= Ciutadà, true=Administració |
+| tipusDocumental | Body  | Si | Text | -- | <ul><li>TD01 - Resolución</li><li>TD02 - Acuerdo</li><li>TD03 - Contrato</li><li>TD04 - Convenio</li><li>TD05 - Declaración</li><li>TD06 - Comunicación</li><li>TD07 - Notificación</li><li>TD08 - Publicación</li><li>TD09 - Acuse de recibo</li><li>TD10 - Acta</li><li>TD11 - Certificado</li><li>TD12 - Diligencia</li><li>TD13 - Informe</li><li>TD14 - Solicitud</li><li>TD15 - Denuncia</li><li>TD16 - Alegación</li><li>TD17 - Recursos</li><li>TD18 - Comunicación ciudadano</li><li>TD19 - Factura</li><li>TD20 - Otros incautados</li><li>TD51 - Ley</li><li>TD52 - Moción</li><li>TD53 - Instrucción</li><li>TD54 - Convocatoria</li><li>TD55 - Orden del día</li><li>TD56 - Informe de Ponencia</li><li>TD57 - Dictamen de Comisión</li><li>TD58 - Iniciativa legislativa</li><li>TD59 - Pregunta</li><li>TD60 - Interpelación</li><li>TD61 - Respuesta</li><li>TD62 - Proposición no de ley</li><li>TD63 - Enmienda</li><li>TD64 - Propuesta de resolución</li><li>TD65 - Comparecencia</li><li>TD66 - Solicitud de información</li><li>TD67 - Escrito</li><li>TD68 - Iniciativa legislativa</li><li>TD69 - Petición</li><li>TD99 - Otros. </li></ul>|
+| tipusSignatura | Body  | Si | Text | --  | <ul><li>TF01 - CSV</li><li>TF02 - XAdES internally detached signature</li><li>TF03 - XAdES enveloped signature</li><li>TF04 - CAdES detached/explicit signature</li><li>TF05 - CAdES attached/implicit signature</li><li>TF06 - PAdES</li><li>TF07 - XAdES Manifest</li></ul> |
 | CSVSignatura | Body  | Condicional | Text | 100 | S&#39;informa si TipoFirma =TF01 |
 | regulacioGeneracioCSVSignatura | Body  | Condicional | Text | 500 | S&#39;informa si TipoFirma =TF01 |
 | referenciaSignatura | Body  | Condicional | Text | 100 | Només cas TF03 i TF04. Referencia al fitxer que inclou la signatura (UUID - fitxer) |
 | identificadorDocumentOrigen | Body  | Condicional | Text | 250 | Només si s&#39;ha indicat EE02,EE03 i EE04 a EstadoElaboracion |
-| tipusDocumentalSICRESD | Body  | No | Text |   | &#39;01&#39; = Formulari (el document adjunt és un formulari amb camps omplerts per el ciutadà remitent)
- &#39;02&#39; = Document adjunt al formulari (a part del formulari, s&#39;adjunta un altre document acompanyant el formulari)
- &#39;03&#39;= Fitxer tècnic intern (el document adjunt és un fitxer intern. En general, aquests fitxers poden resultar útils per la Entitat Reistral destí, però no són fitxers per presentar directament als usuaris de gestió) |
-| descripcio | Body  | No | Text | 500 |   |
-| nivellAcces | Body  | No | Enum |   | A-Secret
- B-Reservat
- C-Confidencial
- E-No classificat |
-| clasificacioENS | Body  | No | Enum |   | Baix
- Mig
- Alt |
-| sensibilitatDadesCaracterPersonal | Body  | No | Enum |   | Basic
- Mig
- Alt |
-| documentEssencial | Body  | No | boolea |   | True (si)
- False (NO) |
-| idioma | Body  | No | Text | 50 |   |
-| codiClassificacio | Body  | No | Text | 50 |   |
-| nomClassificacio | Body  | No | Text | 250 |   |
-| codiSIA | Body  | No | Text | 50 |   |
+| tipusDocumentalSICRESD | Body  | No | Text | --  | <ul><li>‘01’ = Formulari (el document adjunt és un formulari amb camps omplerts per el ciutadà remitent)</li><li>‘02’ = Document adjunt al formulari (a part del formulari, s'adjunta un altre document acompanyant el formulari)</li><li>‘03’= Fitxer tècnic intern (el document adjunt és un fitxer intern. En general, aquests fitxers poden resultar útils per la Entitat Reistral destí, però no són fitxers per presentar directament als usuaris de gestió)</li></ul> |
+| descripcio | Body  | No | Text | 500 | --  |
+| nivellAcces | Body  | No | Enum | --  | <ul><li>A-Secret</li><li>B-Reservat</li><li>C-Confidencial</li><li>E-No classificat</li></ul> |
+| clasificacioENS | Body  | No | Enum | -- | Baix, Mig, Alt |
+| sensibilitatDadesCaracterPersonal | Body  | No | Enum | -- | Basic, Mig, Alt |
+| documentEssencial | Body  | No | boolea | -- | True (si), False (NO) |
+| idioma | Body  | No | Text | 50 | -- |
+| codiClassificacio | Body  | No | Text | 50 | -- |
+| nomClassificacio | Body  | No | Text | 250 | -- |
+| codiSIA | Body  | No | Text | 50 | -- |
 
-**URL** : [https://v04y86nmj2.execute-api.eu-west-1.amazonaws.com/pro/document](https://v04y86nmj2.execute-api.eu-west-1.amazonaws.com/pro/document)
-
-**Method** : POST
-
-**Auth** :&quot;AWS Signature&quot;
-
-**AccessKey** : XXXXXXXXXXX
-
-**SecretKey** : YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
-**AWSRegion** : eu-west-1
-
-**Body** :
-
-{
-
-&quot;codiINE&quot;: &quot;0123456789&quot;,
-
-&quot;codiServei&quot;: &quot;eVALISA&quot;,
-
-&quot;nomFitxer&quot;: &quot;exemple.pdf&quot;,
-
-&quot;nomNatural&quot;: &quot;exemple&quot;,
-
-&quot;dataDocument&quot; : &quot;20/07/2021 11:29:03&quot;,
-
-&quot;contingut&quot;: &quot;1&quot;,
-
-&quot;interessat&quot;: [
-
-&quot;82828282S&quot;
-
-],
-
-&quot;usuari&quot;: &quot;Joan Ningú&quot;,
-
-&quot;numeroRegistre&quot;: &quot;1234&quot;,
-
-&quot;csv&quot;: null,
-
-&quot;identificadorExpedientDesal&quot;: &quot;fb3a2d2f-b778-45be-bfad-1a8e4c4bd867&quot;,
-
-&quot;uuidFitxer&quot;: &quot;673e7405-104c-46ed-8359-21d5b16c70b5&quot;,
-
-&quot;infoAddicional&quot;: [
-
-{
-
-&quot;key&quot;: &quot;82828282S&quot;,
-
-&quot;value&quot;: &quot;11118282S&quot;
-
-}
-
-],
-
-&quot;estatElaboracio&quot;: &quot;EE01&quot;,
-
-&quot;origen&quot;: false,
-
-&quot;tipusDocumental&quot;: &quot;TD100&quot;,
-
-&quot;tipusSignatura&quot;: &quot;TF01&quot;,
-
-&quot;cSVSignatura&quot;: &quot;csvSigEx&quot;,
-
-&quot;regulacioGeneracioCSVSignatura&quot;: &quot;regGen5345&quot;,
-
-&quot;referenciaSignatura&quot;: null,
-
-&quot;identificadorDocumentOrigen&quot;: null,
-
-&quot;tipusDocumentalSICRESD&quot;: &quot;01&quot;,
-
-&quot;descripcio&quot;: &quot;DDescripcioTeste&quot;,
-
-&quot;nivellAcces&quot;: &quot;A&quot;,
-
-&quot;clasificacioENS&quot;: &quot;Baix&quot;,
-
-&quot;sensibilitatDadesCaracterPersonal&quot;: &quot;Basic&quot;,
-
-&quot;documentEssencial&quot;: true,
-
-&quot;idioma&quot;: &quot;es-ES&quot;,
-
-&quot;codiClassificacio&quot;: &quot;999TesteCodi222&quot;,
-
-&quot;nomClassificacio&quot;: &quot;prioritari&quot;,
-
-&quot;codiSIA&quot;: &quot;5512&quot;
-
-}
-
- ![Shape42](RackMultipart20220211-4-2fc1qu_html_b7b07bf296438e2e.gif)
+![image](https://user-images.githubusercontent.com/32306731/156010161-c3d01cf2-3047-4787-bdb6-60b4c864d62e.png)
 
 ### Resposta document complert
 
-{
-
-&quot;uuidDocument&quot;: &quot;145a9ce5-69d9-442c-b50b-a1d566516414&quot;,
-
-&quot;uuidFitxer&quot;: &quot;673e7405-104c-46ed-8359-21d5b16c70b5&quot;,
-
-&quot;codiINE&quot;: &quot;0123456789&quot;,
-
-&quot;codiServei&quot;: &quot;eVALISA&quot;,
-
-&quot;nomNatural&quot;: &quot;exemple&quot;,
-
-&quot;sensibilitatDadesCaracterPersonal&quot;: &quot;Basic&quot;,
-
-&quot;documentEssencial&quot;: true,
-
-&quot;idioma&quot;: &quot;es-ES&quot;,
-
-&quot;codiClassificacio&quot;: &quot;999TesteCodi222&quot;,
-
-&quot;nomClassificacio&quot;: &quot;prioritari&quot;,
-
-&quot;codiSIA&quot;: &quot;5512&quot;,
-
-&quot;infoAddicional&quot;: [
-
-{
-
-&quot;key&quot;: &quot;82828282S&quot;,
-
-&quot;value&quot;: &quot;11118282S&quot;
-
-}
-
-],
-
-&quot;csv&quot;: &quot;0000000000091120215424C765E780&quot;,
-
-&quot;formatFitxer&quot;: &quot;application/pdf&quot;,
-
-&quot;hash&quot;: &quot;e3b199ba3d1c77660481c78f79f509ac272f35304f9b5a9c662caa7f336d6897&quot;,
-
-&quot;hashAlgoritme&quot;: &quot;SHA-256&quot;,
-
-&quot;mida&quot;: &quot;651720&quot;,
-
-&quot;nomFitxer&quot;: &quot;exemple.pdf&quot;,
-
-&quot;uRLDocumentExtern&quot;: null,
-
-&quot;dataAlta&quot;: &quot;09/11/2021 16:16:47&quot;,
-
-&quot;dataDocument&quot;: &quot;20/07/2021 11:29:03&quot;,
-
-&quot;contingut&quot;: &quot;1&quot;,
-
-&quot;identificadorExpedientDesal&quot;: &quot;fb3a2d2f-b778-45be-bfad-1a8e4c4bd867&quot;,
-
-&quot;identificadorExpedientExtern&quot;: null,
-
-&quot;versioNTI&quot;: &quot;http://administracionelectronica.gob.es/ENI/XSD/v1.0/documento-e&quot;,
-
-&quot;identificador&quot;: &quot;ES\_0000000000\_2021\_145a9ce5-69d9-442c-b50b-a1d566516414&quot;,
-
-&quot;organ&quot;: &quot;DIR3&quot;,
-
-&quot;estatElaboracio&quot;: &quot;EE01&quot;,
-
-&quot;origen&quot;: false,
-
-&quot;tipusDocumental&quot;: &quot;TD100&quot;,
-
-&quot;tipusSignatura&quot;: &quot;TF01&quot;,
-
-&quot;cSVSignatura&quot;: &quot;csvSigEx&quot;,
-
-&quot;regulacioGeneracioCSVSignatura&quot;: &quot;regGen5345&quot;,
-
-&quot;referenciaSignatura&quot;: null,
-
-&quot;identificadorDocumentOrigen&quot;: null,
-
-&quot;tipusDocumentalSICRESD&quot;: &quot;01&quot;,
-
-&quot;descripcio&quot;: &quot;DDescripcioTeste&quot;,
-
-&quot;nivellAcces&quot;: &quot;A&quot;,
-
-&quot;clasificacioENS&quot;: &quot;Baix&quot;,
-
-&quot;identificadorDocumentExtern&quot;: null,
-
-&quot;codiResposta&quot;: &quot;0&quot;,
-
-&quot;descripcioResposta&quot;: &quot;Operació realitzada correctament&quot;,
-
-&quot;urlPresignada&quot;: null,
-
-&quot;interessat&quot;: [
-
-&quot;82828282S&quot;
-
-],
-
-&quot;usuari&quot;: &quot;Joan Ningú&quot;,
-
-&quot;numeroRegistre&quot;: &quot;1234&quot;
-
-}
-
- ![Shape43](RackMultipart20220211-4-2fc1qu_html_274f5ae720911b00.gif)
+![image](https://user-images.githubusercontent.com/32306731/156010340-957feb12-9bb4-4bd0-a13f-d23301098d72.png)
 
 ### Codis de Resposta
 
@@ -1408,9 +946,9 @@ Si el servei integrador vol eliminar una metadada (p. ex. per eliminar el vincle
 
 El següent diagrama mostra les 2 possibilitats amb les que es pot trobar DESA&#39;L en el moment de modificar la metadada _ **UUIDFitxer** _ i com actua en cada cas:
 
-![](RackMultipart20220211-4-2fc1qu_html_ae92ccdd5d7814d2.png)
+![image](https://user-images.githubusercontent.com/32306731/156010604-cb2811d3-fbc6-4445-a658-5fb23ddbcaec.png)
 
-![](RackMultipart20220211-4-2fc1qu_html_d5b0e04a0526004f.png)
+![image](https://user-images.githubusercontent.com/32306731/156010703-bb056f29-d1c6-4d5f-90a8-d4aae8c380bd.png)
 
 En la resposta del mètode de modificació de document, DESA&#39;L retorna totes les metadades del document tal i com han quedat després de l&#39;execució d&#39;aquest mètode.
 
@@ -1418,248 +956,42 @@ En la resposta del mètode de modificació de document, DESA&#39;L retorna totes
 
 | **Element** | **Tipus paràmetre** | **Obligatori** | **Tipus camps** | **Mida màxima** | **Observacions** |
 | --- | --- | --- | --- | --- | --- |
-| uuidDocument | PathParam | Sí | Text | - |
- |
-| codiINE | QueryParam | Sí | Text | 10 |
- |
-| nomFitxer | Body | No | Text | 250 |
- |
-| nomNatural | Body | No | Text | 500 |
- |
-| dataDocument | Body | No | Data i hora |
- | Format: DD/MM/AAAA HH:mm:SS |
-| interessat | Body | No | Text |
- | Llista d&#39;interessats |
-| numeroRegistre | Body | No | Text |
- |
- |
-| identificadorExpedientDesal | Body | No | Text |
- |
- |
-| identificadorExpedientExtern | Body | No | Text |
- |
- |
-| UUIDFitxer | Body | No | Text |
- |
- |
-| URLDocumentExtern | Body | No | Text |
- |
- |
-| identificadorDocumentExtern | Body | No | Text |
- |
- |
-| estatElaboracio | Body | No | Text |
- | EE01 - OriginalEE02 - Copia electrónica auténtica con cambio de formatoEE03 - Copia electrónica auténtica de documento papelEE04 - Copia electrónica parcial auténticaEE99 - Otros. |
-| origen | Body | No | Boolean |
- | false= Ciudadàtrue=Administració |
-| tipusDocumental | Body | No | Text |
- | TD01 - ResoluciónTD02 - AcuerdoTD03 - ContratoTD04 - ConvenioTD05 - DeclaraciónTD06 - ComunicaciónTD07 - NotificaciónTD08 - PublicaciónTD09 - Acuse de reciboTD10 - ActaTD11 - CertificadoTD12 - DiligenciaTD13 - InformeTD14 - SolicitudTD15 - DenunciaTD16 - AlegaciónTD17 - RecursosTD18 - Comunicación ciudadanoTD19 - FacturaTD20 - Otros incautadosTD51 - LeyTD52 - MociónTD53 - InstrucciónTD54 - ConvocatoriaTD55 - Orden del díaTD56 - Informe de PonenciaTD57 - Dictamen de ComisiónTD58 - Iniciativa legislativaTD59 - PreguntaTD60 - InterpelaciónTD61 - RespuestaTD62 - Proposición no de leyTD63 - EnmiendaTD64 - Propuesta de resoluciónTD65 - ComparecenciaTD66 - Solicitud de informaciónTD67 - EscritoTD68 - Iniciativa legislativaTD69 - PeticiónTD99 - Otros. |
-| tipusSignatura | Body | No | Text |
- | TF01 - CSV TF02 - XAdES internally detached signatureTF03 - XAdES enveloped signatureTF04 - CAdES detached/explicit signature TF05 - CAdES attached/implicit signatureTF06 - PAdESTF07 - XAdES Manifest |
-| CSVSignatura | Body | No | Text |
- | S&#39;informa si a TipoFirma =TF01 |
-| regulacioGeneracioCSVSignatura | Body | No | Text |
- | S&#39;informa si a TipoFirma =TF01 |
-| referenciaSignatura | Body | No | Text |
- | Només cas TF03 i TF04. Referencia al fitxer que inclou la signatura (uuidFitxer) |
-| identificadorDocumentOrigen | Body | No | Text |
- | Identificador normalizat del document origen al que correspon la copia. Només si s&#39;ha indicat EE02,EE03 i EE04 a EstadoElaboracion |
-| tipusDocumentalSICRESD | Body | No | Text |
- | &#39;01&#39; = Formulario (el documento adjunto es un formulario con campos rellenos por el ciudadano remitente) &#39;02&#39; = Documento adjunto al formulario (además del formulario, otro documento es adjuntado, acompañando al formulario) &#39;03&#39; = Fichero técnico interno (el documento adjunto es un fichero interno. Por lo general, estos ficheros pueden resultar útiles para la Entidad Registral de destino, pero no son ficheros para presentar directamente a los usuarios de gestión). |
-| descripcio | Body | No | Text |
- |
- |
-| nivellAcces | Body | No | Text |
- | A-SecretB-ReservatC-ConfidencialE-No classificat |
-| clasificacioENS | Body | No | Text |
- | BaixMigAlt |
-| sensibilitatDadesCaracterPersonal | Body | No |
- |
- | BasicMigAlt |
-| documentEssencial | Body | No |
- |
- | True (si)False (NO) |
-| codiClassificacio | Body | No |
- |
- |
- |
-| nomClassificacio | Body | No |
- |
- |
- |
-| codiSIA | Body | No |
- |
- |
- |
-| infoAddicional | Body | No | Llista |
- | Llista d&#39;elements clau/valor |
+| uuidDocument | PathParam | Sí | Text | -- | -- |
+| codiINE | QueryParam | Sí | Text | 10 | -- |
+| nomFitxer | Body | No | Text | 250 | -- |
+| nomNatural | Body | No | Text | 500 | -- |
+| dataDocument | Body | No | Data i hora | -- | Format: DD/MM/AAAA HH:mm:SS |
+| interessat | Body | No | Text | -- | Llista d&#39;interessats |
+| numeroRegistre | Body | No | Text | -- | -- |
+| identificadorExpedientDesal | Body | No | Text | -- | -- |
+| identificadorExpedientExtern | Body | No | Text | -- | -- |
+| UUIDFitxer | Body | No | Text | -- | -- |
+| URLDocumentExtern | Body | No | Text | -- | -- |
+| identificadorDocumentExtern | Body | No | Text | -- | -- |
+| estatElaboracio | Body | No | Text | -- | <ul><li>EE01 - Original</li><li>EE02 - Copia electrónica auténtica con cambio de formato</li><li>EE03 - Copia electrónica auténtica de documento papel</li><li>EE04 - Copia electrónica parcial auténticaEE99 - Otros.</li></ul> |
+| origen | Body | No | Boolean | -- | false= Ciudadàtrue=Administració |
+| tipusDocumental | Body | No | Text | -- | <ul><li>TD01 - Resolución</li><li>TD02 - Acuerdo</li><li>TD03 - Contrato</li><li>TD04 - Convenio</li><li>TD05 - Declaración</li><li>TD06 - Comunicación</li><li>TD07 - Notificación</li><li>TD08 - Publicación</li><li>TD09 - Acuse de recibo</li><li>TD10 - Acta</li><li>TD11 - Certificado</li><li>TD12 - Diligencia</li><li>TD13 - Informe</li><li>TD14 - Solicitud</li><li>TD15 - Denuncia</li><li>TD16 - Alegación</li><li>TD17 - Recursos</li><li>TD18 - Comunicación ciudadano</li><li>TD19 - Factura</li><li>TD20 - Otros incautados</li><li>TD51 - Ley</li><li>TD52 - Moción</li><li>TD53 - Instrucción</li><li>TD54 - Convocatoria</li><li>TD55 - Orden del día</li><li>TD56 - Informe de Ponencia</li><li>TD57 - Dictamen de Comisión</li><li>TD58 - Iniciativa legislativa</li><li>TD59 - Pregunta</li><li>TD60 - Interpelación</li><li>TD61 - Respuesta</li><li>TD62 - Proposición no de ley</li><li>TD63 - Enmienda</li><li>TD64 - Propuesta de resolución</li><li>TD65 - Comparecencia</li><li>TD66 - Solicitud de informaciónT</li><li>D67 - Escrito</li><li>TD68 - Iniciativa legislativa</li><li>TD69 - Petición</li><li>TD99 - Otros.</li><ul> |
+| tipusSignatura | Body | No | Text | -- | <ul><li>TF01 - CSV</li><li>TF02 - XAdES internally detached signature</li><li>TF03 - XAdES enveloped signature</li><li>TF04 - CAdES detached/explicit signature</li><li>TF05 - CAdES attached/implicit signature</li><li>TF06 - PAdES</li><li>TF07 - XAdES Manifest</li></ul> |
+| CSVSignatura | Body | No | Text | -- | S&#39;informa si a TipoFirma =TF01 |
+| regulacioGeneracioCSVSignatura | Body | No | Text | -- | S&#39;informa si a TipoFirma =TF01 |
+| referenciaSignatura | Body | No | Text | -- | Només cas TF03 i TF04. Referencia al fitxer que inclou la signatura (uuidFitxer) |
+| identificadorDocumentOrigen | Body | No | Text | -- | Identificador normalizat del document origen al que correspon la copia. Només si s'ha indicat EE02,EE03 i EE04 a EstadoElaboracion |
+| tipusDocumentalSICRESD | Body | No | Text | -- | &#39;01&#39; = Formulario (el documento adjunto es un formulario con campos rellenos por el ciudadano remitente) &#39;02&#39; = Documento adjunto al formulario (además del formulario, otro documento es adjuntado, acompañando al formulario) &#39;03&#39; = Fichero técnico interno (el documento adjunto es un fichero interno. Por lo general, estos ficheros pueden resultar útiles para la Entidad Registral de destino, pero no son ficheros para presentar directamente a los usuarios de gestión). |
+| descripcio | Body | No | Text | -- | -- |
+| nivellAcces | Body | No | Text | -- | <ul>A-Secret</li><li>B-Reservat</li><li>C-Confidencial</li><li>E-No classificat</li></ul> |
+| clasificacioENS | Body | No | Text | -- | Baix, Mig, Alt |
+| sensibilitatDadesCaracterPersonal | Body | No | -- | -- | Basic, Mig, Alt |
+| documentEssencial | Body | No | -- | -- | True (si), False (NO) |
+| codiClassificacio | Body | No | -- | -- | -- |
+| nomClassificacio | Body | No | -- | -- | -- |
+| codiSIA | Body | No | -- | -- | -- |
+| infoAddicional | Body | No | Llista | -- | Llista d&#39;elements clau/valor |
 
-**URL** :[https://v04y86nmj2.execute-api.eu-west-1.amazonaws.com/pro/document](https://v04y86nmj2.execute-api.eu-west-1.amazonaws.com/pro/document)/{uuidDocument}?codiINE=0123456789
-
-**Method** : PUT
-
-**Auth** :&quot;AWS Signature&quot;
-
-**AccessKey** : XXXXXXXXXXX
-
-**SecretKey** : YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
-**AWSRegion** : eu-west-1
-
-**Body** :
-
-{
-
-&quot;clasificacioENS&quot;: &quot;Mig&quot;,
-
-&quot;nivellAcces&quot;: &quot;A&quot;,
-
-&quot;descripcio&quot;: &quot;descripció alternativa&quot;,
-
-&quot;infoAddicional&quot;: [
-
-{
-
-&quot;key&quot;: &quot;valor&quot;,
-
-&quot;value&quot;: &quot;11111&quot;
-
-},
-
-{
-
-&quot;key&quot;: &quot;valor2&quot;,
-
-&quot;value&quot;: &quot;2222&quot;
-
-}
-
-]
-
-}
-
- ![Shape44](RackMultipart20220211-4-2fc1qu_html_b043d48bf41e5f20.gif)
+![image](https://user-images.githubusercontent.com/32306731/156012337-af4b1748-268c-44e7-bfca-5663ba265001.png)
 
 ### Resposta
 
-{
-
-&quot;uuidDocument&quot;: &quot;237131d6-9061-47f3-a745-5e93bb385588&quot;,
-
-&quot;uuidFitxer&quot;: &quot;2f55600c-d725-4690-b6dd-0dfb44841bfc&quot;,
-
-&quot;codiINE&quot;: &quot;0123456789&quot;,
-
-&quot;codiServei&quot;: &quot;eVALISA&quot;,
-
-&quot;nomNatural&quot;: &quot;DESA&#39;L-Functional requirements English&quot;,
-
-&quot;sensibilitatDadesCaracterPersonal&quot;: &quot;Basic&quot;,
-
-&quot;documentEssencial&quot;: true,
-
-&quot;idioma&quot;: &quot;es-ES&quot;,
-
-&quot;codiClassificacio&quot;: &quot;25&quot;,
-
-&quot;nomClassificacio&quot;: &quot;prioritari&quot;,
-
-&quot;codiSIA&quot;: &quot;5512&quot;,
-
-&quot;infoAddicional&quot;: [
-
-{
-
-&quot;key&quot;: &quot;valor&quot;,
-
-&quot;value&quot;: &quot;11111&quot;
-
-},
-
-{
-
-&quot;key&quot;: &quot;valor2&quot;,
-
-&quot;value&quot;: &quot;2222&quot;
-
-}
-
-],
-
-&quot;csv&quot;: &quot;00000000000911202146064A1D3210&quot;,
-
-&quot;formatFitxer&quot;: &quot;pdf&quot;,
-
-&quot;hash&quot;: &quot;e3b199ba3d1c77660481c78f79f509ac272f35304f9b5a9c662caa7f336d6897&quot;,
-
-&quot;hashAlgoritme&quot;: &quot;SHA-256&quot;,
-
-&quot;mida&quot;: &quot;651720&quot;,
-
-&quot;nomFitxer&quot;: &quot;DESA&#39;L-Functional requirements English.pdf&quot;,
-
-&quot;uRLDocumentExtern&quot;: null,
-
-&quot;dataAlta&quot;: &quot;09/11/2021 11:13:49&quot;,
-
-&quot;dataDocument&quot;: &quot;20/04/2121 22:45:15&quot;,
-
-&quot;contingut&quot;: &quot;1&quot;,
-
-&quot;identificadorExpedientDesal&quot;: &quot;996aad10-f7d8-46dd-b746-66dd1824268b&quot;,
-
-&quot;identificadorExpedientExtern&quot;: null,
-
-&quot;versioNTI&quot;: &quot;http://administracionelectronica.gob.es/ENI/XSD/v1.0/documento-e&quot;,
-
-&quot;identificador&quot;: &quot;ES\_0000000000\_2021\_237131d6-9061-47f3-a745-5e93bb385588&quot;,
-
-&quot;organ&quot;: &quot;DIR3\_SGP\_&quot;,
-
-&quot;estatElaboracio&quot;: &quot;EE01&quot;,
-
-&quot;origen&quot;: true,
-
-&quot;tipusDocumental&quot;: &quot;TD01&quot;,
-
-&quot;tipusSignatura&quot;: &quot;TF01&quot;,
-
-&quot;cSVSignatura&quot;: &quot;csvSigEx&quot;,
-
-&quot;regulacioGeneracioCSVSignatura&quot;: &quot;regGen5345&quot;,
-
-&quot;referenciaSignatura&quot;: null,
-
-&quot;identificadorDocumentOrigen&quot;: null,
-
-&quot;tipusDocumentalSICRESD&quot;: &quot;01&quot;,
-
-&quot;descripcio&quot;: &quot;descripció alternativa&quot;,
-
-&quot;nivellAcces&quot;: &quot;A&quot;,
-
-&quot;clasificacioENS&quot;: &quot;Mig&quot;,
-
-&quot;identificadorDocumentExtern&quot;: null,
-
-&quot;codiResposta&quot;: &quot;0&quot;,
-
-&quot;descripcioResposta&quot;: &quot;Operació realitzada correctament&quot;,
-
-&quot;urlPresignada&quot;: null,
-
-&quot;interessat&quot;: [
-
-&quot;82828282S&quot;
-
-],
-
-&quot;usuari&quot;: null,
-
-&quot;numeroRegistre&quot;: &quot;1234&quot;
-
-}
-
- ![Shape45](RackMultipart20220211-4-2fc1qu_html_95d645666fcbd63f.gif)
+![image](https://user-images.githubusercontent.com/32306731/156012614-25feb10c-73bc-47e6-acf7-26d4e703edd8.png)
 
 ### Codis de resposta
 
@@ -1682,51 +1014,23 @@ Aquest mètode permet eliminar un document, i en cascada, el propi fitxer associ
 
 **Important:** Si el servei integrador elimina un document i aquest està associat a un fitxer a través de la metadada UUIDFitxer, DESA&#39;L comprovarà si hi ha algun altre document que referenciï a aquest fitxer. En cas contrari, eliminarà el fitxer de forma irreversible.
 
-El següent diagrama mostra les 2 possibilitats amb les que es pot trobar DESA&#39;L en el moment d&#39;eliminar el document si aquest està associat amb un fitxer a través de la metadada _ **UUIDFitxer** _:
+El següent diagrama mostra les 2 possibilitats amb les que es pot trobar DESA&#39;L en el moment d&#39;eliminar el document si aquest està associat amb un fitxer a través de la metadada _**UUIDFitxer**_:
 
-![](RackMultipart20220211-4-2fc1qu_html_c211b9be3f7f47b.png)
-
-![](RackMultipart20220211-4-2fc1qu_html_3795e2fb3f064218.png)
+![image](https://user-images.githubusercontent.com/32306731/156012806-1f53e86f-c025-4fed-8a89-c89197aba8f3.png)
 
 ### Petició
 
 | **Element** | **Tipus paràmetre** | **Obligatori** | **Tipus camps** | **Mida màxima** | **Observacions** |
 | --- | --- | --- | --- | --- | --- |
-| uuidDocument | PathParam | Sí | Text | - |
- |
-| codiINE | QueryParam | Sí | Text | 10 |
- |
-| codiServei | QueryParam | Sí | Text | 10 |
- |
+| uuidDocument | PathParam | Sí | Text | -- | -- |
+| codiINE | QueryParam | Sí | Text | 10 | -- |
+| codiServei | QueryParam | Sí | Text | 10 | -- |
 
-**URL** :[https://v04y86nmj2.execute-api.eu-west-1.amazonaws.com/pro/document](https://v04y86nmj2.execute-api.eu-west-1.amazonaws.com/pro/document)/{uuidDocument}?codiINE=0123456789&amp;codiServei=eVALISA
-
-**Method** : DELETE
-
-**Auth** :&quot;AWS Signature&quot;
-
-**AccessKey** : XXXXXXXXXXX
-
-**SecretKey** : YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
-**AWSRegion** : eu-west-1
-
-**Body** : (buit)
-
- ![Shape46](RackMultipart20220211-4-2fc1qu_html_faac99e2c4046f83.gif)
+![image](https://user-images.githubusercontent.com/32306731/156012971-745a44a1-613a-4071-a1df-fe43310691af.png)
 
 ### Resposta
 
-{
-
-&quot;uuidDocument&quot;: &quot;014c352f-9ddf-4dc4-a885-591d5b3948b2&quot;,
-
-&quot;codiResposta&quot;: &quot;0&quot;,
-
-&quot;descripcioResposta&quot;: &quot;Operació realitzada correctament&quot;
-
-}
-
- ![Shape47](RackMultipart20220211-4-2fc1qu_html_3783de7c95a508d7.gif)
+![image](https://user-images.githubusercontent.com/32306731/156013045-461b0bd7-a072-4fa4-a726-1d8c57464de7.png)
 
 ### Codis de resposta
 
@@ -1751,144 +1055,16 @@ Aquest mètode permet obtenir de forma síncrona les metadades d&#39;un document
 
 | **Element** | **Tipus paràmetre** | **Obligatori** | **Tipus camps** | **Mida màxima** | **Observacions** |
 | --- | --- | --- | --- | --- | --- |
-| uuidDocument | PathParam | Sí | Text | - |
- |
-| codiServei | QueryParam | Sí | Text | 10 |
- |
-| codiINE | QueryParam | Sí | Text | 10 |
- |
+| uuidDocument | PathParam | Sí | Text | -- | -- |
+| codiServei | QueryParam | Sí | Text | 10 | --|
+| codiINE | QueryParam | Sí | Text | 10 | -- |
 | Modalitat | QueryParam | Sí | Número | 1 | Posar &quot;1&quot; per a modalitat 1 |
 
-**URL** : [https://v04y86nmj2.execute-api.eu-west-1.amazonaws.com/pro/document/{uuidDocument}/download?codiServei=eVALISA&amp;codiINE=0123456789&amp;modality=1](https://v04y86nmj2.execute-api.eu-west-1.amazonaws.com/pro/document/%7BuuidDocument%7D/download?codiServei=eVALISA&amp;codiINE=123456789&amp;modality=1)
-
-**Method** : GET
-
-**Auth** :&quot;AWS Signature&quot;
-
-**AccessKey** : XXXXXXXXXXX
-
-**SecretKey** : YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
-**AWSRegion** : eu-west-1
-
-**Body** : (buit)
-
-**Body** : (buit)
-
- ![Shape48](RackMultipart20220211-4-2fc1qu_html_d1e93335dc0314cd.gif)
+![image](https://user-images.githubusercontent.com/32306731/156013205-594427d4-079e-4dc1-98e3-aa28a70a345f.png)
 
 ### Resposta
 
-{
-
-&quot;uuidDocument&quot;: &quot;c60b572d-7f6a-414e-8c0d-debc581b0809&quot;,
-
-&quot;uuidFitxer&quot;: &quot;98ae4860-766b-4546-aeee-e32f581073af&quot;,
-
-&quot;codiINE&quot;: &quot;0000000000&quot;,
-
-&quot;codiServei&quot;: &quot;eSUPERTEAM&quot;,
-
-&quot;nomNatural&quot;: &quot;exemple&quot;,
-
-&quot;sensibilitatDadesCaracterPersonal&quot;: null,
-
-&quot;documentEssencial&quot;: null,
-
-&quot;idioma&quot;: null,
-
-&quot;codiClassificacio&quot;: null,
-
-&quot;nomClassificacio&quot;: null,
-
-&quot;codiSIA&quot;: null,
-
-&quot;infoAddicional&quot;: [
-
-{
-
-&quot;key&quot;: &quot;82828282S&quot;,
-
-&quot;value&quot;: &quot;11118282S&quot;
-
-}
-
-],
-
-&quot;csv&quot;: &quot;0000000000030820214CAB16719C9F&quot;,
-
-&quot;formatFitxer&quot;: &quot;application/pdf&quot;,
-
-&quot;hash&quot;: &quot;28f1d6e79edec9224a37bcfeb5c70b3e64ce05fad25ac311da305eb42d4594c8&quot;,
-
-&quot;hashAlgoritme&quot;: &quot;SHA-256&quot;,
-
-&quot;mida&quot;: &quot;615339&quot;,
-
-&quot;nomFitxer&quot;: &quot;exemple.pdf&quot;,
-
-&quot;uRLDocumentExtern&quot;: null,
-
-&quot;dataAlta&quot;: &quot;03/08/2021 10:29:56&quot;,
-
-&quot;dataDocument&quot;: &quot;20/07/2321 11:29:03&quot;,
-
-&quot;contingut&quot;: &quot;1&quot;,
-
-&quot;identificadorExpedientDesal&quot;: &quot;fb3a2d2f-b778-45be-bfad-1a8e4c4bd867&quot;,
-
-&quot;identificadorExpedientExtern&quot;: null,
-
-&quot;versioNTI&quot;: &quot;http://administracionelectronica.gob.es/ENI/XSD/v1.0/documento-e&quot;,
-
-&quot;identificador&quot;: &quot;ES\_0000000000\_2021\_c60b572d-7f6a-414e-8c0d-debc581b0809&quot;,
-
-&quot;organ&quot;: &quot;DIR3&quot;,
-
-&quot;estatElaboracio&quot;: null,
-
-&quot;origen&quot;: null,
-
-&quot;tipusDocumental&quot;: null,
-
-&quot;tipusSignatura&quot;: null,
-
-&quot;cSVSignatura&quot;: null,
-
-&quot;regulacioGeneracioCSVSignatura&quot;: null,
-
-&quot;referenciaSignatura&quot;: null,
-
-&quot;identificadorDocumentOrigen&quot;: null,
-
-&quot;tipusDocumentalSICRESD&quot;: null,
-
-&quot;descripcio&quot;: null,
-
-&quot;nivellAcces&quot;: null,
-
-&quot;clasificacioENS&quot;: null,
-
-&quot;identificadorDocumentExtern&quot;: null,
-
-&quot;codiResposta&quot;: &quot;0&quot;,
-
-&quot;descripcioResposta&quot;: &quot;Operació realitzada correctament&quot;,
-
-&quot;urlPresignada&quot;: null,
-
-&quot;interessat&quot;: [
-
-&quot;82828282S&quot;
-
-],
-
-&quot;usuari&quot;: &quot;Joan Ningú&quot;,
-
-&quot;numeroRegistre&quot;: &quot;1234&quot;
-
-}
-
- ![Shape49](RackMultipart20220211-4-2fc1qu_html_b08e206e52940045.gif)
+![image](https://user-images.githubusercontent.com/32306731/156013374-529e26ba-3813-4889-9a41-b47e8ef1be10.png)
 
 ### Petició Modalitat 2: Descarrega Document i contingut (fitxer)
 
@@ -1896,145 +1072,17 @@ La modalitat 2 només es pot executar si el document té un contingut igual 1 (f
 
 | **Element** | **Tipus paràmetre** | **Obligatori** | **Tipus camps** | **Mida màxima** | **Observacions** |
 | --- | --- | --- | --- | --- | --- |
-| uuidDocument | PathParam | Sí | Text | - |
- |
-| codiServei | QueryParam | Sí | Text | 10 |
- |
-| codiINE | QueryParam | Sí | Text | 10 |
- |
+| uuidDocument | PathParam | Sí | Text | -- | -- |
+| codiServei | QueryParam | Sí | Text | 10 | -- |
+| codiINE | QueryParam | Sí | Text | 10 | -- |
 | Modalitat | QueryParam | Sí | Número | 1 | Posar &quot;2&quot; per a modalitat 2 |
 
-**URL** : [https://v04y86nmj2.execute-api.eu-west-1.amazonaws.com/pro/document/{uuidDocument}/download?codiServei=eVALISA&amp;codiINE=0123456789&amp;modality=2](https://v04y86nmj2.execute-api.eu-west-1.amazonaws.com/pro/document/%7BuuidDocument%7D/download?codiServei=eVALISA&amp;codiINE=123456789&amp;modality=2)
-
-**Method** : GET
-
-**Auth** :&quot;AWS Signature&quot;
-
-**AccessKey** : XXXXXXXXXXX
-
-**SecretKey** : YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
-**AWSRegion** : eu-west-1
-
-**Body** : (buit)
-
-**Body** : (buit)
-
- ![Shape50](RackMultipart20220211-4-2fc1qu_html_d1e93335dc0314cd.gif)
+![image](https://user-images.githubusercontent.com/32306731/156013703-a65f5209-8c05-4ea3-9043-01bd7817f09f.png)
 
 ### Resposta
 
-{
-
-&quot;uuidDocument&quot;: &quot;93f96e11-91f4-4d7b-9d8f-eb76ef7980fd&quot;,
-
-&quot;uuidFitxer&quot;: &quot;673e7405-104c-46ed-8359-21d5b16c70b5&quot;,
-
-&quot;codiINE&quot;: &quot;0123456789&quot;,
-
-&quot;codiServei&quot;: &quot;enojordi&quot;,
-
-&quot;nomNatural&quot;: &quot;exemple&quot;,
-
-&quot;sensibilitatDadesCaracterPersonal&quot;: &quot;Basic&quot;,
-
-&quot;documentEssencial&quot;: true,
-
-&quot;idioma&quot;: &quot;es-ES&quot;,
-
-&quot;codiClassificacio&quot;: &quot;25&quot;,
-
-&quot;nomClassificacio&quot;: &quot;prioritari&quot;,
-
-&quot;codiSIA&quot;: &quot;5512&quot;,
-
-&quot;infoAddicional&quot;: [
-
-{
-
-&quot;key&quot;: &quot;82828282S&quot;,
-
-&quot;value&quot;: &quot;11118282S&quot;
-
-}
-
-],
-
-&quot;csv&quot;: &quot;00000000001607202159490E031CC5&quot;,
-
-&quot;formatFitxer&quot;: &quot;application/pdf&quot;,
-
-&quot;hash&quot;: &quot;e3b199ba3d1c77660481c78f79f509ac272f35304f9b5a9c662caa7f336d6897&quot;,
-
-&quot;hashAlgoritme&quot;: &quot;SHA-256&quot;,
-
-&quot;mida&quot;: &quot;651720&quot;,
-
-&quot;nomFitxer&quot;: &quot;exemple.pdf&quot;,
-
-&quot;uRLDocumentExtern&quot;: null,
-
-&quot;dataAlta&quot;: &quot;2021-07-16 12:38:47&quot;,
-
-&quot;dataDocument&quot;: &quot;2021-04-21 22:45:15&quot;,
-
-&quot;contingut&quot;: &quot;1&quot;,
-
-&quot;identificadorExpedientDesal&quot;: &quot;fb3a2d2f-b778-45be-bfad-1a8e4c4bd867&quot;,
-
-&quot;identificadorExpedientExtern&quot;: null,
-
-&quot;versioNTI&quot;: &quot;http://administracionelectronica.gob. es/ENI/XSD/v1.0/documento-e&quot;,
-
-&quot;identificador&quot;: &quot;ES\_0000000000\_2021\_93f96e11-91f4-4d7b-9d8f-eb76ef7980fd&quot;,
-
-&quot;organ&quot;: &quot;DIR3&quot;,
-
-&quot;estatElaboracio&quot;: &quot;EE01&quot;,
-
-&quot;origen&quot;: false,
-
-&quot;tipusDocumental&quot;: &quot;TD01&quot;,
-
-&quot;tipusSignatura&quot;: &quot;TF01&quot;,
-
-&quot;cSVSignatura&quot;: &quot;csvSigEx&quot;,
-
-&quot;regulacioGeneracioCSVSignatura&quot;: &quot;regGen5345&quot;,
-
-&quot;referenciaSignatura&quot;: null,
-
-&quot;identificadorDocumentOrigen&quot;: null,
-
-&quot;tipusDocumentalSICRESD&quot;: null,
-
-&quot;descripcio&quot;: &quot;descripció d&#39;exemple&quot;,
-
-&quot;nivellAcces&quot;: &quot;A&quot;,
-
-&quot;clasificacioENS&quot;: &quot;Baix&quot;,
-
-&quot;identificadorDocumentExtern&quot;: null,
-
-&quot;codiResposta&quot;: &quot;0&quot;,
-
-&quot;descripcioResposta&quot;: &quot;Operació realitzada correctament&quot;,
-
-&quot;urlPresignada&quot;: &quot;https://desal-download-bucket.s3.eu-west-1.amazonaws.com/exemple?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEEIaCWV1LXdlc3QtMSJGMEQCIFKd%2F5gswBy7L4R6MFKZUfVohaF6hxcOrMyZwONZlZL2AiAG5%2BS5MuWZDqDjYjJ4eqOMFBEjocbcRgj2EGqarrfEwirNAgjr%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAEaDDI1MDc1MzgwNjI2NiIM6dRNvJG80v7TKaIPKqECPdcezwLnU8N3Mkz5vLOOP9om3aNskuP%2BuJD%2B59CdLko5%2BOn5%2Bxkjm5ig%2Fd7%2BRsMvRXocpyLR924zzwsv9ytwiGdb4h0IF5h7MxHLfbZTaGQJnx%2FpKfGDR6L5uZA6M5zDi4MW9vwz%2BebNbwGlZxYGjdCApsMopDKngNcGbpUN6EdvejzRlo3q0iw80J0J1gFbQMnECkkEtK0qCCmXz9gu4PViy68TTjwPYKdll4Mso%2FfmpPOjHV0snF5ejIjgA0BxrBYMtljeS2Jx7jmTpUqPMlsnGgpTcjLE3D9kcHNd3GuHb%2FnldeViOXIY7BERI6usFx03hr6LK5%2Fr5OaNBHZ9fXKBnuBDpcSQSxkPGWUE7epBMTPFGvcFIhdxT0%2Bpx0vmwTDNpK6MBjqbAaGFdXfVv0gCiHkJ41lK6%2F%2Bu0ookd9hYU5u8BsPA8MulC9k77hG%2BNDulogiUptpYLgFF9z6ZjbrsE6hHTjW%2BzvMkdVywCiBMcqpRCB6cGoOuM2Gzt%2FCfJq93VH4wzwsnGi3zrODJw9fW4Yyq%2BsPekbPIDbzSL943kLTJoc2nN2l0MLT390gdDTspS0g0G7QMylpKue80LC%2B6NrTi&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Date=20211110T093518Z&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Expires=3599&amp;X-Amz-Credential=ASIATUYQXN65HMGGXLUH%2F20211110%2Feu-west-1%2Fs3%2Faws4\_request&amp;X-Amz-Signature=14df32903e90241f19dca7b0585da3c7e6bb5227dbed569782522dfa8ce75110&quot;,
-
-&quot;interessat&quot;: [
-
-&quot;82828282S&quot;
-
-],
-
-&quot;usuari&quot;: &quot;Joan Ningú&quot;,
-
-&quot;numeroRegistre&quot;: &quot;1234&quot;
-
-}
-
- ![Shape51](RackMultipart20220211-4-2fc1qu_html_bbebc68b99b4198b.gif)
-
+![image](https://user-images.githubusercontent.com/32306731/156013838-eef71872-9204-4a49-ba09-5b92dd4b5a54.png)
+	
 ### Codis de resposta
 
 A continuació es detallen els possibles codis de resposta per a la descàrrega del document (per al codi d&#39;error 100 XXXXXX ofereix més detalls de l&#39;error no controlat):
@@ -2061,43 +1109,15 @@ DESA&#39;L genera un XML d&#39;acord a aquestes especificacions. De forma anàlo
 
 | **Element** | **Tipus paràmetre** | **Obligatori** | **Tipus camps** | **Mida màxima** | **Observacions** |
 | --- | --- | --- | --- | --- | --- |
-| uuidDocument | PathParam | Sí | Text | - |
- |
-| codiINE | QueryParam | Sí | Text | 10 |
- |
-| codiServei | QueryParam | Sí | Text | 10 |
- |
+| uuidDocument | PathParam | Sí | Text | -- | -- |
+| codiINE | QueryParam | Sí | Text | 10 | -- |
+| codiServei | QueryParam | Sí | Text | 10 | -- |
 
-**URL** : [https://v04y86nmj2.execute-api.eu-west-1.amazonaws.com/pro/documentENI/{uuidDocument}/download?codiServei=eVALISA&amp;codiINE=0123456789](https://v04y86nmj2.execute-api.eu-west-1.amazonaws.com/pro/documentENI/%7BuuidDocument%7D/download?codiServei=eVALISA&amp;codiINE=0123456789)
-
-**Method** : GET
-
-**Auth** :&quot;AWS Signature&quot;
-
-**AccessKey** : XXXXXXXXXXX
-
-**SecretKey** : YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
-**AWSRegion** : eu-west-1
-
-**Body** : (buit)
-
-**Body** : (buit)
-
- ![Shape52](RackMultipart20220211-4-2fc1qu_html_d1e93335dc0314cd.gif)
+![image](https://user-images.githubusercontent.com/32306731/156014155-0cac96b2-0e21-4517-9092-641defb8ae9c.png)
 
 ### Resposta
 
-{
-
-&quot;uuidDocument&quot;: &quot;014c352f-9ddf-4dc4-a885-591d5b3948b2&quot;,
-
-&quot;codiResposta&quot;: &quot;0&quot;,
-
-&quot;descripcioResposta&quot;: &quot;Operació realitzada correctament&quot;
-
-}
-
- ![Shape53](RackMultipart20220211-4-2fc1qu_html_3783de7c95a508d7.gif)
+![image](https://user-images.githubusercontent.com/32306731/156014253-69baa29e-1f76-47b6-8adf-8b259aa89b4b.png)
 
 ### Codis de resposta
 
@@ -2111,4 +1131,3 @@ A continuació es detallen els possibles codis de resposta per a la descàrrega 
 | 12 | Error: l&#39;expedient indicat no existeix en el servei i organisme indicats. Operació NO realitzada. |
 | 100 | Error no controlat: XXXXXX. Si us plau, reintenti l&#39;operació en uns minuts. Operació NO realitzada. |
 
-[1](#sdfootnote1anc)DESA&#39;L també permet gestionar documents on el binari no es custodia al propi repositori del DESA&#39;L, sinó que està hostatjat en un repositori extern. En aquests casos al document de DESA&#39;L només es guarda la referència al repositori extern ja sigui a través d&#39;una URL externa o d&#39;un CSV del repositori extern.
