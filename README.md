@@ -444,20 +444,7 @@ A continuació es detallen els camps que han d&#39;informar el servei integrador
 
 A continuació detallem un exemple de petició per a descàrrega de fitxer:
 
-**URL** :[https://v04y86nmj2.execute-api.eu-west-1.amazonaws.com/pro/fitxer?uuidFitxer=915844f3-ea3c-4c22-a1ec-1ab222d34301&amp;codiINE=0123456789&amp;codiServei=eVALISA](https://v04y86nmj2.execute-api.eu-west-1.amazonaws.com/pro/fitxer?uuidFitxer=915844f3-ea3c-4c22-a1ec-1ab222d34301&amp;codiINE=123456789&amp;codiServei=eVALISA)
-
-**Method** : GET
-
-**Auth** :&quot;AWS Signature&quot;
-
-**AccessKey** : XXXXXXXXXXX
-
-**SecretKey** : YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
-**AWSRegion** : eu-west-1
-
-**Body: (**buit)
-
- ![Shape19](RackMultipart20220211-4-2fc1qu_html_1143a38de23d2002.gif)
+![image](https://user-images.githubusercontent.com/32306731/156004637-be4eafaf-7a27-4dcc-8c3b-a43b3097fee1.png)
 
 ### Resposta
 
