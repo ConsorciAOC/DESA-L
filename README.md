@@ -161,22 +161,20 @@ A continuació es presenten els diferents models de metadades que utilitza DESA�
 ## 2.1 Metadades de fitxer <a name="2.1"></a>
 
 | **Nom element** | **Consignació** | **Longitud camp** | **Tipus de camp** | **Validació i procedència dades** | **Equivalencia ENI** | **Equivalencia MUX** | **Qui l&#39;informa** | **Automàtic** | **Únic** | **Repetitiu** | **Indexable** | **Cercable** | **Modificable edició** | **Observacions** |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | **CodiINE** | Obligatori | 10 | Text | -- | -- | -- | Aplicació que s'integra | No | No | No | N/A | N/A | N/A | Codi INE de l'ens propietari del fitxer |
 | **CodiServei** | Obligatori | 10 | Text | -- | -- | -- | Aplicació que s'integra | No | No | No | N/A | N/A | N/A | Codi del servei propietari del fitxer |
 | **NomFitxer** | Obligatori | 250 | Text | -- | NombreFichero | nomFitxer | Aplicació que s'integra | No | No | No | N/A | N/A | N/A | Nom del fitxer incloent l’extensió |
-| **Mida** |	Obligatori | 	500 | 	Text | 	Validar que no sigui superior a 4,2GB	 | TamanoLogico | Mida | Aplicació que s'integra | No | No | No | N/A | N/A | N/A | És necessari informar la mida del fitxer per generar correctament la URL pre-signada per a fer la càrrega del binari a S3 |
+| **Mida** | Obligatori | 500 | Text | 	Validar que no sigui superior a 4,2GB | TamanoLogico | Mida | Aplicació que s'integra | No | No | No | N/A | N/A | N/A | És necessari informar la mida del fitxer per generar correctament la URL pre-signada per a fer la càrrega del binari a S3 |
 | **FormatFitxer** | Opcional | 200 | Text | Disposem de la llista de tots els tipus acceptats | NombreFormato | tipusMIME | Aplicació que s'integra | Si | No | No | N/A | N/A | No | -- |
 | -- | --| --| --| -- | -- | -- | **METADADES QUE CREA DESA'L AUTOMÀTICAMENT** | -- | --| -- | -- | -- | -- | -- |
-| **UUIDFitxer** | Obligatori | 20 | Text | -- | SecuenciaIdentificador | --  | DESA'L | Si | Si | No | N/A | N/A | No	Identificador únic del fitxer  |
+| **UUIDFitxer** | Obligatori | 20 | Text | -- | SecuenciaIdentificador | --  | DESA'L | Si | Si | No | N/A | N/A | No | Identificador únic del fitxer  |
 | **FormatFitxer** | Obligatori | 200 | Text | --  | NombreFormato | tipusMIME | DESA'L | Si | No | No | N/A | N/A | No | Content Type del fitxer. DESA’L el calcula automàticament si no s'informa a la petició d’alta del fitxer |
 | **Hash** | Obligatori | 100 | Text | -- | Valor | hash | DESA'L | Si | Si | No | N/A | N/A | No | Hash del fitxer. |
-| **HashAlgoritme** | Obligatori | 100 | Text | --  | Algoritmo | DESA'L | Si | No | No | N/A | N/A | No | Algoritme de hash utilitzat per calcular _hash_.  |
+| **HashAlgoritme** | Obligatori | 100 | Text | --  | Algoritmo | -- |DESA'L | Si | No | No | N/A | N/A | No | Algoritme de hash utilitzat per calcular _hash_.  |
 | **Mida**	 | Obligatori i condicional | 100 | Número | -- | TamanoLogico | Mida | DESA'L | Si | No | No | N/A | N/A | No | Mida real del fitxer. |
 | **DataAlta**	 | Obligatori | -- | Data i hora | -- | -- | dataCapturaDocument | DESA'L | Si | No | No | N/A | N/A | No | Data de creació del fitxer.  |
 | **Estat** | Obligatori | -- | Text | -- | -- | -- | DESA'L | Si | No | No | N/A | N/A | N/A | Aquest camp serveix per controlar l'estat del fitxer: <ul><li>- pendent (el fitxer s'està analitzant: virus, càlcul hash, etc)</li><li>- acceptat (ha passat totes les validacions i ja es pot utilitzar)</li><li>- rebutjat (no ha passat els controls)</li></ul> |
-
-
 
 
 ## 2.1	Metadades d'expedient <a name="2.1"></a>
