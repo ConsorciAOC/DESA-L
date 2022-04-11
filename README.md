@@ -161,7 +161,7 @@ A continuació es presenten els diferents models de metadades que utilitza DESA�
 ## 2.1 Metadades de fitxer <a name="2.1"></a>
 
 | **Nom element** | **Consignació** | **Longitud camp** | **Tipus de camp** | **Validació i procedència dades** | **Equivalencia ENI** | **Equivalencia MUX** | **Qui l&#39;informa** | **Automàtic** | **Únic** | **Repetitiu** | **Indexable** | **Cercable** | **Modificable edició** | **Observacions** |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | **CodiINE** | Obligatori | 10 | Text | -- | -- | -- | Aplicació que s'integra | No | No | No | N/A | N/A | N/A | Codi INE de l'ens propietari del fitxer |
 | **CodiServei** | Obligatori | 10 | Text | -- | -- | -- | Aplicació que s'integra | No | No | No | N/A | N/A | N/A | Codi del servei propietari del fitxer |
 | **NomFitxer** | Obligatori | 250 | Text | -- | NombreFichero | nomFitxer | Aplicació que s'integra | No | No | No | N/A | N/A | N/A | Nom del fitxer incloent l’extensió |
