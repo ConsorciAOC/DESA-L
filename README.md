@@ -385,7 +385,7 @@ DESA’L té un límit de mida de fitxer màxim de 4.2GB. Si s’intenta carrega
 Cada fitxer que és carregat a DESA’L ha de ser analitzat pel sistema d’antivirus (basat en la solució ClamAV) de manera asíncrona. Existeixen diversos estats pels que ha de passar un fitxer abans de poder estar totalment disponible per al servei integrador:
 
 
-- _**Pendent**_ – Fitxer pendent d&#39;analitzar pel sistema d&#39;antivirus. Fitxer encara no disponible per a poder ser utilitzat per part de l&#39;integrador. De mitja, l&#39;anàlisi de virus d&#39;un document PDF/Word inferior als 10MB és d&#39;uns 3 segons.
+- _**Pendent**_ – Fitxer pendent d’analitzar pel sistema d’antivirus. Es pot crear un document que referenciï aquest fitxer, però el fitxer no es podrà descarregar per cap mètode de l’API (Descàrrega Fitxer, Descàrrega Document modalitat 2, Descàrrega Expedient modalitat 2, cerca Document, cerca Expedient, etc.) fins que hagi finalitzat l’anàlisi. De mitjana, l’anàlisi de virus d’un document PDF/Word inferior als 10MB és d’uns 3 segons.
 - _**Acceptat**_ – Fitxer analitzat, fitxer lliure de virus i preparat per a ser utilitzat per l&#39;integrador.
 - _**Rebutjat**_ – Fitxer analitzat, **fitxer amb virus que ha estat eliminat pel DESA&#39;L** i que per tant no pot ser utilitzat per l&#39;integrador.
 
