@@ -286,7 +286,6 @@ Es tracta del model de metadades que majoritàriament han d’utilitzar els serv
 | **regulacioGeneracioCSVSignatura** |	Obligatori i condicional|	500	|Text	|RegulacionGeneracionCSV	|regulacioGeneracioCSV|	Aplicació que s'integra|	No	|No|	No|	No	|No|	Si|	Només s’ha d'informar si _TipoFirma_ és _TF01|
 | **referenciaSignatura**	|Obligatori i condicional|	100	|Text	|ReferenciaFirma	|identificadorDocumentSignat|	Aplicació que s'integra|	No|	No|	No|	No	|No|	Si|	Referència al fitxer que inclou la signatura (UUID fitxer). Només s’ha d’informar si TipoFirma és TF03 o TF04. |
 |**identificadorDocumentOrigen**	|Opcional i condicional|	250|	Text|	IdentificadorDocumentoOrigen	|identificadorDocumentOrigen|	Aplicació que s'integra|	No|	No|	No|	Si|	No	|Si|	Identificador normalizat del document origen al que correspon la còpia. Només s’ha d’informar si EstadoElaboracion és EE02, EE03 o EE04.|
-|**tipusDocumentalSICRESD**	|Opcional|	--| 	Text|--|	 	tipusDocumentalSICRES	|Aplicació que s'integra|	No|	No|	No|	No|	No|	Si|<ul><li>	‘01’ = Formulario (el documento adjunto es un formulario con campos rellenos por el ciudadano remitente)</li><li>‘02’ = Documento adjunto al formulario (además del formulario, otro documento es adjuntado, acompañando al formulario)</li><li>‘03’ = Fichero técnico interno (el documento adjunto es un fichero interno. Por lo general, estos ficheros pueden resultar útiles para la Entidad Registral de destino, pero no son ficheros para presentar directamente a los usuarios de gestión).</li></ul>|
 |**descripcio**|Opcional|	500	|Text	|Descripcion|	Observacions	|Aplicació que s'integra|	No|	No|	No|	Si|	Si|	Si|--|
 |	 **nivellAcces**|	Opcional	| --| 	Enum|	NivelAcceso	 |--|	Aplicació que s'integra|	No|	No|	No|	Si|	No	|Si| <ul><li>A-Secret</li><li>B-Reservat</li><li>C-Confidencial</li><li>E-No classificat</li></ul> |
 |**clasificacioENS** |	Opcional|--|	 	Enum	|ClasificacionENS	| -- | 	Aplicació que s'integra |	No |	No	| No	| Si |	No |	Si |	Baix, Mig, Alt |
@@ -914,7 +913,6 @@ La relació entre un document i el seu contingut (fitxer) es realitza a partir d
 | regulacioGeneracioCSVSignatura | Body  | Condicional | Text | 500 | S&#39;informa si TipoFirma =TF01 |
 | referenciaSignatura | Body  | Condicional | Text | 100 | Només cas TF03 i TF04. Referencia al fitxer que inclou la signatura (UUID - fitxer) |
 | identificadorDocumentOrigen | Body  | Condicional | Text | 250 | Només si s&#39;ha indicat EE02,EE03 i EE04 a EstadoElaboracion |
-| tipusDocumentalSICRESD | Body  | No | Text | --  | <ul><li>‘01’ = Formulari (el document adjunt és un formulari amb camps omplerts per el ciutadà remitent)</li><li>‘02’ = Document adjunt al formulari (a part del formulari, s'adjunta un altre document acompanyant el formulari)</li><li>‘03’= Fitxer tècnic intern (el document adjunt és un fitxer intern. En general, aquests fitxers poden resultar útils per la Entitat Reistral destí, però no són fitxers per presentar directament als usuaris de gestió)</li></ul> |
 | descripcio | Body  | No | Text | 500 | --  |
 | nivellAcces | Body  | No | Enum | --  | <ul><li>A-Secret</li><li>B-Reservat</li><li>C-Confidencial</li><li>E-No classificat</li></ul> |
 | clasificacioENS | Body  | No | Enum | -- | Baix, Mig, Alt |
@@ -991,7 +989,6 @@ En la resposta del mètode de modificació de document, DESA&#39;L retorna totes
 | regulacioGeneracioCSVSignatura | Body | No | Text | -- | S&#39;informa si a TipoFirma =TF01 |
 | referenciaSignatura | Body | No | Text | -- | Només cas TF03 i TF04. Referencia al fitxer que inclou la signatura (uuidFitxer) |
 | identificadorDocumentOrigen | Body | No | Text | -- | Identificador normalizat del document origen al que correspon la copia. Només si s'ha indicat EE02,EE03 i EE04 a EstadoElaboracion |
-| tipusDocumentalSICRESD | Body | No | Text | -- | &#39;01&#39; = Formulario (el documento adjunto es un formulario con campos rellenos por el ciudadano remitente) &#39;02&#39; = Documento adjunto al formulario (además del formulario, otro documento es adjuntado, acompañando al formulario) &#39;03&#39; = Fichero técnico interno (el documento adjunto es un fichero interno. Por lo general, estos ficheros pueden resultar útiles para la Entidad Registral de destino, pero no son ficheros para presentar directamente a los usuarios de gestión). |
 | descripcio | Body | No | Text | -- | -- |
 | nivellAcces | Body | No | Text | -- | <ul>A-Secret</li><li>B-Reservat</li><li>C-Confidencial</li><li>E-No classificat</li></ul> |
 | clasificacioENS | Body | No | Text | -- | Baix, Mig, Alt |
