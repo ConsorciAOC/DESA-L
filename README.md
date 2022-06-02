@@ -457,6 +457,9 @@ A continuació es detallen els possibles codis d’error per a la descàrrega de
 | **Codi** | **Missatge** |
 | --- | --- |
 | 0 | Operació realitzada correctament. |
+| 1 | Error: el contingut del fitxer està esperant a ser analitzat pel antivirus. |
+| 2 | Error: No s'ha fet el put del fitxer a S3 (URL-Presigned) |
+| 4 | Error: Petició mal informada. |	
 | 11 | Error: l&#39;identificador del fitxer indicat no és vàlid. Operació NO realitzada. |
 | 12 | Error: el codi de servei indicat no és vàlid. Operació NO realitzada. |
 | 13 | Error: el codi INE especificat no és vàlid. Operació NO realitzada. |
@@ -555,6 +558,7 @@ A continuació es detallen els possibles codis de resposta per l&#39;alta d&#39;
 | **Codi** | **Missatge** |
 | --- | --- |
 | 0 | Operació realitzada correctament. |
+| 4 | Error: Petició mal formada. |
 | 10 | Error: no tens autorització per realitzar aquesta operació. Operació NO realitzada. |
 | 11 | Error: la petició no és correcta. Hi ha metadades obligatòries sense informar o metadades informades no vàlides (XXXXXX). Operació NO realitzada. |
 | 12 | Error: el número d&#39;expedient ja existeix en el servei i organismo indicats. Operació NO realitzada. |
@@ -603,6 +607,7 @@ A continuació es detallen els possibles codis de resposta per a la modificació
 | **Codi** | **Missatge** |
 | --- | --- |
 | 0 | Operació realitzada correctament. |
+| 4 | Error: Petició mal formada. |
 | 10 | Error: no tens autorització per realitzar aquesta operació. Operació NO realitzada. |
 | 11 | Error: la petició no és correcta. Hi ha metadades obligatòries sense informar o metadades informades no vàlides (XXXXXX). Operació NO realitzada. |
 | 12 | Error: l&#39;expedient no existetix al servei o organisme indicats. Operació NO realitzada. |
@@ -641,6 +646,7 @@ A continuació es detallen els possibles codis de resposta de la petició d&#39;
 | **Codi** | **Missatge** |
 | --- | --- |
 | 0 | Operació realitzada correctament |
+| 4 | Error: Petició mal formada. |
 | 10 | Error: no tens autorització per realitzar aquesta operació. Operació NO realitzada. |
 | 11 | Error: la petició no és correcta. Operació NO realitzada. |
 | 12 | Error: l&#39;expedient indicat no existeix al servei i organisme indicats. Operació NO realitzada. |
@@ -674,6 +680,7 @@ A continuació es detallen els possibles codis de resposta per a la descàrrega 
 | **Codi** | **Missatge** |
 | --- | --- |
 | 0 | Operació realitzada correctament. |
+| 4 | Error: Petició mal formada. |
 | 10 | Error: no tens autorització per realitzar aquesta operació. Operació NO realitzada. |
 | 11 | Error: la petició no és correcta. Operació NO realitzada. |
 | 12 | Error: l&#39;expedient indicat no existeix en el servei i organisme indicats. Operació NO realitzada. |
@@ -740,6 +747,8 @@ A continuació es detallen els possibles codis de resposta per a la descàrrega 
 | **Codi** | **Missatge** |
 | --- | --- |
 | 0 | Operació realitzada correctament. |
+| 1 | Error: El contingut del fitxer està esperant a ser analitzat pel antivirus. |
+| 4 | Error: Petició mal formada. |
 | 10 | Error: no tens autorització per realitzar aquesta operació. Operació NO realitzada. |
 | 11 | Error: la petició no és correcta. Operació NO realitzada. |
 | 12 | Error: l&#39;expedient indicat no existeix en el servei i organisme indicats. Operació NO realitzada. |
@@ -781,7 +790,8 @@ A continuació es detallen els possibles codis de resposta per a la modificació
 | **Codi** | **Missatge** |
 | --- | --- |
 | 0 | Petició disponible |
-| 1 | Petició pendent |
+| 1 | Error: El contingut del fitxer està esperant a ser analitzat pel antivirus. |
+| 4 | Error: Petició mal formada. |
 | 10 | Error: no tens autorització per realitzar aquesta operació. Operació NO realitzada. |
 | 11 | Error: la petició no és correcta (XXXXXX). Operació NO realitzada. |
 | 100 | Error no controlat: XXXXXX. Si us plau, reintenti l`operació en uns minuts. Operació NO realitzada. |
@@ -817,6 +827,8 @@ A continuació es detallen els possibles codis de resposta per a la descàrrega 
 | **Codi** | **Missatge** |
 | --- | --- |
 | 0 | Operació realitzada correctament. |
+| 1 | Error: L'expedient existeix però alguns dels seus fitxers estan sent analitzats per l'antivirus. |
+| 4 | Error: Petició mal formada. |
 | 10 | Error: no tens autorització per realitzar aquesta operació. Operació NO realitzada. |
 | 11 | Error: la petició no és correcta. Operació NO realitzada. |
 | 12 | Error: l&#39;expedient indicat no existeix en el servei i organisme indicats. Operació NO realitzada. |
@@ -924,6 +936,9 @@ A continuació es detallen els possibles codis de resposta per l&#39;alta de doc
 | **Codi** | **Missatge** |
 | --- | --- |
 | 0 | Operació realitzada correctament. |
+| 1 | El document és correcte però el fitxer encara està sent analitzat per l'antivirus. |
+| 2 | Error: El contingut del fitxer encara no ha estat carregat a S3. |
+| 4 | Error: Petició mal formada. |
 | 10 | Error: no tens autorització per realitzar aquesta operació. Operació NO realitzada. |
 | 11 | Error: la petició no és correcta. Hi ha metadades obligatòries sense informar o metadades informades no vàlides (XXXXXX). Operació NO realitzada. |
 | 12 | Error: el número d&#39;expedient indicat no existeix en el servei i organisme indicats. Operació NO realitzada. |
@@ -998,6 +1013,9 @@ A continuació es detallen els possibles codis de resposta per la modificació d
 | **Codi** | **Missatge** |
 | --- | --- |
 | 0 | Operació realitzada correctament. |
+| 1 | El document és correcte però el fitxer encara està sent analitzat per l'antivirus
+| 2 | Error: No s'ha fet el put del fitxer a S3 (URL-Presigned)
+| 4 | Error: Petició mal formada
 | 10 | Error: no tens autorització per realitzar aquesta operació. Operació NO realitzada. |
 | 11 | Error: la petició no és correcta. Hi ha metadades obligatòries sense informar o metadades informades no vàlides (XXXXXX). Operació NO realitzada. |
 | 12 | Error: el número d&#39;expedient indicat no existeix en el servei i organisme indicats. Operació NO realitzada. |
@@ -1037,6 +1055,7 @@ A continuació es detallen els possibles codis de resposta per l&#39;eliminació
 | **Codi** | **Missatge** |
 | --- | --- |
 | 0 | Operació realitzada correctament. |
+| 4 | Error: Petició mal formada. |
 | 10 | Error: no tens autorització per realitzar aquesta operació. Operació NO realitzada. |
 | 11 | Error: la petició no és correcta. Hi ha metadades obligatòries sense informar o metadades informades no vàlides (XXXXXX). Operació NO realitzada. |
 | 12 | Error: el número d&#39;expedient indicat no existeix en el servei i organisme indicats. Operació NO realitzada. |
@@ -1088,6 +1107,8 @@ A continuació es detallen els possibles codis de resposta per a la descàrrega 
 | **Codi** | **Missatge** |
 | --- | --- |
 | 0 | Operació realitzada correctament. |
+| 1 | Error: El contingut del fitxer està esperant a ser analitzat pel antivirus. |
+| 4 | Error: Petició mal formada. |
 | 10 | Error: no tens autorització per realitzar aquesta operació. Operació NO realitzada. |
 | 11 | Error: la petició no és correcta. Operació NO realitzada. |
 | 12 | Error: el document indicat no existeix en el servei i organisme indicats. Operació NO realitzada. |
@@ -1124,6 +1145,8 @@ A continuació es detallen els possibles codis de resposta per a la descàrrega 
 | **Codi** | **Missatge** |
 | --- | --- |
 | 0 | Operació realitzada correctament. |
+| 1 | Error: El contingut del fitxer està esperant a ser analitzat pel antivirus. |
+| 4 | Error: Petició mal formada. |
 | 10 | Error: no tens autorització per realitzar aquesta operació. Operació NO realitzada. |
 | 11 | Error: la petició no és correcta. Operació NO realitzada. |
 | 12 | Error: l&#39;expedient indicat no existeix en el servei i organisme indicats. Operació NO realitzada. |
