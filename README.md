@@ -549,7 +549,7 @@ Abans de procedir a l&#39;alta de l&#39;expedient i del/s document/s, DESA&#39;L
 ![image](https://user-images.githubusercontent.com/32306731/155976750-9f159dfe-c951-4a1e-b8c8-44602e481e97.png)
 ![image](https://user-images.githubusercontent.com/32306731/155976895-903239b2-6a22-46c6-86db-0bc546629946.png)
 
-Destaquem com en la Modalitat 2 tenim un codi de resposta i una descripció resposta global de tota l&#39;operació (remarcada en color groc) i un codi de resposta i una descripció resposta individual (remarcada en color verd) per a cada document que permet a l&#39;integrador saber exactament quin document no és vàlid i per què.
+Destaquem com en la Modalitat 2 tenim un codi de resposta i una descripció resposta global de tota l’operació (remarcada en color groc) i un codi de resposta i una descripció resposta individual (remarcada en color verd) per a cada document que, en cas d’error degut al document, permet a l’integrador saber exactament quin document no és vàlid i el motiu (d’acord als codis d’error del mètode Alta Document).
 
 ### Codis de resposta
 
@@ -716,6 +716,8 @@ Aquesta modalitat permet descarregar un fitxer ZIP que conté únicament un fitx
 ### Modalitat 2: Descarregar metadades i Fitxers
 
 Aquesta modalitat permet descarregar també un fitxer ZIP que conté el fitxer XML amb les metadades de l&#39;expedient i dels documents associats, però el fitxer ZIP també conté el contingut dels fitxers vinculats amb els documents de l&#39;expedient.
+	
+**Important:** Si l’antivirus no ha pogut finalitzar l’anàlisi d’algun dels fitxers, la descàrrega de l’expedient fallarà amb un codi d’error 1 - El contingut del fitxer està esperant a ser analitzat pel antivirus.
 
 ### Petició
 
@@ -1084,6 +1086,8 @@ Aquest mètode permet obtenir de forma síncrona les metadades d&#39;un document
 ![image](https://user-images.githubusercontent.com/32306731/156013374-529e26ba-3813-4889-9a41-b47e8ef1be10.png)
 
 ### Petició Modalitat 2: Descarrega Document i contingut (fitxer)
+
+**Important:** Si l’antivirus no ha pogut finalitzar l’anàlisi d’algun dels fitxers, la descàrrega de l’expedient fallarà amb un codi d’error 1 - El contingut del fitxer està esperant a ser analitzat pel antivirus.
 
 La modalitat 2 només es pot executar si el document té un contingut igual 1 (fitxer).
 
