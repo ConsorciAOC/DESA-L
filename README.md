@@ -75,6 +75,10 @@
 		- [Resposta](#resposta-modalitat-2-descarregar-metadades-i-fitxers-exp)
 		- [Exemple XML inclòs en el fitxer ZIP](#exemple-xml-inclos-en-el-fitxer-zip-exp)
 		- [Codis de resposta](#codis-resposta-descarrega-dexpedients-en-format-zip)
+	- [5.10 Modificació Expedients <a name="5.10"></a>](#modificacio-expedients)
+		- [Petició](#peticio-modificacio-expedients)
+		- [Resposta](#resposta-modificacio-expedients)
+		- [Codis de resposta](#codis-resposta-modificacio-expedients)
 - [6 Capa Document <a name="6"></a>](#6-capa-document-)
 	- [6.1 Alta de Document <a name="6.1"></a>](#61-alta-de-document-)
 		- [Petició alta document basic](#petició-alta-document-basic)
@@ -1245,6 +1249,203 @@ A continuació es detallen els possibles codis de resposta per a la descàrrega 
 | 12 | Error: l&#39;expedient indicat no existeix en el servei i organisme indicats. Operació NO realitzada. |
 | 100 | Error no controlat: XXXXXX. Si us plau, reintenti l&#39;operació en uns minuts. Operació NO realitzada. |
 
+## 5.10 Modificació Expedients <a name="modificacio-expedients" id="modificacio-expedients"></a>
+
+Aquest mètode permet la modificació de qualsevol metadada identificada com a editable dels expedients. Es permetrà la modificació dels expedients independentment del seu estat (fins i tot si els expedients es troben en _ **Estat Tancat** _).
+
+Es permetrà realitzar la modificació d&#39;una o vàries metadades a la vegada. Les metadades que l&#39;integrador no informi en la seva petició, no es modificaran i mantindran el seu valor original. En cas d&#39;error, DESA&#39;L no modificarà cap de les metadades.
+
+En el cas que l&#39;integrador necessiti esborrar una metadada, podrà fer-ho informant el valor null o una cadena buida si la metadada és de tipus Text. DESA&#39;L validarà però, que aquesta metadada no sigui obligatòria i en cas afirmatiu rebutjarà la petició.
+
+### Modalitat 1: Crear documents <a name="modalitat-1-modificacio-expedients" id="modalitat-1-modificacio-expedients"></a>
+
+Aquesta modalitat permet crear nous documents dins l'expedient.
+
+### Petició <a name="peticio-modificacio-expedients" id="peticio-modificacio-expedients"></a>
+
+| **Element** | **Tipus paràmetre** | **Obligatori** | **Tipus camps** | **Mida màxima** | **Observacions** |
+| --- | --- | --- | --- | --- | --- |
+| codiServei | QueryParam | Sí | Text | 10 | -- | -- |
+| codiINE | QueryParam | Sí | Text | 10 | -- | -- |
+| modality | QueryParam | Sí | Text | 1 | -- | Per a modalitat 1, indicar “1” |
+| uuidExpedient | Body | Sí | Text | -- | -- |
+| documents | Body | No | Llista | -- | -- |
+| identificador | Body | No | -- | 50 | N/A |
+| titol | Body | No | Text | 500 | N/A |
+| dataInici | Body | No | Data | - | Format: DD/MM/AAAA HH:mm:SS |
+| dataFi | Body | No | Data | - | Format: DD/MM/AAAA HH:mm:SS |
+| unitatResponsable | Body | No | Text | 250 | N/A |
+| codiClassificacio | Body | No | Text | 50 | N/A |
+| nomClassificacio | Body | No | Text | 250 | N/A |
+| codiSIA | Body | No | Text | 50 | N/A |
+| nivellAccess | Body | No | Text | -- | N/A |
+| clasificacioENS | Body | No | Text | -- | N/A |
+| sensibilitatDadesCaracterPersonal | Body | No | Text | -- | N/A |
+| estatExpedient | Body | No | Text | -- | N/A |
+| interessat | Body | No | Llista | -- | Llista de literals |
+| descripció | Body | No | Text | 500 | N/A |
+| infoAddicional | Body | No | Llista | -- | Llista de literals |
+
+La URL corresponent a aquesta operació de l'API és:
+
+```javascript
+https://{{host}}/expedient/addDocuments?codiServei={{codiServei}}&codiINE={{codiINE}}&modality=1
+```
+
+El contingut de la petició quedaria: 
+
+```json
+{
+  "uuidExpedient": "ec86ee01-089f-4afd-95c6-eff95922197c",
+  "documents": [ {
+      "codiServei": "eVALISA",
+      "codiINE": "9611660009",
+      "contingut": "1",
+      "uuidFitxer": "ffbb106c-8fdd-476d-ade4-e1322f4c441f",
+      "nomFitxer": "Primer document.pdf",
+      "nomNatural": "Primer document creat",
+      "infoAddicional": [
+        {"key": "Clau Document1", "value": "Encoding conflictiu: çÑàa'()=?$€@ºª|!"} 
+      ],
+      "dataDocument": "24/07/2021 14:57:02",
+      "estatElaboracio": "EE99",
+      "origen": true,
+      "tipusDocumental": "TD10",
+      "tipusSignatura": "TF06",
+      "interessat": ["82828282S"]
+  	}, {
+      "codiServei": "eVALISA",
+      "codiINE": "7515093734",
+      "contingut": "2",
+      "urlDocumentExtern": "https://www.URLExternaInventadaperSGP.com/234234a",	
+      "nomNatural": "Segon document creat dins l'expedient amb el JSON de càrrega d'expedient",
+      "dataDocument": "14/07/2021 15:29:14",
+      "estatElaboracio": "EE02",
+      "identificadorDocumentOrigen": "06ca9170-9729-449c-bbc5-fe4c86e78cd8",
+      "origen": false,
+      "tipusDocumental": "TD01",
+      "tipusSignatura": "TF01",
+      "cSVSignatura" : "CSVSIG_123",
+      "regulacioGeneracioCSVSignatura": "Sembla que la validació d'aquest camp es fa correctament. Aquest camp ha d'informar-se de forma obligatòria si el camp 'tipusSignatura' té el valor TF01.",
+      "tipusDocumentalSICRESD": "03",
+      "usuari": "Nom Cognom1 Cognom2 del funcionari",
+      "numeroRegistre": "E/541412123/2021",
+      "descripcio": "Aquesta és una descripció molt i molt llarga amb caràcters especials ñÑçÇàÀüÜ{}[]()/&%$€·l'#ºª|!",
+      "nivellAcces": "B",
+      "clasificacioENS": "Baix",
+      "sensibilitatDadesCaracterPersonal": "Alt",
+      "documentEssencial": false,
+      "idioma": "fr_FR",
+      "codiClassificacio": "Codi de Classificació inventat per SGP amb 50 chrs",
+      "nomClassificacio": "Nom Classificació inventat per SGP amb una longitud de 250",
+      "codiSIA": "SIA  inventat per SGP amb longitud de 50 caràcters"
+  	} 
+  ]
+}
+```
+
+### Resposta <a name="resposta-modificacio-expedients" id="resposta-modificacio-expedients"></a>
+
+```json
+{
+    "uuidExpedient": "ec86ee01-089f-4afd-95c6-eff95922197c",
+    "codiServei": "eVALISA",
+    "codiINE": "9821920002",
+    "dataAlta": 1668095268640,
+    "versioNTI": "http://administracionelectronica.gob.es/ENI/XSD/v1.0/documento-e",
+    "organ": "A09018933",
+    "identificadorDesal": "ES_9821920002_2023_ec86ee01-089f-4afd-95c6-eff95922197c",
+    "codiResposta": "0",
+    "descripcioResposta": "Operació realitzada correctament",
+    "documents": [
+        {
+            "uuidDocument": "4b91eb53-b1d8-4a7b-9639-68e1e47090b7",
+            "uuidFitxer": "ffbb106c-8fdd-476d-ade4-e1322f4c441f",
+            "codiINE": "9611660009",
+            "codiServei": "eVALISA",
+            "nomNatural": "Primer document creat",
+            "infoAddicional": [
+                {
+                    "key": "Clau Document1",
+                    "value": "Encoding conflictiu: çÑàa'()=?$€@ºª|!"
+                }
+            ],
+            "CSV": "9611660009040120231A2435680560",
+            "formatFitxer": "application/pdf",
+            "hash": "zkRAhVa0azZ6yg2j+C/3xilRaoGoY7jFnFrzmB1vCCM=",
+            "hashAlgoritme": "SHA-256",
+            "mida": 992029,
+            "nomFitxer": "Primer document.pdf",
+            "dataAlta": 1672851441957,
+            "dataDocument": 1627131422000,
+            "contingut": "1",
+            "identificadorExpedientDesal": "ec86ee01-089f-4afd-95c6-eff95922197c",
+            "versioNTI": "http://administracionelectronica.gob.es/ENI/XSD/v1.0/documento-e",
+            "identificador": "ES_9611660009_2023_4B91EB53-B1D8-4A7B-9639-68E1E47090B7",
+            "organ": "A09002979",
+            "estatElaboracio": "EE99",
+            "origen": true,
+            "tipusDocumental": "TD10",
+            "tipusSignatura": "TF06",
+            "codiResposta": "0",
+            "descripcioResposta": "Operació realitzada correctament",
+            "interessat": [
+                "82828282S"
+            ]
+        },
+        {
+            "uuidDocument": "63eb19e3-7dfc-4fde-9b35-c9853b19f53f",
+            "codiINE": "7515093734",
+            "codiServei": "eVALISA",
+            "nomNatural": "Segon document creat dins l'expedient amb el JSON de càrrega d'expedient",
+            "sensibilitatDadesCaracterPersonal": "Alt",
+            "documentEssencial": false,
+            "idioma": "fr_FR",
+            "codiClassificacio": "Codi de Classificació inventat per SGP amb 50 chrs",
+            "nomClassificacio": "Nom Classificació inventat per SGP amb una longitud de 250",
+            "codiSIA": "SIA  inventat per SGP amb longitud de 50 caràcters",
+            "CSV": "7515093734040120234D94B440C845",
+            "URLDocumentExtern": "https://www.URLExternaInventadaperSGP.com/234234a",
+            "dataAlta": 1672851442635,
+            "dataDocument": 1626269354000,
+            "contingut": "2",
+            "identificadorExpedientDesal": "ec86ee01-089f-4afd-95c6-eff95922197c",
+            "versioNTI": "http://administracionelectronica.gob.es/ENI/XSD/v1.0/documento-e",
+            "identificador": "ES_7515093734_2023_63EB19E3-7DFC-4FDE-9B35-C9853B19F53F",
+            "organ": "A09006457",
+            "estatElaboracio": "EE02",
+            "origen": false,
+            "tipusDocumental": "TD01",
+            "tipusSignatura": "TF01",
+            "CSVSignatura": "CSVSIG_123",
+            "regulacioGeneracioCSVSignatura": "Sembla que la validació d'aquest camp es fa correctament. Aquest camp ha d'informar-se de forma obligatòria si el camp 'tipusSignatura' té el valor TF01.",
+            "identificadorDocumentOrigen": "06ca9170-9729-449c-bbc5-fe4c86e78cd8",
+            "tipusDocumentalSICRES": "03",
+            "descripcio": "Aquesta és una descripció molt i molt llarga amb caràcters especials ñÑçÇàÀüÜ{}[]()/&%$€·l'#ºª|!",
+            "nivellAcces": "B",
+            "classificacioENS": "Baix",
+            "codiResposta": "0",
+            "descripcioResposta": "Operació realitzada correctament",
+            "usuari": "Nom Cognom1 Cognom2 del funcionari",
+            "numeroRegistre": "E/541412123/2021"
+        }
+    ]
+}
+```
+
+### Codis de resposta
+
+A continuació es detallen els possibles codis de resposta per a la modificació de l&#39;expedient (per al codi d&#39;error 11, XXXXXX especifica la metadada en qüestió i per al codi d&#39;error 100 XXXXXX ofereix més detalls de l&#39;error no controlat):
+
+| **Codi** | **Missatge** |
+| --- | --- |
+| 0 | Operació realitzada correctament. |
+| 4 | Error: Petició mal formada. |
+| 10 | Error: no tens autorització per realitzar aquesta operació. Operació NO realitzada. |
+| 11 | Error: la petició no és correcta. Hi ha metadades obligatòries sense informar o metadades informades no vàlides (XXXXXX). Operació NO realitzada. |
+| 12 | Error: l&#39;expedient no existetix al servei o organisme indicats. Operació NO realitzada. |
+| 100 | Error no controlat: XXXXXX. Si us plau, reintenti l&#39;operació en uns minuts. Operació NO realitzada. |
+	
 # 6 Capa Document <a name="6"></a>
 
 El document és l&#39;entitat essencial del DESA&#39;L. Està format per un conjunt de metadades i la relació amb un i només un fitxer de DESA&#39;L. DESA&#39;L també permet gestionar documents on el binari no es custodia al propi repositori del DESA&#39;L, sinó que està hostatjat en un repositori extern. En aquests casos al document de DESA&#39;L només es guarda la referència al repositori extern ja sigui a través d&#39;una URL externa o d&#39;un CSV del repositori extern.
