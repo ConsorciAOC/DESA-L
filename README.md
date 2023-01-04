@@ -76,8 +76,12 @@
 		- [Exemple XML inclòs en el fitxer ZIP](#exemple-xml-inclos-en-el-fitxer-zip-exp)
 		- [Codis de resposta](#codis-resposta-descarrega-dexpedients-en-format-zip)
 	- [5.10 Modificació Expedients <a name="5.10"></a>](#modificacio-expedients)
-		- [Petició](#peticio-modificacio-expedients)
-		- [Resposta](#resposta-modificacio-expedients)
+		- [Modalitat 1: Crear documents](#modalitat-1-modificacio-expedients)
+		- [Petició](#peticio-modalitat-1-modificacio-expedients)
+		- [Resposta](#resposta-modalitat-1-modificacio-expedients)
+		- [Modalitat 2: Afegir documents existents](#modalitat-2-modificacio-expedients)
+		- [Petició](#peticio-modalitat-2-modificacio-expedients)
+		- [Resposta](#resposta-modalitat-2-modificacio-expedients)
 		- [Codis de resposta](#codis-resposta-modificacio-expedients)
 - [6 Capa Document <a name="6"></a>](#6-capa-document-)
 	- [6.1 Alta de Document <a name="6.1"></a>](#61-alta-de-document-)
@@ -1261,7 +1265,7 @@ En el cas que l&#39;integrador necessiti esborrar una metadada, podrà fer-ho in
 
 Aquesta modalitat permet crear nous documents dins l'expedient.
 
-### Petició <a name="peticio-modificacio-expedients" id="peticio-modificacio-expedients"></a>
+### Petició <a name="peticio-modalitat-1-modificacio-expedients" id="peticio-modalitat-1-modificacio-expedients"></a>
 
 | **Element** | **Tipus paràmetre** | **Obligatori** | **Tipus camps** | **Mida màxima** | **Observacions** |
 | --- | --- | --- | --- | --- | --- |
@@ -1344,7 +1348,7 @@ El contingut de la petició quedaria:
 }
 ```
 
-### Resposta <a name="resposta-modificacio-expedients" id="resposta-modificacio-expedients"></a>
+### Resposta <a name="resposta-modalitat-1-modificacio-expedients" id="resposta-modalitat-1-modificacio-expedients"></a>
 
 ```json
 {
@@ -1433,9 +1437,64 @@ El contingut de la petició quedaria:
 }
 ```
 
-### Codis de resposta
+### Modalitat 2: Afegir documents existents <a name="modalitat-2-modificacio-expedients" id="modalitat-2-modificacio-expedients"></a>
 
-A continuació es detallen els possibles codis de resposta per a la modificació de l&#39;expedient (per al codi d&#39;error 11, XXXXXX especifica la metadada en qüestió i per al codi d&#39;error 100 XXXXXX ofereix més detalls de l&#39;error no controlat):
+Aquesta modalitat permet afegir documents que ja existeixen dins l'expedient.
+
+### Petició <a name="peticio-modalitat-2-modificacio-expedients" id="peticio-modalitat-2-modificacio-expedients"></a>
+
+| **Element** | **Tipus paràmetre** | **Obligatori** | **Tipus camps** | **Mida màxima** | **Observacions** |
+| --- | --- | --- | --- | --- | --- |
+| codiServei | QueryParam | Sí | Text | 10 | -- | -- |
+| codiINE | QueryParam | Sí | Text | 10 | -- | -- |
+| modality | QueryParam | Sí | Text | 1 | -- | Per a modalitat 2, indicar “2” |
+| uuidExpedient | Body | Sí | Text | -- | -- |
+| uuidDocument | Body | No | Llista | -- | -- |
+
+La URL corresponent a aquesta operació de l'API és:
+
+```javascript
+https://{{host}}/expedient/addDocuments?codiServei={{codiServei}}&codiINE={{codiINE}}&modality=2
+```
+
+El contingut de la petició quedaria: 
+
+```json
+{
+  "uuidExpedient": "dbcd48f4-2d8d-45ae-a130-a43b84eabef1",
+  "uuidDocument": [
+      "b00dd6b9-ef86-4911-a67f-ae476facd5e2","b00dd6b9-ef86-4911-a67f-ae476facd5e2"
+  ]
+}
+```
+
+### Resposta <a name="resposta-modalitat-2-modificacio-expedients" id="resposta-modalitat-2-modificacio-expedients"></a>
+
+```json
+{
+    "uuidExpedient": "dbcd48f4-2d8d-45ae-a130-a43b84eabef1",
+    "codiServei": "eVALISA",
+    "codiINE": "9821920002",
+    "dataAlta": 1672829432502,
+    "versioNTI": "http://administracionelectronica.gob.es/ENI/XSD/v1.0/documento-e",
+    "identificadorDesal": "ES_9821920002_2023_dbcd48f4-2d8d-45ae-a130-a43b84eabef1",
+    "codiResposta": "0",
+    "descripcioResposta": "Operació realitzada correctament",
+    "documents": [
+        {
+            "uuidDocument": "b00dd6b9-ef86-4911-a67f-ae476facd5e2",
+            "codiINE": "1722660009",
+            "codiServei": "eNOTUM",
+            "codiResposta": "0",
+            "descripcioResposta": "Operació realitzada correctament"
+        }
+    ]
+}
+```
+
+### Codis de resposta <a name="codis-resposta-modificacio-expedients" id="codis-resposta-modificacio-expedients"></a>
+
+A continuació es detallen els possibles codis de resposta per a la modificació dels expedients (per al codi d&#39;error 11, XXXXXX especifica la metadada en qüestió i per al codi d&#39;error 100 XXXXXX ofereix més detalls de l&#39;error no controlat):
 
 | **Codi** | **Missatge** |
 | --- | --- |
