@@ -66,6 +66,15 @@
 		- [Resposta](#resposta-cerca-expedients)
 		- [Exemple de resposta](#exemple-resposta-cerca-expedients)
 		- [Codis de resposta](#codis-resposta-cerca-expedients)
+	- [5.9 Descàrrega d&#39;Expedients en format ZIP <a name="5.9"></a>](#descarrega-dexpedients-en-format-zip)
+		- [Modalitat 1: Descarregar metadades](#modalitat-1-descarregar-metadades-exp)
+		- [Petició](#peticio-modalitat-1-descarregar-metadades-exp)
+		- [Resposta](#resposta-modalitat-1-descarregar-metadades-exp)
+		- [Modalitat 2: Descarregar metadades i Fitxers](#modalitat-2-descarregar-metadades-i-fitxers-exp)
+		- [Petició](#peticio-modalitat-2-descarregar-metadades-i-fitxers-exp)
+		- [Resposta](#resposta-modalitat-2-descarregar-metadades-i-fitxers-exp)
+		- [Exemple XML inclòs en el fitxer ZIP](#exemple-xml-inclos-en-el-fitxer-zip-exp)
+		- [Codis de resposta](#codis-resposta-descarrega-dexpedients-en-format-zip)
 - [6 Capa Document <a name="6"></a>](#6-capa-document-)
 	- [6.1 Alta de Document <a name="6.1"></a>](#61-alta-de-document-)
 		- [Petició alta document basic](#petició-alta-document-basic)
@@ -1127,6 +1136,113 @@ A continuació es detallen els possibles codis de resposta per a l'operació de 
 | 0 | Operació realitzada correctament. |
 | 4 | Error: Petició mal formada. |
 | 10 | Error: no tens autorització per realitzar aquesta operació. Operació NO realitzada. |
+| 100 | Error no controlat: XXXXXX. Si us plau, reintenti l&#39;operació en uns minuts. Operació NO realitzada. |
+
+## 5.9 Descàrrega d&#39;Expedients en format ZIP <a name="descarrega-dexpedients-en-format-zip" id="descarrega-dexpedients-en-format-zip"></a>
+
+Aquest mètode asíncron permet obtenir i descarregar en un fitxer ZIP les metadades dels diversos l&#39;expedients i dels documents associats a partir de l&#39;UUIDExpedient (Modalitat 1). De forma opcional permet també recuperar l&#39;URL per poder descarregar tots els binaris dels documents (Modalitat 2). A diferència de la majoria de mètodes de l&#39;API del DESA&#39;L que treballen en format JSON, aquest mètode retorna les metadades en un fitxer XML que es troba dins el fitxer ZIP a descarregar.
+
+La descàrrega d&#39;expedients es pot realitzar independentment de l&#39;estat en que es trobi l&#39;expedient.
+
+Tal i com indiquem, la descàrrega d&#39;expedients es un procés asíncron. La resposta d&#39;aquesta petició asíncrona retorna un codi de tiquet que ens servirà per poder consultar l&#39;estat de la descàrrega i obtenir la URL de descàrrega del fitxer ZIP tan bon punt estigui disponible. Per poder saber si el fitxer ZIP ja està disponible, DESA&#39;L ofereix el mètode _ **5.6Consulta ticket** _ que permet obtenir la URL presignada per tal que l&#39;integrador pugui descarregar el zip. Aquesta URL presignada té un temps d&#39;expiració d&#39;una hora, passat aquest temps no serà vàlida i s&#39;haurà de tornar a realitzar una petició.
+
+### Modalitat 1: Descarregar metadades <a name="modalitat-1-descarregar-metadades-exp" id="modalitat-1-descarregar-metadades-exp"></a>
+
+Aquesta modalitat permet descarregar un fitxer ZIP que conté els fitxers XML amb totes les metadades dels expedients i dels documents associats.
+
+### Petició <a name="peticio-modalitat-1-descarregar-metadades-exp" id="peticio-modalitat-1-descarregar-metadades-exp"></a>
+
+| **Element** | **Tipus paràmetre** | **Obligatori** | **Tipus camps** | **Mida màxima** | **Observacions** |
+| --- | --- | --- | --- | --- | --- |
+| uuidExpedient | Body | Sí | Llista | -- | N/A |
+| codiINE | QueryParam | Sí | Text | 10 | N/A |
+| codiServei | QueryParam | Sí | Text | 10 | N/A |
+| modality | QueryParam | Sí | Número | -- | Per a modalitat 1, indicar “1” |
+
+La URL corresponent a aquesta operació de l'API és:
+
+```javascript
+https://{{host}}/expedient/downloadExpedients?codiServei={{codiServei}}&codiINE={{codiINE}}&modality=1
+```
+
+El contingut de la petició quedaria: 
+
+```json
+{
+"uuidExpedient": ["b666bad8-89a3-4c31-9037-734ab6d4167c","2b147889-efb2-47cf-af56-d0c5b33204fe"]
+}
+```
+
+### Resposta <a name="resposta-modalitat-1-descarregar-metadades-exp" id="resposta-modalitat-1-descarregar-metadades-exp"></a>
+
+```json
+{
+    "codiResposta": "0",
+    "descripcioResposta": "Operació realitzada correctament",
+    "idTicket": "326f81a8-b51d-4b9d-875a-df33d117f7eb"
+}
+```
+
+### Modalitat 2: Descarregar metadades i Fitxers <a name="modalitat-2-descarregar-metadades-i-fitxers-exp" id="modalitat-2-descarregar-metadades-i-fitxers-exp"></a>
+
+Aquesta modalitat permet descarregar també un fitxer ZIP que conté els fitxers XML amb les metadades dels expedients i dels documents associats, però el fitxer ZIP també conté el contingut dels fitxers vinculats amb els documents dels expedients.
+	
+**Important:** Si l’antivirus no ha pogut finalitzar l’anàlisi d’algun dels fitxers, la descàrrega dels expedients fallarà amb un codi d’error 1 - El contingut del fitxer està esperant a ser analitzat pel antivirus.
+
+### Petició <a name="peticio-modalitat-2-descarregar-metadades-i-fitxers-exp" id="peticio-modalitat-2-descarregar-metadades-i-fitxers-exp"></a>
+
+| **Element** | **Tipus paràmetre** | **Obligatori** | **Tipus camps** | **Mida màxima** | **Observacions** |
+| --- | --- | --- | --- | --- | --- |
+| uuidExpedient | Body | Sí | Llista | - | N/A |
+| codiINE | QueryParam | Sí | Text | 10 | N/A |
+| codiServei | QueryParam | Sí | Text | 10 | N/A |
+| modality | QueryParam | Sí | Número | - | Per a modalitat 2, indicar &quot;2&quot; |
+
+La URL corresponent a aquesta operació de l'API és:
+
+```javascript
+https://{{host}}/expedient/downloadExpedients?codiServei={{codiServei}}&codiINE={{codiINE}}&modality=2
+```
+
+El contingut de la petició quedaria: 
+
+```json
+{
+"uuidExpedient": ["4e2351aa-89d4-4c3f-b94d-5f137a02220c","717873d4-1632-432a-8bfc-c5837029c7a4"]
+}
+```
+
+
+### Resposta <a name="resposta-modalitat-2-descarregar-metadades-i-fitxers-exp" id="resposta-modalitat-2-descarregar-metadades-i-fitxers-exp"></a>
+
+```json
+{
+    "codiResposta": "0",
+    "descripcioResposta": "Operació realitzada correctament",
+    "idTicket": "9c92cfc2-7658-428b-9842-119946cc5061"
+}
+```
+
+### Exemple XML inclòs en el fitxer ZIP <a name="exemple-xml-inclos-en-el-fitxer-zip-exp" id="exemple-xml-inclos-en-el-fitxer-zip-exp"></a>
+
+![image](https://user-images.githubusercontent.com/32306731/155989879-e50e730e-c3af-4735-a6b8-08c3c8a80493.png)
+![image](https://user-images.githubusercontent.com/32306731/155989985-ed59544f-43b7-4dec-9877-2248690265e7.png)
+![image](https://user-images.githubusercontent.com/32306731/155990044-d60cac0d-c9ab-4e90-a09e-5aaf65256e71.png)
+
+
+
+### Codis de resposta <a name="codis-resposta-descarrega-dexpedients-en-format-zip" id="codis-resposta-descarrega-dexpedients-en-format-zip"></a>
+
+A continuació es detallen els possibles codis de resposta per a la descàrrega dels expedients en format ZIP:
+
+| **Codi** | **Missatge** |
+| --- | --- |
+| 0 | Operació realitzada correctament. |
+| 1 | Error: El contingut del fitxer està esperant a ser analitzat pel antivirus. |
+| 4 | Error: Petició mal formada. |
+| 10 | Error: no tens autorització per realitzar aquesta operació. Operació NO realitzada. |
+| 11 | Error: la petició no és correcta. Operació NO realitzada. |
+| 12 | Error: l&#39;expedient indicat no existeix en el servei i organisme indicats. Operació NO realitzada. |
 | 100 | Error no controlat: XXXXXX. Si us plau, reintenti l&#39;operació en uns minuts. Operació NO realitzada. |
 
 # 6 Capa Document <a name="6"></a>
