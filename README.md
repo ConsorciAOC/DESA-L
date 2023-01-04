@@ -1204,7 +1204,7 @@ Aquesta modalitat permet descarregar també un fitxer ZIP que conté els fitxers
 | uuidExpedient | Body | Sí | Llista | - | N/A |
 | codiINE | QueryParam | Sí | Text | 10 | N/A |
 | codiServei | QueryParam | Sí | Text | 10 | N/A |
-| modality | QueryParam | Sí | Número | - | Per a modalitat 2, indicar &quot;2&quot; |
+| modality | QueryParam | Sí | Número | - | Per a modalitat 2, indicar “2” |
 
 La URL corresponent a aquesta operació de l'API és:
 
@@ -1269,9 +1269,9 @@ Aquesta modalitat permet crear nous documents dins l'expedient.
 
 | **Element** | **Tipus paràmetre** | **Obligatori** | **Tipus camps** | **Mida màxima** | **Observacions** |
 | --- | --- | --- | --- | --- | --- |
-| codiServei | QueryParam | Sí | Text | 10 | -- | -- |
-| codiINE | QueryParam | Sí | Text | 10 | -- | -- |
-| modality | QueryParam | Sí | Text | 1 | -- | Per a modalitat 1, indicar “1” |
+| codiServei | QueryParam | Sí | Text | 10 | -- |
+| codiINE | QueryParam | Sí | Text | 10 | -- |
+| modality | QueryParam | Sí | Número | -- | Per a modalitat 1, indicar “1” |
 | uuidExpedient | Body | Sí | Text | -- | -- |
 | documents | Body | No | Llista | -- | -- |
 | identificador | Body | No | -- | 50 | N/A |
@@ -1445,9 +1445,9 @@ Aquesta modalitat permet afegir documents que ja existeixen dins l'expedient.
 
 | **Element** | **Tipus paràmetre** | **Obligatori** | **Tipus camps** | **Mida màxima** | **Observacions** |
 | --- | --- | --- | --- | --- | --- |
-| codiServei | QueryParam | Sí | Text | 10 | -- | -- |
-| codiINE | QueryParam | Sí | Text | 10 | -- | -- |
-| modality | QueryParam | Sí | Text | 1 | -- | Per a modalitat 2, indicar “2” |
+| codiServei | QueryParam | Sí | Text | 10 | -- |
+| codiINE | QueryParam | Sí | Text | 10 | -- |
+| modality | QueryParam | Sí | Text | -- | Per a modalitat 2, indicar “2” |
 | uuidExpedient | Body | Sí | Text | -- | -- |
 | uuidDocument | Body | No | Llista | -- | -- |
 
