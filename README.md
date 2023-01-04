@@ -97,6 +97,10 @@
 		- [Resposta](#resposta-cerca-documents)
 		- [Exemple de resposta](#exemple-resposta-cerca-documents)
 		- [Codis de resposta](#codis-resposta-cerca-documents)
+	- [6.7 Eliminació de Documents <a name="6.7"></a>](#eliminacio-documents)
+		- [Petició](#peticio-eliminacio-documents)
+		- [Resposta](#resposta-eliminacio-documents)
+		- [Codis de resposta](#codis-resposta-eliminacio-documents)
 
 
 # 1 Introducció <a name="1"></a>
@@ -1685,3 +1689,60 @@ A continuació es detallen els possibles codis de resposta per a l'operació de 
 | 4 | Error: Petició mal formada. |
 | 10 | Error: no tens autorització per realitzar aquesta operació. Operació NO realitzada. |
 | 100 | Error no controlat: XXXXXX. Si us plau, reintenti l&#39;operació en uns minuts. Operació NO realitzada. |
+
+## 6.7 Eliminació de Documents <a name="eliminacio-documents" id="eliminacio-documents"></a>
+
+Aquest mètode permet eliminar diversos documents, i en cascada, el propi fitxer associat si aquest només està referenciat per un únic document.
+
+**Important:** Si el servei integrador elimina un document i aquest està associat a un fitxer a través de la metadada UUIDFitxer, DESA&#39;L comprovarà si hi ha algun altre document que referenciï a aquest fitxer. En cas contrari, eliminarà el fitxer de forma irreversible.
+
+El següent diagrama mostra les 2 possibilitats amb les que es pot trobar DESA&#39;L en el moment d&#39;eliminar un document si aquest està associat amb un fitxer a través de la metadada _**UUIDFitxer**_:
+
+![image](https://user-images.githubusercontent.com/32306731/156012806-1f53e86f-c025-4fed-8a89-c89197aba8f3.png)
+
+### Petició
+
+| **Element** | **Tipus paràmetre** | **Obligatori** | **Tipus camps** | **Mida màxima** | **Observacions** |
+| --- | --- | --- | --- | --- | --- |
+| uuidDocument | Body | Sí | Llista | -- | -- |
+| codiINE | QueryParam | Sí | Text | 10 | -- |
+| codiServei | QueryParam | Sí | Text | 10 | -- |
+
+La URL corresponent a aquesta operació de l'API és:
+
+```javascript
+https://{{host}}/document/deleteDocuments?codiServei={{codiServei}}&codiINE={{codiINE}}
+```
+
+El contingut de la petició quedaria: 
+
+```json
+{
+"uuidDocument": ["1a6648d1-0e98-463f-93c4-cc468dbcd1e8","b6815ee4-b83f-4218-8240-54eae6be1d67"]
+}
+```
+
+### Resposta
+
+```json
+{
+    "codiResposta": "0",
+    "descripcioResposta": "Operació realitzada correctament"
+}
+```
+
+### Codis de resposta
+
+A continuació es detallen els possibles codis de resposta per l&#39;eliminació de documents (per al codi d&#39;error 11, XXXXXX especifica la metadada en qüestió i per al codi d&#39;error 100 XXXXXX ofereix més detalls de l&#39;error no controlat):
+
+| **Codi** | **Missatge** |
+| --- | --- |
+| 0 | Operació realitzada correctament. |
+| 4 | Error: Petició mal formada. |
+| 10 | Error: no tens autorització per realitzar aquesta operació. Operació NO realitzada. |
+| 11 | Error: la petició no és correcta. Hi ha metadades obligatòries sense informar o metadades informades no vàlides (XXXXXX). Operació NO realitzada. |
+| 12 | Error: el número d&#39;expedient indicat no existeix en el servei i organisme indicats. Operació NO realitzada. |
+| 13 | Error: el fitxer físic indicat no existeix. Operació NO realitzada. |
+| 14 | Error: el fitxer físic conté virus i ha estat eliminat. Operació NO realitzada. |
+| 100 | Error no controlat: XXXXXX. Si us plau, reintenti l&#39;operació en uns minuts. Operació NO realitzada. |
+| 101 | Error: el document físic indicat està en procés de validació. Si us plau, reintenta l&#39;operació en uns minuts. Operació NO realitzada. |
