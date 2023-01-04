@@ -1731,7 +1731,7 @@ El contingut de la petició quedaria:
 }
 ```
 
-### Codis de resposta <a name="codis-eliminacio-documents" id="codis-eliminacio-documents"></a>
+### Codis de resposta <a name="codis-resposta-eliminacio-documents" id="codis-resposta-eliminacio-documents"></a>
 
 A continuació es detallen els possibles codis de resposta per l&#39;eliminació de documents (per al codi d&#39;error 11, XXXXXX especifica la metadada en qüestió i per al codi d&#39;error 100 XXXXXX ofereix més detalls de l&#39;error no controlat):
 
