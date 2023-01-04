@@ -60,6 +60,12 @@
 		- [Petició](#petició-9)
 		- [Resposta](#resposta-8)
 		- [Codis de resposta](#codis-de-resposta-8)
+	- [5.8 Cerca d'Expedients](#cerca-expedients)
+		- [Petició](#peticio-cerca-expedients)
+		- [Exemple de petició](#exemple-peticio-cerca-expedients)
+		- [Resposta](#resposta-cerca-expedients)
+		- [Exemple de resposta](#exemple-resposta-cerca-expedients)
+		- [Codis de resposta](#codis-resposta-cerca-expedients)
 - [6 Capa Document <a name="6"></a>](#6-capa-document-)
 	- [6.1 Alta de Document <a name="6.1"></a>](#61-alta-de-document-)
 		- [Petició alta document basic](#petició-alta-document-basic)
@@ -85,6 +91,12 @@
 		- [Petició](#petició-11)
 		- [Resposta](#resposta-13)
 		- [Codis de resposta](#codis-de-resposta-13)
+	- [6.6 Cerca de Documents](#cerca-documents)
+		- [Petició](#peticio-cerca-doc)
+		- [Exemple de petició](#exemple-peticio-cerca-documents)
+		- [Resposta](#resposta-cerca-documents)
+		- [Exemple de resposta](#exemple-resposta-cerca-documents)
+		- [Codis de resposta](#codis-resposta-cerca-documents)
 
 
 # 1 Introducció <a name="1"></a>
@@ -835,6 +847,284 @@ A continuació es detallen els possibles codis de resposta per a la descàrrega 
 | 12 | Error: l&#39;expedient indicat no existeix en el servei i organisme indicats. Operació NO realitzada. |
 | 100 | Error no controlat: XXXXXX. Si us plau, reintenti l&#39;operació en uns minuts. Operació NO realitzada. |
 
+## 5.8 Cerca d'Expedients <a name="cerca-expedients" id="cerca-expedients"></a>
+
+Aquest mètode de l'API permet cercar tots aquells expedients que cumpleixen una sèrie de criteris de filtratge, informats a la petició.
+
+La cerca es realitzarà aplicant tots aquests criteris de filtratge de manera conjuntiva (logical AND). No es suporta la realització de cerques aplicant els criteris de manera disjuntiva (logical OR) o la construcció de consultes complexes combinant ambdues lògiques.
+
+El paràmetre _**modality**_ indica si la cerca ha de retornar únicament les metadades dels expedients o si també ha de generar les URL pre-signades necessàries per a poder descarregar el contingut dels fitxers associats a aquests (per a aquells documents amb _**contingut**_ = 1).
+
+Amb la finalitat de garantir el rendiment i protegir el servei davant de sobrecàrregues _**no es retornaran més de 100 resultats**_ per cerca.
+
+La URL corresponent a aquesta operació de l'API és:
+
+```javascript
+https://{{host}}/expedient/search?codiServei={{codiServei}}&codiINE={{codiINE}}&modality={{modalitat}}
+```
+
+### Petició <a name="peticio-cerca-expedients" id="peticio-cerca-expedients"></a>
+
+| **Element** | **Tipus paràmetre** | **Obligatori** | **Tipus camps** | **Observacions** |
+| --- | --- | --- | --- | --- |
+| codiINE | Query String | Si | Text | Codi d'organisme del requeridor |
+| codiServei | Query String | Si | Text | Codi de servei del requeridor |
+| modality | Query String | Si | Numèric | <ul><li>1 = només metadades</li><li>2 = metadades i URL pre-signades</li></ul> |
+| codiINE | Body | No | Text | -- |
+| codiServei | Body | No | Text | -- |
+| uuidExpedient | Body | No | Text | -- |
+| sensibilitatDadesCaracterPersonal | Body | No | Text | -- |
+| titol | Body | No | Text | -- |
+| descripcio | Body | No | Text | -- |
+| interessat | Body | No | Text | -- |
+| dataAlta | Body | No | Bloc | _[Veure 5.8.1](#5.8.1)_ |
+| dataAlta.inici | Body | No | Numèric | -- |
+| dataAlta.fi | Body | No | Numèric | -- |
+| dataInici | Body | No | Bloc | _[Veure 5.8.2](#5.8.2)_ |
+| dataInici.inici | Body | No | Numèric | -- |
+| dataInici.fi | Body | No | Numèric | -- |
+| dataFi | Body | No | Bloc | _[Veure 5.8.3](#5.8.3)_ |
+| dataFi.inici | Body | No | Numèric | -- |
+| dataFi.fi | Body | No | Numèric | -- |
+| usuari | Body | No | Text | -- |
+| unitatResponsable | Body | No | Text | -- |
+| codiClassificacio | Body | No | Text | -- |
+| nomClassificacio | Body | No | Text | -- |
+| nivellAcces | Body | No | Text | -- |
+| classificacioENS | Body | No | Text | -- |
+| codiSIA | Body | No | Text | -- |
+| infoAddicional | Body | No | Llista | _[Veure 5.8.4](#5.8.4)_ |
+| infoAddicional[].key | Body | No | Text | -- |
+| infoAddicional[].value | Body | No | Text | -- |
+| estatExpedient | Body | No | Text | -- |
+| versioNTI | Body | No | Text | -- |
+| identificador | Body | No | Text | -- |
+| organ | Body | No | Text | -- |
+| identificadorDesal | Body | No | Text | -- |
+| documents[] | Body | No | Llista | Llista d'identificadors de documents  _[Veure 5.8.5](#5.8.5)_ |
+
+> **_NOTA:_**  Per a la descripció dels camps dels expedients i el seu format consulteu l'apartat _[2.1](#2.1)_ d'aquest manual.
+
+##### Rang de dates d'alta <a name="5.8.1" id="5.8.1"></a>
+```json
+"dataAlta": {
+  "inici": 1652432260560,
+  "fi": 1652432264560
+},
+```
+
+##### Rang de dates d'inici <a name="5.8.2" id="5.8.2"></a>
+```json
+"dataInici": {
+  "inici": 1652432260560,
+  "fi": 1652432264560
+},
+```
+
+##### Rang de dates de fi <a name="5.8.3" id="5.8.3"></a>
+```json
+"dataFi": {
+  "inici": 1652432260560,
+  "fi": 1652432264560
+},
+```
+
+##### Info Addicional <a name="5.8.4" id="5.8.4"></a>
+```json
+"infoAddicional": [
+  {
+    "key": "clau_1",
+    "value": "valor_1"
+  }
+]
+```
+
+##### Llista d'identificadors de documents <a name="5.8.5" id="5.8.5"></a>
+```json
+"documents": [
+  "11111111-1111-1111-1111-111111111111",
+  "22222222-2222-2222-2222-222222222222"
+]
+```
+
+#### Exemple de petició <a name="exemple-peticio-cerca-expedients" id="exemple-peticio-cerca-expedients"></a> 
+```json
+{
+  "codiServei": "eVALISA",
+  "codiINE": "9821920002",
+  "dataAlta": {
+    "inici": 1658131385035,
+    "fi": 1658131405035
+  },
+  "dataInici": {
+    "inici": 1652432260560,
+    "fi": 1652432264560
+  },
+  "dataFi": {
+    "inici": 1652432250000,
+    "fi": 1652432270000
+  },
+  "infoAddicional": [
+    {
+      "key": "clau_1",
+    },
+    {
+      "value": "valor_1"
+    },
+    {
+      "key": "clau_3",
+      "value": "valor_3"
+    }
+  ],
+  "documents": [
+    "11111111-1111-1111-1111-111111111111",
+    "22222222-2222-2222-2222-222222222222"
+  ]
+}
+```
+### Resposta <a name="resposta-cerca-expedients" id="resposta-cerca-expedients"></a>
+
+| **Element** | **Tipus paràmetre** | **Tipus camps** | **Observacions** |
+| --- | --- | --- | --- |
+| totalResultats | Body | Text | -- |
+| resultatsRecuperats | Body | Text | -- |
+| codiResposta | Body | Text | -- |
+| descripcioResposta | Body | Text | -- |
+| expedients | Body | Llista | Llista d'expedients recuperats |
+
+> **_NOTA:_**  Per a la descripció dels camps dels expedients i el seu format consulteu l'apartat _[2.1](#2.1)_ d'aquest manual.
+
+#### Exemple de resposta <a name="exemple-resposta-cerca-expedients" id="exemple-resposta-cerca-expedients"></a>
+```json
+{
+  "totalResultats": 1,
+  "resultatsRecuperats": 1,
+  "codiResposta": "0",
+  "descripcioResposta": "Operació realitzada correctament",
+  "expedients": [
+    {
+      "codiServei": "eVALISA",
+      "codiINE": "9821920002",
+      "uuidExpedient": "ef820562-9c7d-4ce6-b7a2-f6c716780739",
+      "titol": "Aquest és el títol de l'expedient amb una mida de fins a 500 caràcters",
+      "dataInici": 1628846943000,
+      "dataFi": 1640991599000,
+      "usuari": "11111111H - Usuari Peticionari Navegador",
+      "unitatResponsable": "Unitat responsable de l'expedient amb una mida màxima de 250 caràcters",
+      "codiClassificacio": "Codi de Classificació",
+      "nomClassificacio": "Nom Classificació",
+      "nivellAcces": "C",
+      "sensibilitatDadesCaracterPersonal": "Basic",
+      "estatExpedient": "E02",
+      "interessat": [
+        "82828282S",
+        "X4687141V"
+      ],
+      "descripcio": "Aquesta és una descripció molt i molt llarga amb caràcters especials",
+      "infoAddicional": [
+        {
+          "key": "variableçÑ€%",
+          "value": "Paràmetre encoding conflictiu: çÑàa'()=?$€@ºª|!"
+        },
+        {
+          "key": "variable1Etiqueta",
+          "value": "Aquest és el literal"
+        }
+      ],
+      "dataAlta": 1665062001619,
+      "versioNTI": "http://administracionelectronica.gob.es/ENI/XSD/v1.0/documento-e",
+      "identificador": "Aquest és l'identificador de l'expedient",
+      "organ": "A09018933",
+      "documents": [
+        {
+          "presentCSV": false,
+          "uuidFitxer": "f48a8443-d739-491a-905e-c13e111c2920",
+          "codiINE": "9821920002",
+          "codiServei": "eVALISA",
+          "nomNatural": "Primer document creat",
+          "infoAddicional": [
+            {
+              "key": "Clau Document1",
+              "value": "Encoding conflictiu: çÑàa'()=?$€@ºª|!"
+            }
+          ],
+          "CSV": "9821920002061020222FD3E814B42D",
+          "formatFitxer": "plain/text",
+          "hash": "2CxqoTOg/CWwh/Rq1+0qMEJ3LmEuAVVx5hdT/1W6bag=",
+          "hashAlgoritme": "SHA-256",
+          "mida": 100,
+          "nomFitxer": "Primer document.pdf",
+          "dataAlta": 1665062001619,
+          "dataDocument": 1627131422000,
+          "contingut": "Fitxer",
+          "identificadorExpedientDesal": "ef820562-9c7d-4ce6-b7a2-f6c716780739",
+          "versioNTI": "http://administracionelectronica.gob.es/ENI/XSD/v1.0/documento-e",
+          "identificador": "ES_9821920002_2022_FBD38E4E-E2D4-4D27-B211-80229BF170FE",
+          "organ": "A09018933",
+          "estatElaboracio": "EE99",
+          "origen": true,
+          "tipusDocumental": "TD10",
+          "tipusSignatura": "TF06",
+          "interessat": [
+            "82828282S"
+          ],
+          "codiResposta": "0",
+          "uuidDocument": "fbd38e4e-e2d4-4d27-b211-80229bf170fe"
+        },
+        {
+          "presentCSV": false,
+          "codiINE": "9821920002",
+          "codiServei": "eVALISA",
+          "nomNatural": "Segon document creat dins l'expedient amb el JSON de càrrega d'expedient",
+          "sensibilitatDadesCaracterPersonal": "Alt",
+          "documentEssencial": false,
+          "idioma": "fr_FR",
+          "codiClassificacio": "Codi de Classificació inventat per SGP amb 50 chrs",
+          "nomClassificacio": "Nom Classificació inventat per SGP amb una longitud de 250",
+          "codiSIA": "SIA  inventat per SGP amb longitud de 50 caràcters",
+          "CSV": "9821920002061020226961679AE9B5",
+          "URLDocumentExtern": "https://www.URLExternaInventadaperSGP.com/234234a",
+          "dataAlta": 1665062001647,
+          "dataDocument": 1626269354000,
+          "contingut": "URL",
+          "identificadorExpedientDesal": "ef820562-9c7d-4ce6-b7a2-f6c716780739",
+          "versioNTI": "http://administracionelectronica.gob.es/ENI/XSD/v1.0/documento-e",
+          "identificador": "ES_9821920002_2022_EFEA840C-5287-407A-9924-BDAD2116BA7A",
+          "organ": "A09018933",
+          "estatElaboracio": "EE02",
+          "origen": false,
+          "tipusDocumental": "TD01",
+          "tipusSignatura": "TF01",
+          "CSVSignatura": "CSVSIG_1d8164ea-6a13-423c-9fde-5fa3e4288229",
+          "regulacioGeneracioCSVSignatura": "Sembla que la validació d'aquest camp es fa correctament. Aquest camp ha d'informar-se de forma obligatòria si el camp 'tipusSignatura' té el valor TF01.",
+          "identificadorDocumentOrigen": "06ca9170-9729-449c-bbc5-fe4c86e78cd8",
+          "tipusDocumentalSICRES": "03",
+          "descripcio": "Aquesta és una descripció molt i molt llarga amb caràcters especials ñÑçÇàÀüÜ{}[]()/&%$€·l'#ºª|!",
+          "nivellAcces": "B",
+          "classificacioENS": "Baix",
+          "usuari": "Nom Cognom1 Cognom2 del funcionari",
+          "numeroRegistre": "E/541412123/2021",
+          "codiResposta": "0",
+          "uuidDocument": "efea840c-5287-407a-9924-bdad2116ba7a"
+        }
+      ],
+      "classificacioENS": "Mig"
+    }
+  ]
+}
+```
+
+### Codis de Resposta <a name="codis-resposta-cerca-expedients" id="codis-resposta-cerca-expedients"></a>
+
+A continuació es detallen els possibles codis de resposta per a l'operació de cerca d'expedients:
+
+| **Codi** | **Missatge** |
+| --- | --- |
+| 0 | Operació realitzada correctament. |
+| 4 | Error: Petició mal formada. |
+| 10 | Error: no tens autorització per realitzar aquesta operació. Operació NO realitzada. |
+| 100 | Error no controlat: XXXXXX. Si us plau, reintenti l&#39;operació en uns minuts. Operació NO realitzada. |
+
 # 6 Capa Document <a name="6"></a>
 
 El document és l&#39;entitat essencial del DESA&#39;L. Està format per un conjunt de metadades i la relació amb un i només un fitxer de DESA&#39;L. DESA&#39;L també permet gestionar documents on el binari no es custodia al propi repositori del DESA&#39;L, sinó que està hostatjat en un repositori extern. En aquests casos al document de DESA&#39;L només es guarda la referència al repositori extern ja sigui a través d&#39;una URL externa o d&#39;un CSV del repositori extern.
@@ -1153,3 +1443,245 @@ A continuació es detallen els possibles codis de resposta per a la descàrrega 
 | 12 | Error: l&#39;expedient indicat no existeix en el servei i organisme indicats. Operació NO realitzada. |
 | 100 | Error no controlat: XXXXXX. Si us plau, reintenti l&#39;operació en uns minuts. Operació NO realitzada. |
 
+## 6.6 Cerca de Documents <a name="cerca-documents" id="cerca-documents"></a>
+
+Aquest mètode de l'API permet cercar tots aquells documents que cumpleixen una sèrie de criteris de filtratge, informats a la petició.
+
+La cerca es realitzarà aplicant tots aquests criteris de filtratge de manera conjuntiva (logical AND). No es suporta la realització de cerques aplicant els criteris de manera disjuntiva (logical OR) o la construcció de consultes complexes combinant ambdues lògiques.
+
+El paràmetre _**modality**_ indica si la cerca ha de retornar únicament les metadades dels documents o si per contra també ha de generar les URL pre-signades per a poder descarregar el contingut dels fitxers associats als documents (per a aquells documents amb tipus de _**contingut**_=1).
+
+Amb la finalitat de garantir el rendiment i protegir el servei davant de sobrecàrregues _**no es retornaran més de 100 resultats**_ per cerca.
+
+La URL corresponent a aquesta operació de l'API és:
+
+```javascript
+https://{{host}}/document/search?codiServei={{codiServei}}&codiINE={{codiINE}}&modality={{modalitat}}
+```
+
+### Petició <a name="peticio-cerca-doc" id="peticio-cerca-doc"></a>
+
+| **Element** | **Tipus paràmetre** | **Obligatori** | **Tipus camps** | **Observacions** |
+| --- | --- | --- | --- | --- |
+| codiINE | Query String | Si | Text | Codi d'organisme del requeridor |
+| codiServei | Query String | Si | Text | Codi de servei del requeridor |
+| modality | Query String | Si | Numèric | <ul><li>1 = només metadades</li><li>2 = metadades i URL pre-signades</li></ul> |
+| codiINE | Body | No | Text | -- |
+| codiServei | Body | No | Text | -- |
+| uuidDocument | Body | No | Text | -- |
+| sensibilitatDadesCaracterPersonal | Body | No | Text | -- |
+| documentEssencial | Body | No | Booleà | -- |
+| idioma | Body | No | Text | -- |
+| codiClassificacio | Body | No | Text | -- |
+| nomClassificacio | Body | No | Text | -- |
+| codiSIA | Body | No | Text | -- |
+| nomNatural | Body | No | Text | -- |
+| infoAddicional | Body | No | Llista | _[Veure 6.6.1](#6.6.1)_ |
+| infoAddicional[].key | Body | No | Text | -- |
+| infoAddicional[].value | Body | No | Text | -- |
+| CSV | Body | No | Text | -- |
+| formatFitxer | Body | No | Text | -- |
+| hash | Body | No | Base64 | -- |
+| hashAlgoritme | Body | No | Text | -- |
+| mida | Body | No | Bloc | _[Veure 6.6.2](#6.6.2)_ |
+| mida.de | Body | No | Numèric | -- |
+| mida.fins | Body | No | Numèric | -- |
+| nomFitxer | Body | No | Text | -- |
+| uuidFitxer | Body | No | Text | -- |
+| URLDocumentExtern | Body | No | Text | -- |
+| dataAlta | Body | No | Bloc | _[Veure 6.6.3](#6.6.3)_ |
+| dataAlta.inici | Body | No | Numèric | -- |
+| dataAlta.fi | Body | No | Numèric | -- |
+| dataDocument | Body | No | Bloc | _[Veure 6.6.4](#6.6.4)_ |
+| dataDocument.inici | Body | No | Numèric | -- |
+| dataDocument.fi | Body | No | Numèric | -- |
+| identificadorExpedientDesal | Body | No | Text | -- |
+| identificadorExpedientExtern | Body | No | Text | -- |
+| versioNTI | Body | No | Text | -- |
+| identificador | Body | No | Text | -- |
+| organ | Body | No | Text | -- |
+| estatElaboracio | Body | No | Text | -- |
+| origen | Body | No | Booleà | -- |
+| tipusDocumental | Body | No | Text | -- |
+| tipusSignatura | Body | No | Text | -- |
+| CSVSignatura | Body | No | Text | -- |
+| regulacioGeneracioCSVSignatura | Body | No | Text | -- |
+| referenciaSignatura | Body | No | Text | -- |
+| identificadorDocumentOrigen | Body | No | Text | -- |
+| tipusDocumentalSICRES | Body | No | Text | -- |
+| descripcio | Body | No | Text | -- |
+| nivellAcces | Body | No | Text | -- |
+| classificacioENS | Body | No | Text | -- |
+| identificadorDocumentExtern | Body | No | Text | -- |
+| interessat | Body | No | Text | -- |
+| usuari | Body | No | Text | -- |
+| numeroRegistre | Body | No | Text | -- |
+| contingut | Body | No | Text | -- |
+
+> **_NOTA:_**  Per a la descripció dels camps dels documents i el seu format consulteu l'apartat _[2.2](#2.2)_ d'aquest manual.
+
+##### Info Addicional <a name="6.6.1" id="6.6.1"></a>
+```json
+"infoAddicional": [
+  {
+    "key": "clau_1",
+    "value": "valor_1"
+  }
+]
+```
+
+##### Rang numèric <a name="6.6.2" id="6.6.2"></a>
+```json
+"mida": {
+  "de": 370000,
+  "fins": 375000
+}
+```
+
+##### Rang de dates d'alta <a name="6.6.3" id="6.6.3"></a>
+```json
+"dataAlta": {
+  "inici": 1652432260560,
+  "fi": 1652432264560
+},
+```
+
+##### Rang de dates de document <a name="6.6.4" id="6.6.4"></a>
+```json
+"dataDocument": {
+  "inici": 1652432260560,
+  "fi": 1652432264560
+},
+```
+
+#### Exemple de petició <a name="exemple-peticio-cerca-documents" id="exemple-peticio-cerca-documents"></a>
+```json
+{
+  "codiServei": "SERVEI",
+  "codiINE": "9821920002",
+  "interessat": "22222222R",
+  "nomNatural": "natural",
+  "dataAlta": {
+    "inici": 1652432260560,
+    "fi": 1652432264560
+  },
+  "dataDocument": {
+    "inici": 1652432250000,
+    "fi": 1652432270000
+  },
+  "infoAddicional": [
+    {
+      "key": "clau_1",
+      "value": "valor_1"
+    }
+  ],
+  "numeroRegistre": "E/999999-2022",
+  "CSVSignatura": "CSVSIG-1652432261048",
+  "CSV": "CSVFTX-1652432260985",
+  "identificadorExpedientExtern": "EXP/9999999/2022",
+  "uuidFitxer": "11111111-1111-1111-1111-111111111111",
+  "uuidDocument": "11111111-1111-1111-1111-111111111111"
+}
+```
+
+### Resposta <a name="resposta-cerca-documents" id="resposta-cerca-documents"></a>
+
+| **Element** | **Tipus paràmetre** | **Tipus camps** | **Observacions** |
+| --- | --- | --- | --- |
+| totalResultats | Body | Text | -- |
+| resultatsRecuperats | Body | Text | -- |
+| codiResposta | Body | Text | -- |
+| descripcioResposta | Body | Text | -- |
+| documents | Body | Llista | Llista de documents recuperats |
+
+> **_NOTA:_**  Per a la descripció dels camps dels documents i el seu format consulteu l'apartat _[2.2](#2.2)_ d'aquest manual.
+
+#### Exemple de resposta <a name="exemple-resposta-cerca-documents" id="exemple-resposta-cerca-documents"></a>
+```json
+{
+  "totalResultats": 2,
+  "resultatsRecuperats": 2,
+  "codiResposta": "0",
+  "descripcioResposta": "Operació realitzada correctament",
+  "documents": [
+    {
+      "uuidDocument": "11111111-1111-1111-1111-111111111111",
+      "uuidFitxer": "22222222-2222-2222-2222-222222222222",
+      "codiINE": "9610420002",
+      "codiServei": "eVALISA",
+      "nomNatural": "curs_prevencio_riscos",
+      "documentEssencial": false,
+      "idioma": "ca_ES",
+      "CSV": "961042000222022022C261HF1KRL8",
+      "formatFitxer": "application/pdf",
+      "hash": "AtCnNoXBWaHQtRuXtkYce1lgKUu+cMFDHdyJjHLaNMA=",
+      "hashAlgoritme": "SHA-256",
+      "mida": 346778,
+      "nomFitxer": "curs_prevencio_riscos.pdf",
+      "dataAlta": 1645529469000,
+      "dataDocument": 1645525800000,
+      "contingut": "1",
+      "identificadorExpedientDesal": "99999999-9999-9999-9999-999999999999",
+      "versioNTI": "http://administracionelectronica.gob.es/ENI/XSD/v1.0/documento-e",
+      "identificador": "ES_9610420002_2022_11111111-1111-1111-1111-111111111111",
+      "organ": "A09018799",
+      "estatElaboracio": "EE01",
+      "origen": true,
+      "tipusDocumental": "TD99",
+      "tipusSignatura": "TF01",
+      "CSVSignatura": "961042000222022022C261HF1KRL8",
+      "regulacioGeneracioCSVSignatura": "Resolució sobre l'ús del sistema de codi segur de verificació del Consorci AOC",
+      "tipusDocumentalSICRES": "02",
+      "nivellAcces": "E",
+      "codiResposta": "0",
+      "interessat": [],
+      "usuari": "66666667V"
+    },
+    {
+      "uuidDocument": "22222222-2222-2222-2222-222222222222",
+      "uuidFitxer": "33333333-3333-3333-3333-333333333333",
+      "codiINE": "9610420002",
+      "codiServei": "eVALISA",
+      "nomNatural": "curs_prevencio_riscos",
+      "documentEssencial": false,
+      "idioma": "ca_ES",
+      "infoAddicional": [],
+      "CSV": "9610420002220220227S3708IDS7CK",
+      "formatFitxer": "application/pdf",
+      "hash": "AtCnNoXBWaHQtRuXtkYce1lgKUu+cMFDHdyJjHLaNMA=",
+      "hashAlgoritme": "SHA-256",
+      "mida": 346778,
+      "nomFitxer": "curs_prevencio_riscos.pdf",
+      "dataAlta": 1645528888000,
+      "dataDocument": 1645525260000,
+      "contingut": "1",
+      "identificadorExpedientDesal": "99999999-9999-9999-9999-999999999999",
+      "versioNTI": "http://administracionelectronica.gob.es/ENI/XSD/v1.0/documento-e",
+      "identificador": "ES_9610420002_2022_22222222-2222-2222-2222-222222222222",
+      "organ": "A09018799",
+      "estatElaboracio": "EE01",
+      "origen": true,
+      "tipusDocumental": "TD99",
+      "tipusSignatura": "TF01",
+      "CSVSignatura": "9610420002220220227S3708IDS7CK",
+      "regulacioGeneracioCSVSignatura": "Resolució sobre l'ús del sistema de codi segur de verificació del Consorci AOC",
+      "tipusDocumentalSICRES": "02",
+      "nivellAcces": "E",
+      "codiResposta": "0",
+      "interessat": ["11111111H"],
+      "usuari": "33333334D"
+    }
+  ]
+}
+```
+
+### Codis de Resposta <a name="codis-resposta-cerca-documents" id="codis-resposta-cerca-documents"></a>
+
+A continuació es detallen els possibles codis de resposta per a l'operació de cerca de documents:
+
+| **Codi** | **Missatge** |
+| --- | --- |
+| 0 | Operació realitzada correctament. |
+| 4 | Error: Petició mal formada. |
+| 10 | Error: no tens autorització per realitzar aquesta operació. Operació NO realitzada. |
+| 100 | Error no controlat: XXXXXX. Si us plau, reintenti l&#39;operació en uns minuts. Operació NO realitzada. |
