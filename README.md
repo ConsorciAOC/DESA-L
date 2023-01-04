@@ -1447,7 +1447,7 @@ Aquesta modalitat permet afegir documents que ja existeixen dins l'expedient.
 | --- | --- | --- | --- | --- | --- |
 | codiServei | QueryParam | Sí | Text | 10 | -- |
 | codiINE | QueryParam | Sí | Text | 10 | -- |
-| modality | QueryParam | Sí | Text | -- | Per a modalitat 2, indicar “2” |
+| modality | QueryParam | Sí | Número | -- | Per a modalitat 2, indicar “2” |
 | uuidExpedient | Body | Sí | Text | -- | -- |
 | uuidDocument | Body | No | Llista | -- | -- |
 
