@@ -1700,7 +1700,7 @@ El següent diagrama mostra les 2 possibilitats amb les que es pot trobar DESA&#
 
 ![image](https://user-images.githubusercontent.com/32306731/156012806-1f53e86f-c025-4fed-8a89-c89197aba8f3.png)
 
-### Petició
+### Petició <a name="peticio-eliminacio-documents" id="peticio-eliminacio-documents"></a>
 
 | **Element** | **Tipus paràmetre** | **Obligatori** | **Tipus camps** | **Mida màxima** | **Observacions** |
 | --- | --- | --- | --- | --- | --- |
@@ -1722,7 +1722,7 @@ El contingut de la petició quedaria:
 }
 ```
 
-### Resposta
+### Resposta <a name="resposta-eliminacio-documents" id="resposta-eliminacio-documents"></a>
 
 ```json
 {
@@ -1731,7 +1731,7 @@ El contingut de la petició quedaria:
 }
 ```
 
-### Codis de resposta
+### Codis de resposta <a name="codis-eliminacio-documents" id="codis-eliminacio-documents"></a>
 
 A continuació es detallen els possibles codis de resposta per l&#39;eliminació de documents (per al codi d&#39;error 11, XXXXXX especifica la metadada en qüestió i per al codi d&#39;error 100 XXXXXX ofereix més detalls de l&#39;error no controlat):
 
