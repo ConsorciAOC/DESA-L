@@ -8,8 +8,8 @@
 	- [1.1	Definició de nomenclatura de DESA’L <a name="1.1"></a>](#11definició-de-nomenclatura-de-desal-)
 - [2 Model de Metadades <a name="2"></a>](#2-model-de-metadades-)
 	- [2.1 Metadades de fitxer <a name="2.1"></a>](#21-metadades-de-fitxer-)
-	- [2.1	Metadades d'expedient <a name="2.1"></a>](#21metadades-dexpedient-)
-	- [2.2 Metadades de Document <a name="2.2"></a>](#22-metadades-de-document-)
+	- [2.2	Metadades d'expedient <a name="2.2"></a>](#22metadades-dexpedient-)
+	- [2.3 Metadades de Document <a name="2.3"></a>](#23-metadades-de-document-)
 - [3 Autenticació <a name="3"></a>](#3-autenticació-)
 	- [3.1	Mètode d’autenticació <a name="3.1"></a>](#31mètode-dautenticació-)
 	- [3.2	Permisologia DESA’L - Model de Control <a name="3.2"></a>](#32permisologia-desal---model-de-control-)
@@ -198,7 +198,7 @@ A continuació es presenten els diferents models de metadades que utilitza DESA�
 | **CodiINE** | Obligatori | 10 | Text | -- | -- | -- | Aplicació que s'integra | No | No | No | N/A | N/A | N/A | Codi INE de l'ens propietari del fitxer |
 | **CodiServei** | Obligatori | 10 | Text | -- | -- | -- | Aplicació que s'integra | No | No | No | N/A | N/A | N/A | Codi del servei propietari del fitxer |
 | **NomFitxer** | Obligatori | 250 | Text | -- | NombreFichero | nomFitxer | Aplicació que s'integra | No | No | No | N/A | N/A | N/A | Nom del fitxer incloent l’extensió |
-| **Mida** | Obligatori | 500 | Text | 	Validar que no sigui superior a 4,2GB | TamanoLogico | Mida | Aplicació que s'integra | No | No | No | N/A | N/A | N/A | És necessari informar la mida del fitxer per generar correctament la URL pre-signada per a fer la càrrega del binari a S3 |
+| **Mida** | Obligatori | 500 | Text | 	Validar que no sigui superior a 4,2GB | TamanoLogico | Mida | Aplicació que s'integra | No | No | No | N/A | N/A | N/A | És necessari informar la mida del fitxer per generar correctament l'URL pre-signada per a fer la càrrega del binari a S3 |
 | **FormatFitxer** | Opcional | 200 | Text | Disposem de la llista de tots els tipus acceptats | NombreFormato | tipusMIME | Aplicació que s'integra | Si | No | No | N/A | N/A | No | -- |
 | -- | --| --| --| -- | -- | -- | **METADADES QUE CREA DESA'L AUTOMÀTICAMENT** | -- | --| -- | -- | -- | -- | -- |
 | **UUIDFitxer** | Obligatori | 20 | Text | -- | SecuenciaIdentificador | --  | DESA'L | Si | Si | No | N/A | N/A | No | Identificador únic del fitxer  |
@@ -210,7 +210,7 @@ A continuació es presenten els diferents models de metadades que utilitza DESA�
 | **Estat** | Obligatori | -- | Text | -- | -- | -- | DESA'L | Si | No | No | N/A | N/A | N/A | Aquest camp serveix per controlar l'estat del fitxer: <ul><li>- pendent (el fitxer s'està analitzant: virus, càlcul hash, etc)</li><li>- acceptat (ha passat totes les validacions i ja es pot utilitzar)</li><li>- rebutjat (no ha passat els controls)</li></ul> |
 
 
-## 2.1	Metadades d'expedient <a name="2.1"></a>
+## 2.2	Metadades d'expedient <a name="2.2"></a>
 
 
 | **Nom element** | **Consignació** | **Longitud** | **Tipus de  camp** | **Equivalencia ENI** | **Qui l'informa** | **Automàtic** | **Únic** | **Repetitiu**  | **Indexable** | **Cercable** | **Modificable en edició** | **Observacions** |
@@ -255,7 +255,7 @@ A continuació detallem les diferents metadades i la seva definició per Exporta
 |**interesado**|	Opcional|--|	 	Text	|DESA'L	|Interessat	|DESA'L	|Si|	Si|	N/A	|N/A	|--| 
 
 
-## 2.2 Metadades de Document <a name="2.2"></a>
+## 2.3 Metadades de Document <a name="2.3"></a>
 
 DESA’L disposa de 2 models de metadades per als documents: el model bàsic i el model complet. Cada servei integrador utilitzarà un i només un d’aquests 2 models per a tots els documents que generi. Un cop donat d’alta el servei i definit el model de metadades dels seus documents no es podrà canviar de model. D’aquesta forma en el moment de crear el document aquest  heretarà el model de metadades que ha d’utilitzar en funció del servei propietari al que pertanyi i aquest model de metadades es mantindrà al llarg de tot el seu cicle de vida (és a dir no podrà canviar de cap manera el model de metadades d’un document un cop aquest hagi estat creat).
 
@@ -410,7 +410,7 @@ Cal destacar que tot i que DESA’L podria arribar a permetre el seu ús com a s
 
 ## 4.1 Càrrega de fitxer <a name="4.1"></a>
 
-La càrrega d’un fitxer a DESA’L s’ha de realitzar en 2 passos. Inicialment l’integrador ha d’executar el mètode de càrrega de fitxer del DESA’L per tal d’obtenir la URL presignada de S3 i a continuació haurà de realitzar la posterior càrrega del fitxer al bucket de S3 de DESA’L a partir d’aquesta URL.
+La càrrega d’un fitxer a DESA’L s’ha de realitzar en 2 passos. Inicialment l’integrador ha d’executar el mètode de càrrega de fitxer del DESA’L per tal d’obtenir l'URL presignada de S3 i a continuació haurà de realitzar la posterior càrrega del fitxer al bucket de S3 de DESA’L a partir d’aquesta URL.
 
 DESA’L té un límit de mida de fitxer màxim de 4.2GB. Si s’intenta carregar un fitxer més gran, DESA’L retornarà un codi d’error i no permetrà la càrrega.
 
@@ -458,7 +458,7 @@ A continuació es detallen els possibles codis d&#39;error per càrrega de fitxe
 
 ## 4.2 Descàrrega de fitxer <a name="4.1"></a>
 
-Aquest mètode permet demanar la descàrrega d’un fitxer allotjat al repositori documental del DESA’L, sempre i quan aquest fitxer no estigui encara referenciat per cap document de DESA’L. La descarrega d’un fitxer es farà també en 2 passos: una primera petició síncrona a a l’API de DESA’L que a partir de l’UUIDFitxer retornarà l’URL presignada de S3 i a continuació la descàrrega pròpiament del binari a partir de la URL presignada de S3. 
+Aquest mètode permet demanar la descàrrega d’un fitxer allotjat al repositori documental del DESA’L, sempre i quan aquest fitxer no estigui encara referenciat per cap document de DESA’L. La descarrega d’un fitxer es farà també en 2 passos: una primera petició síncrona a a l’API de DESA’L que a partir de l’UUIDFitxer retornarà l’URL presignada de S3 i a continuació la descàrrega pròpiament del binari a partir de l'URL presignada de S3. 
 
 **Important:** la descàrrega de fitxer només es pot executar mentre el fitxer no estigui referenciat per un document de DESA&#39;L. Un cop el fitxer estigui vinculat a un document, la recuperació només es podrà fer a través dels mètodes de document (p. ex. _ **6.4Descarregar Document** _)
 
@@ -724,7 +724,7 @@ Aquest mètode asíncron permet obtenir i descarregar en un fitxer ZIP les metad
 
 La descàrrega d&#39;expedients es pot realitzar independentment de l&#39;estat en que es trobi l&#39;expedient.
 
-Tal i com indiquem, la descàrrega d&#39;expedient es un procés asíncron. La resposta d&#39;aquesta petició asíncrona retorna un codi de tiquet que ens servirà per poder consultar l&#39;estat de la descàrrega i obtenir la URL de descàrrega del fitxer ZIP tan bon punt estigui disponible. Per poder saber si el fitxer ZIP ja està disponible, DESA&#39;L ofereix el mètode _ **5.6Consulta ticket** _ que permet obtenir la URL presignada per tal que l&#39;integrador pugui descarregar el zip. Aquesta URL presignada té un temps d&#39;expiració d&#39;una hora, passat aquest temps no serà vàlida i s&#39;haurà de tornar a realitzar una petició.
+Tal i com indiquem, la descàrrega d&#39;expedient es un procés asíncron. La resposta d&#39;aquesta petició asíncrona retorna un codi de tiquet que ens servirà per poder consultar l&#39;estat de la descàrrega i obtenir l'URL de descàrrega del fitxer ZIP tan bon punt estigui disponible. Per poder saber si el fitxer ZIP ja està disponible, DESA&#39;L ofereix el mètode _ **5.6Consulta ticket** _ que permet obtenir l'URL presignada per tal que l&#39;integrador pugui descarregar el zip. Aquesta URL presignada té un temps d&#39;expiració d&#39;una hora, passat aquest temps no serà vàlida i s&#39;haurà de tornar a realitzar una petició.
 
 ### Modalitat 1: Descarregar metadades
 
@@ -790,9 +790,9 @@ A continuació es detallen els possibles codis de resposta per a la descàrrega 
 
 ## 5.6 Consulta estat ticket <a name="5.6"></a>
 
-Per obtenir la URL del fitxer ZIP dels mètodes asíncrons de l&#39;API de DESA&#39;L com la descàrrega d&#39;expedient en format ZIP, la descàrrega d&#39;expedient en format ENI o la descàrrega de document en format ENI, l&#39;integrador haurà de realitzar un polling sobre el mètode de consulta de l&#39;estat del ticket que retornen aquests mètodes asíncrons.
+Per obtenir l'URL del fitxer ZIP dels mètodes asíncrons de l&#39;API de DESA&#39;L com la descàrrega d&#39;expedient en format ZIP, la descàrrega d&#39;expedient en format ENI o la descàrrega de document en format ENI, l&#39;integrador haurà de realitzar un polling sobre el mètode de consulta de l&#39;estat del ticket que retornen aquests mètodes asíncrons.
 
-En el moment en que el fitxer ZIP estigui disponible, el mètode de consulta d&#39;estat del ticket retornarà la URL al fitxer ZIP. Si pel contrari el fitxer ZIP encara no està disponible.
+En el moment en que el fitxer ZIP estigui disponible, el mètode de consulta d&#39;estat del ticket retornarà l'URL al fitxer ZIP. Si pel contrari el fitxer ZIP encara no està disponible.
 
 ### Petició
 
@@ -870,7 +870,7 @@ A continuació es detallen els possibles codis de resposta per a la descàrrega 
 
 ## 5.8 Cerca d'Expedients <a name="cerca-expedients" id="cerca-expedients"></a>
 
-Aquest mètode de l'API permet cercar tots aquells expedients que cumpleixen una sèrie de criteris de filtratge, informats a la petició.
+Aquest mètode de l'API permet cercar tots aquells expedients que compleixen una sèrie de criteris de filtratge, informats a la petició.
 
 La cerca es realitzarà aplicant tots aquests criteris de filtratge de manera conjuntiva (logical AND). No es suporta la realització de cerques aplicant els criteris de manera disjuntiva (logical OR) o la construcció de consultes complexes combinant ambdues lògiques.
 
@@ -878,7 +878,7 @@ El paràmetre _**modality**_ indica si la cerca ha de retornar únicament les me
 
 Amb la finalitat de garantir el rendiment i protegir el servei davant de sobrecàrregues _**no es retornaran més de 100 resultats**_ per cerca.
 
-La URL corresponent a aquesta operació de l'API és:
+L'URL corresponent a aquesta operació de l'API és:
 
 ```javascript
 https://{{host}}/expedient/search?codiServei={{codiServei}}&codiINE={{codiINE}}&modality={{modalitat}}
@@ -924,7 +924,7 @@ https://{{host}}/expedient/search?codiServei={{codiServei}}&codiINE={{codiINE}}&
 | identificadorDesal | Body | No | Text | -- |
 | documents[] | Body | No | Llista | Llista d'identificadors de documents  _[Veure 5.8.5](#5.8.5)_ |
 
-> **_NOTA:_**  Per a la descripció dels camps dels expedients i el seu format consulteu l'apartat _[2.1](#2.1)_ d'aquest manual.
+> **_NOTA:_**  Per a la descripció dels camps dels expedients i el seu format consulteu l'apartat _[2.2](#2.2)_ d'aquest manual.
 
 ##### Rang de dates d'alta <a name="5.8.1" id="5.8.1"></a>
 ```json
@@ -1013,7 +1013,7 @@ https://{{host}}/expedient/search?codiServei={{codiServei}}&codiINE={{codiINE}}&
 | descripcioResposta | Body | Text | -- |
 | expedients | Body | Llista | Llista d'expedients recuperats |
 
-> **_NOTA:_**  Per a la descripció dels camps dels expedients i el seu format consulteu l'apartat _[2.1](#2.1)_ d'aquest manual.
+> **_NOTA:_**  Per a la descripció dels camps dels expedients i el seu format consulteu l'apartat _[2.2](#2.2)_ d'aquest manual.
 
 #### Exemple de resposta <a name="exemple-resposta-cerca-expedients" id="exemple-resposta-cerca-expedients"></a>
 ```json
@@ -1152,7 +1152,7 @@ Aquest mètode asíncron permet obtenir i descarregar en un fitxer ZIP les metad
 
 La descàrrega d&#39;expedients es pot realitzar independentment de l&#39;estat en que es trobi l&#39;expedient.
 
-Tal i com indiquem, la descàrrega d&#39;expedients es un procés asíncron. La resposta d&#39;aquesta petició asíncrona retorna un codi de tiquet que ens servirà per poder consultar l&#39;estat de la descàrrega i obtenir la URL de descàrrega del fitxer ZIP tan bon punt estigui disponible. Per poder saber si el fitxer ZIP ja està disponible, DESA&#39;L ofereix el mètode _ **5.6Consulta ticket** _ que permet obtenir la URL presignada per tal que l&#39;integrador pugui descarregar el zip. Aquesta URL presignada té un temps d&#39;expiració d&#39;una hora, passat aquest temps no serà vàlida i s&#39;haurà de tornar a realitzar una petició.
+Tal i com indiquem, la descàrrega d&#39;expedients es un procés asíncron. La resposta d&#39;aquesta petició asíncrona retorna un codi de tiquet que ens servirà per poder consultar l&#39;estat de la descàrrega i obtenir l'URL de descàrrega del fitxer ZIP tan bon punt estigui disponible. Per poder saber si el fitxer ZIP ja està disponible, DESA&#39;L ofereix el mètode _ **5.6Consulta ticket** _ que permet obtenir l'URL presignada per tal que l&#39;integrador pugui descarregar el zip. Aquesta URL presignada té un temps d&#39;expiració d&#39;una hora, passat aquest temps no serà vàlida i s&#39;haurà de tornar a realitzar una petició.
 
 ### Modalitat 1: Descarregar metadades <a name="modalitat-1-descarregar-metadades-exp" id="modalitat-1-descarregar-metadades-exp"></a>
 
@@ -1167,7 +1167,7 @@ Aquesta modalitat permet descarregar un fitxer ZIP que conté els fitxers XML am
 | codiServei | QueryParam | Sí | Text | 10 | N/A |
 | modality | QueryParam | Sí | Número | -- | Per a modalitat 1, indicar “1” |
 
-La URL corresponent a aquesta operació de l'API és:
+L'URL corresponent a aquesta operació de l'API és:
 
 ```javascript
 https://{{host}}/expedient/downloadExpedients?codiServei={{codiServei}}&codiINE={{codiINE}}&modality=1
@@ -1206,7 +1206,7 @@ Aquesta modalitat permet descarregar també un fitxer ZIP que conté els fitxers
 | codiServei | QueryParam | Sí | Text | 10 | N/A |
 | modality | QueryParam | Sí | Número | - | Per a modalitat 2, indicar “2” |
 
-La URL corresponent a aquesta operació de l'API és:
+L'URL corresponent a aquesta operació de l'API és:
 
 ```javascript
 https://{{host}}/expedient/downloadExpedients?codiServei={{codiServei}}&codiINE={{codiINE}}&modality=2
@@ -1290,7 +1290,7 @@ Aquesta modalitat permet crear nous documents dins l'expedient.
 | descripció | Body | No | Text | 500 | N/A |
 | infoAddicional | Body | No | Llista | -- | Llista de literals |
 
-La URL corresponent a aquesta operació de l'API és:
+L'URL corresponent a aquesta operació de l'API és:
 
 ```javascript
 https://{{host}}/expedient/addDocuments?codiServei={{codiServei}}&codiINE={{codiINE}}&modality=1
@@ -1451,7 +1451,7 @@ Aquesta modalitat permet afegir documents que ja existeixen dins l'expedient.
 | uuidExpedient | Body | Sí | Text | -- | -- |
 | uuidDocument | Body | No | Llista | -- | -- |
 
-La URL corresponent a aquesta operació de l'API és:
+L'URL corresponent a aquesta operació de l'API és:
 
 ```javascript
 https://{{host}}/expedient/addDocuments?codiServei={{codiServei}}&codiINE={{codiINE}}&modality=2
@@ -1825,7 +1825,7 @@ A continuació es detallen els possibles codis de resposta per a la descàrrega 
 
 ## 6.6 Cerca de Documents <a name="cerca-documents" id="cerca-documents"></a>
 
-Aquest mètode de l'API permet cercar tots aquells documents que cumpleixen una sèrie de criteris de filtratge, informats a la petició.
+Aquest mètode de l'API permet cercar tots aquells documents que compleixen una sèrie de criteris de filtratge, informats a la petició.
 
 La cerca es realitzarà aplicant tots aquests criteris de filtratge de manera conjuntiva (logical AND). No es suporta la realització de cerques aplicant els criteris de manera disjuntiva (logical OR) o la construcció de consultes complexes combinant ambdues lògiques.
 
@@ -1833,7 +1833,7 @@ El paràmetre _**modality**_ indica si la cerca ha de retornar únicament les me
 
 Amb la finalitat de garantir el rendiment i protegir el servei davant de sobrecàrregues _**no es retornaran més de 100 resultats**_ per cerca.
 
-La URL corresponent a aquesta operació de l'API és:
+L'URL corresponent a aquesta operació de l'API és:
 
 ```javascript
 https://{{host}}/document/search?codiServei={{codiServei}}&codiINE={{codiINE}}&modality={{modalitat}}
@@ -1898,7 +1898,7 @@ https://{{host}}/document/search?codiServei={{codiServei}}&codiINE={{codiINE}}&m
 | numeroRegistre | Body | No | Text | -- |
 | contingut | Body | No | Text | -- |
 
-> **_NOTA:_**  Per a la descripció dels camps dels documents i el seu format consulteu l'apartat _[2.2](#2.2)_ d'aquest manual.
+> **_NOTA:_**  Per a la descripció dels camps dels documents i el seu format consulteu l'apartat _[2.3](#2.3)_ d'aquest manual.
 
 ##### Info Addicional <a name="6.6.1" id="6.6.1"></a>
 ```json
@@ -1974,7 +1974,7 @@ https://{{host}}/document/search?codiServei={{codiServei}}&codiINE={{codiINE}}&m
 | descripcioResposta | Body | Text | -- |
 | documents | Body | Llista | Llista de documents recuperats |
 
-> **_NOTA:_**  Per a la descripció dels camps dels documents i el seu format consulteu l'apartat _[2.2](#2.2)_ d'aquest manual.
+> **_NOTA:_**  Per a la descripció dels camps dels documents i el seu format consulteu l'apartat _[2.3](#2.3)_ d'aquest manual.
 
 #### Exemple de resposta <a name="exemple-resposta-cerca-documents" id="exemple-resposta-cerca-documents"></a>
 ```json
@@ -2084,7 +2084,7 @@ El següent diagrama mostra les 2 possibilitats amb les que es pot trobar DESA&#
 | codiINE | QueryParam | Sí | Text | 10 | -- |
 | codiServei | QueryParam | Sí | Text | 10 | -- |
 
-La URL corresponent a aquesta operació de l'API és:
+L'URL corresponent a aquesta operació de l'API és:
 
 ```javascript
 https://{{host}}/document/deleteDocuments?codiServei={{codiServei}}&codiINE={{codiINE}}
