@@ -56,7 +56,7 @@
 		- [Resposta pendent](#resposta-pendent)
 		- [Resposta disponible](#resposta-disponible)
 		- [Codis de resposta](#codis-de-resposta-7)
-	- [5.7 Descarrega d&#39;Expedient en format ENI <a name="5.7"></a>](#57-descarrega-dexpedient-en-format-eni-)
+	- [5.7 Descàrrega d&#39;Expedient en format ENI <a name="5.7"></a>](#57-descarrega-dexpedient-en-format-eni-)
 		- [Petició](#petició-9)
 		- [Resposta](#resposta-8)
 		- [Codis de resposta](#codis-de-resposta-8)
@@ -98,13 +98,13 @@
 		- [Petició](#petició-10)
 		- [Resposta](#resposta-10)
 		- [Codis de resposta](#codis-de-resposta-11)
-	- [6.4 Descarrega Document <a name="6.4"></a>](#64-descarrega-document-)
-		- [Petició Modalitat 1: Descarrega Document](#petició-modalitat-1-descarrega-document)
+	- [6.4 Descàrrega Document <a name="6.4"></a>](#64-descarrega-document-)
+		- [Petició Modalitat 1: Descàrrega Document](#petició-modalitat-1-descarrega-document)
 		- [Resposta](#resposta-11)
-		- [Petició Modalitat 2: Descarrega Document i contingut (fitxer)](#petició-modalitat-2-descarrega-document-i-contingut-fitxer)
+		- [Petició Modalitat 2: Descàrrega Document i contingut (fitxer)](#petició-modalitat-2-descarrega-document-i-contingut-fitxer)
 		- [Resposta](#resposta-12)
 		- [Codis de resposta](#codis-de-resposta-12)
-	- [6.5 Descarrega Document en format ENI <a name="6.5"></a>](#65-descarrega-document-en-format-eni-)
+	- [6.5 Descàrrega Document en format ENI <a name="6.5"></a>](#65-descarrega-document-en-format-eni-)
 		- [Petició](#petició-11)
 		- [Resposta](#resposta-13)
 		- [Codis de resposta](#codis-de-resposta-13)
@@ -397,7 +397,7 @@ A continuació es descriu en detall la capa de fitxers que DESA’L ofereix als 
 
 La càrrega o descàrrega dels binaris dels fitxers es farà sempre a través de l’assignació d’una URL presignada d’S3 amb un temps d’expiració d’una hora. Passat aquest temps, l’URL presignada deixarà d’estar disponible i s’haurà de negociar una de nova amb DESA’L.
 
-La capa de fitxer disposa únicament de 2 mètodes carregar fitxer i descarregar fitxer, tot i que el mètode de descarrega fitxer només estarà disponible mentre el fitxer no estigui vinculat a cap document. En cas d’estar vinculat a un document, la descàrrega del fitxer s’haurà de realitzar través del mètode de descàrrega de document que es detalla a l’apartat _**6.4 Descarregar Document**_.
+La capa de fitxer disposa únicament de 2 mètodes carregar fitxer i descarregar fitxer, tot i que el mètode descàrrega fitxer només estarà disponible mentre el fitxer no estigui vinculat a cap document. En cas d’estar vinculat a un document, la descàrrega del fitxer s’haurà de realitzar través del mètode de descàrrega de document que es detalla a l’apartat _**6.4 Descarregar Document**_.
 
 
 **Important:** la capa de fitxer de DESA’L no disposa de cap política de permisos o autoritzacions. Qualsevol integrador que conegui un UUIDFitxer podrà descarregar aquest fitxer fins que el fitxer es vinculi a un document. Aquesta decisió de disseny ve determinada per garantir la política de permisos del model de control.
@@ -458,7 +458,7 @@ A continuació es detallen els possibles codis d&#39;error per càrrega de fitxe
 
 ## 4.2 Descàrrega de fitxer <a name="4.1"></a>
 
-Aquest mètode permet demanar la descàrrega d’un fitxer allotjat al repositori documental del DESA’L, sempre i quan aquest fitxer no estigui encara referenciat per cap document de DESA’L. La descarrega d’un fitxer es farà també en 2 passos: una primera petició síncrona a a l’API de DESA’L que a partir de l’UUIDFitxer retornarà l’URL presignada de S3 i a continuació la descàrrega pròpiament del binari a partir de l'URL presignada de S3. 
+Aquest mètode permet demanar la descàrrega d’un fitxer allotjat al repositori documental del DESA’L, sempre i quan aquest fitxer no estigui encara referenciat per cap document de DESA’L. La descàrrega d’un fitxer es farà també en 2 passos: una primera petició síncrona a a l’API de DESA’L que a partir de l’UUIDFitxer retornarà l’URL presignada de S3 i a continuació la descàrrega pròpiament del binari a partir de l'URL presignada de S3. 
 
 **Important:** la descàrrega de fitxer només es pot executar mentre el fitxer no estigui referenciat per un document de DESA&#39;L. Un cop el fitxer estigui vinculat a un document, la recuperació només es podrà fer a través dels mètodes de document (p. ex. _ **6.4Descarregar Document** _)
 
@@ -830,7 +830,7 @@ A continuació es detallen els possibles codis de resposta per a la modificació
 | 11 | Error: la petició no és correcta (XXXXXX). Operació NO realitzada. |
 | 100 | Error no controlat: XXXXXX. Si us plau, reintenti l`operació en uns minuts. Operació NO realitzada. |
 	
-## 5.7 Descarrega d&#39;Expedient en format ENI <a name="5.7"></a>
+## 5.7 Descàrrega d&#39;Expedient en format ENI <a name="5.7"></a>
 
 Aquest mètode asíncron permet obtenir i descarregar l&#39;expedient en format ENI (Esquema Nacional de Interoperabilidad) per poder exportar-ho i compartir-ho amb tercers. Les especificacions del format ENI per a expedients estan disponibles al següent enllaç:
 
@@ -1733,11 +1733,68 @@ A continuació es detallen els possibles codis de resposta per l&#39;eliminació
 | 100 | Error no controlat: XXXXXX. Si us plau, reintenti l&#39;operació en uns minuts. Operació NO realitzada. |
 | 101 | Error: el document físic indicat està en procés de validació. Si us plau, reintenta l&#39;operació en uns minuts. Operació NO realitzada. |
 
-## 6.4 Descarrega Document <a name="6.4"></a>
+## 6.4 Eliminació de Documents <a name="eliminacio-documents" id="eliminacio-documents"></a>
+
+Aquest mètode permet eliminar diversos documents, i en cascada, el propi fitxer associat si aquest només està referenciat per un únic document.
+
+**Important:** Si el servei integrador elimina un document i aquest està associat a un fitxer a través de la metadada UUIDFitxer, DESA&#39;L comprovarà si hi ha algun altre document que referenciï a aquest fitxer. En cas contrari, eliminarà el fitxer de forma irreversible.
+
+El següent diagrama mostra les 2 possibilitats amb les que es pot trobar DESA&#39;L en el moment d&#39;eliminar un document si aquest està associat amb un fitxer a través de la metadada _**UUIDFitxer**_:
+
+![image](https://user-images.githubusercontent.com/32306731/156012806-1f53e86f-c025-4fed-8a89-c89197aba8f3.png)
+
+### Petició <a name="peticio-eliminacio-documents" id="peticio-eliminacio-documents"></a>
+
+| **Element** | **Tipus paràmetre** | **Obligatori** | **Tipus camps** | **Mida màxima** | **Observacions** |
+| --- | --- | --- | --- | --- | --- |
+| uuidDocument | Body | Sí | Llista | -- | -- |
+| codiINE | QueryParam | Sí | Text | 10 | -- |
+| codiServei | QueryParam | Sí | Text | 10 | -- |
+
+L'URL corresponent a aquesta operació de l'API és:
+
+```javascript
+https://{{host}}/document/deleteDocuments?codiServei={{codiServei}}&codiINE={{codiINE}}
+```
+
+El contingut de la petició quedaria: 
+
+```json
+{
+"uuidDocument": ["1a6648d1-0e98-463f-93c4-cc468dbcd1e8","b6815ee4-b83f-4218-8240-54eae6be1d67"]
+}
+```
+
+### Resposta <a name="resposta-eliminacio-documents" id="resposta-eliminacio-documents"></a>
+
+```json
+{
+    "codiResposta": "0",
+    "descripcioResposta": "Operació realitzada correctament"
+}
+```
+
+### Codis de resposta <a name="codis-resposta-eliminacio-documents" id="codis-resposta-eliminacio-documents"></a>
+
+A continuació es detallen els possibles codis de resposta per l&#39;eliminació de documents (per al codi d&#39;error 11, XXXXXX especifica la metadada en qüestió i per al codi d&#39;error 100 XXXXXX ofereix més detalls de l&#39;error no controlat):
+
+| **Codi** | **Missatge** |
+| --- | --- |
+| 0 | Operació realitzada correctament. |
+| 4 | Error: Petició mal formada. |
+| 10 | Error: no tens autorització per realitzar aquesta operació. Operació NO realitzada. |
+| 11 | Error: la petició no és correcta. Hi ha metadades obligatòries sense informar o metadades informades no vàlides (XXXXXX). Operació NO realitzada. |
+| 12 | Error: el número d&#39;expedient indicat no existeix en el servei i organisme indicats. Operació NO realitzada. |
+| 13 | Error: el fitxer físic indicat no existeix. Operació NO realitzada. |
+| 14 | Error: el fitxer físic conté virus i ha estat eliminat. Operació NO realitzada. |
+| 100 | Error no controlat: XXXXXX. Si us plau, reintenti l&#39;operació en uns minuts. Operació NO realitzada. |
+| 101 | Error: el document físic indicat està en procés de validació. Si us plau, reintenta l&#39;operació en uns minuts. Operació NO realitzada. |
+
+## 6.5 Descàrrega Document <a name="6.4"></a>
 
 Aquest mètode permet obtenir de forma síncrona les metadades d&#39;un document a partir del seu _ **UUIDDocument** _ (Modalitat 1) i de forma opcional l&#39;URL presignada per poder descarregar el contingut (Modalitat 2).
 
-### Petició Modalitat 1: Descarrega Document
+### Petició Modalitat 1: Descàrrega Document
 
 | **Element** | **Tipus paràmetre** | **Obligatori** | **Tipus camps** | **Mida màxima** | **Observacions** |
 | --- | --- | --- | --- | --- | --- |
@@ -1752,7 +1809,7 @@ Aquest mètode permet obtenir de forma síncrona les metadades d&#39;un document
 
 ![image](https://user-images.githubusercontent.com/32306731/156013374-529e26ba-3813-4889-9a41-b47e8ef1be10.png)
 
-### Petició Modalitat 2: Descarrega Document i contingut (fitxer)
+### Petició Modalitat 2: Descàrrega Document i contingut (fitxer)
 
 **Important:** Si l’antivirus no ha pogut finalitzar l’anàlisi d’algun dels fitxers, la descàrrega de l’expedient fallarà amb un codi d’error 1 - El contingut del fitxer està esperant a ser analitzat pel antivirus.
 
@@ -1785,7 +1842,7 @@ A continuació es detallen els possibles codis de resposta per a la descàrrega 
 | 12 | Error: el document indicat no existeix en el servei i organisme indicats. Operació NO realitzada. |
 | 100 | Error no controlat: XXXXXX. Si us plau, reintenti l&#39;operació en uns minuts. Operació NO realitzada. |
 
-## 6.5 Descarrega Document en format ENI <a name="6.5"></a>
+## 6.6 Descàrrega Document en format ENI <a name="6.5"></a>
 
 Aquest mètode permetrà obtenir i descarregar un document en format ENI per tal de poder compartir-ho amb un tercer.
 
@@ -1823,7 +1880,7 @@ A continuació es detallen els possibles codis de resposta per a la descàrrega 
 | 12 | Error: l&#39;expedient indicat no existeix en el servei i organisme indicats. Operació NO realitzada. |
 | 100 | Error no controlat: XXXXXX. Si us plau, reintenti l&#39;operació en uns minuts. Operació NO realitzada. |
 
-## 6.6 Cerca de Documents <a name="cerca-documents" id="cerca-documents"></a>
+## 6.7 Cerca de Documents <a name="cerca-documents" id="cerca-documents"></a>
 
 Aquest mètode de l'API permet cercar tots aquells documents que compleixen una sèrie de criteris de filtratge, informats a la petició.
 
@@ -2066,59 +2123,3 @@ A continuació es detallen els possibles codis de resposta per a l'operació de 
 | 10 | Error: no tens autorització per realitzar aquesta operació. Operació NO realitzada. |
 | 100 | Error no controlat: XXXXXX. Si us plau, reintenti l&#39;operació en uns minuts. Operació NO realitzada. |
 
-## 6.7 Eliminació de Documents <a name="eliminacio-documents" id="eliminacio-documents"></a>
-
-Aquest mètode permet eliminar diversos documents, i en cascada, el propi fitxer associat si aquest només està referenciat per un únic document.
-
-**Important:** Si el servei integrador elimina un document i aquest està associat a un fitxer a través de la metadada UUIDFitxer, DESA&#39;L comprovarà si hi ha algun altre document que referenciï a aquest fitxer. En cas contrari, eliminarà el fitxer de forma irreversible.
-
-El següent diagrama mostra les 2 possibilitats amb les que es pot trobar DESA&#39;L en el moment d&#39;eliminar un document si aquest està associat amb un fitxer a través de la metadada _**UUIDFitxer**_:
-
-![image](https://user-images.githubusercontent.com/32306731/156012806-1f53e86f-c025-4fed-8a89-c89197aba8f3.png)
-
-### Petició <a name="peticio-eliminacio-documents" id="peticio-eliminacio-documents"></a>
-
-| **Element** | **Tipus paràmetre** | **Obligatori** | **Tipus camps** | **Mida màxima** | **Observacions** |
-| --- | --- | --- | --- | --- | --- |
-| uuidDocument | Body | Sí | Llista | -- | -- |
-| codiINE | QueryParam | Sí | Text | 10 | -- |
-| codiServei | QueryParam | Sí | Text | 10 | -- |
-
-L'URL corresponent a aquesta operació de l'API és:
-
-```javascript
-https://{{host}}/document/deleteDocuments?codiServei={{codiServei}}&codiINE={{codiINE}}
-```
-
-El contingut de la petició quedaria: 
-
-```json
-{
-"uuidDocument": ["1a6648d1-0e98-463f-93c4-cc468dbcd1e8","b6815ee4-b83f-4218-8240-54eae6be1d67"]
-}
-```
-
-### Resposta <a name="resposta-eliminacio-documents" id="resposta-eliminacio-documents"></a>
-
-```json
-{
-    "codiResposta": "0",
-    "descripcioResposta": "Operació realitzada correctament"
-}
-```
-
-### Codis de resposta <a name="codis-resposta-eliminacio-documents" id="codis-resposta-eliminacio-documents"></a>
-
-A continuació es detallen els possibles codis de resposta per l&#39;eliminació de documents (per al codi d&#39;error 11, XXXXXX especifica la metadada en qüestió i per al codi d&#39;error 100 XXXXXX ofereix més detalls de l&#39;error no controlat):
-
-| **Codi** | **Missatge** |
-| --- | --- |
-| 0 | Operació realitzada correctament. |
-| 4 | Error: Petició mal formada. |
-| 10 | Error: no tens autorització per realitzar aquesta operació. Operació NO realitzada. |
-| 11 | Error: la petició no és correcta. Hi ha metadades obligatòries sense informar o metadades informades no vàlides (XXXXXX). Operació NO realitzada. |
-| 12 | Error: el número d&#39;expedient indicat no existeix en el servei i organisme indicats. Operació NO realitzada. |
-| 13 | Error: el fitxer físic indicat no existeix. Operació NO realitzada. |
-| 14 | Error: el fitxer físic conté virus i ha estat eliminat. Operació NO realitzada. |
-| 100 | Error no controlat: XXXXXX. Si us plau, reintenti l&#39;operació en uns minuts. Operació NO realitzada. |
-| 101 | Error: el document físic indicat està en procés de validació. Si us plau, reintenta l&#39;operació en uns minuts. Operació NO realitzada. |
