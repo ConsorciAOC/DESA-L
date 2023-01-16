@@ -1148,11 +1148,11 @@ A continuació es detallen els possibles codis de resposta per a l'operació de 
 
 ## 5.9 Descàrrega d&#39;Expedients en format ZIP <a name="descarrega-dexpedients-en-format-zip" id="descarrega-dexpedients-en-format-zip"></a>
 
-Aquest mètode asíncron permet obtenir i descarregar en un fitxer ZIP les metadades dels diversos l&#39;expedients i dels documents associats a partir de l&#39;UUIDExpedient (Modalitat 1). De forma opcional permet també recuperar l&#39;URL per poder descarregar tots els binaris dels documents (Modalitat 2). A diferència de la majoria de mètodes de l&#39;API del DESA&#39;L que treballen en format JSON, aquest mètode retorna les metadades en un fitxer XML que es troba dins el fitxer ZIP a descarregar.
+Aquest mètode asíncron permet obtenir i descarregar en un únic fitxer ZIP, un fitxer XML per a cada expedient indicat incloent tant les metadades de l&#39;expedient com dels documents associats (Modalitat 1). De forma opcional (Modalitat 2) es permet recuperar també els binaris dels documents associats a cadascun dels expedients indicats. A diferència de la majoria de mètodes de l&#39;API del DESA&#39;L que treballen en format JSON, aquest mètode retorna les metadades en fitxers XML que es troben dins el fitxer ZIP a descarregar.
 
 La descàrrega d&#39;expedients es pot realitzar independentment de l&#39;estat en que es trobi l&#39;expedient.
 
-Tal i com indiquem, la descàrrega d&#39;expedients es un procés asíncron. La resposta d&#39;aquesta petició asíncrona retorna un codi de tiquet que ens servirà per poder consultar l&#39;estat de la descàrrega i obtenir l'URL de descàrrega del fitxer ZIP tan bon punt estigui disponible. Per poder saber si el fitxer ZIP ja està disponible, DESA&#39;L ofereix el mètode _ **5.6Consulta ticket** _ que permet obtenir l'URL presignada per tal que l&#39;integrador pugui descarregar el zip. Aquesta URL presignada té un temps d&#39;expiració d&#39;una hora, passat aquest temps no serà vàlida i s&#39;haurà de tornar a realitzar una petició.
+Tal i com indiquem, la descàrrega d&#39;expedients es un procés asíncron. La resposta d&#39;aquesta petició asíncrona retorna un codi de tiquet que ens servirà per poder consultar l&#39;estat de la descàrrega i obtenir l'URL de descàrrega del fitxer ZIP tan bon punt estigui disponible. Per poder saber si el fitxer ZIP ja està disponible, DESA&#39;L ofereix el mètode _[5.6 Consulta ticket](#5.6)_ que permet obtenir l'URL presignada per tal que l&#39;integrador pugui descarregar el zip. Aquesta URL presignada té un temps d&#39;expiració d&#39;una hora (passat aquest temps, l&#39;URL deixarà de ser vàlida).
 
 ### Modalitat 1: Descarregar metadades <a name="modalitat-1-descarregar-metadades-exp" id="modalitat-1-descarregar-metadades-exp"></a>
 
@@ -1165,15 +1165,15 @@ Aquesta modalitat permet descarregar un fitxer ZIP que conté els fitxers XML am
 | uuidExpedient | Body | Sí | Llista | -- | N/A |
 | codiINE | QueryParam | Sí | Text | 10 | N/A |
 | codiServei | QueryParam | Sí | Text | 10 | N/A |
-| modality | QueryParam | Sí | Número | -- | Per a modalitat 1, indicar “1” |
+| modality | QueryParam | Sí | Número | 1 | Per a modalitat 1, indicar “1” |
 
-L'URL corresponent a aquesta operació de l'API és:
+L&#39;URL corresponent a aquesta operació de l&#39;API és:
 
 ```javascript
 https://{{host}}/expedient/downloadExpedients?codiServei={{codiServei}}&codiINE={{codiINE}}&modality=1
 ```
 
-El contingut de la petició quedaria: 
+El body de la petició quedaria: 
 
 ```json
 {
@@ -1193,9 +1193,9 @@ El contingut de la petició quedaria:
 
 ### Modalitat 2: Descarregar metadades i Fitxers <a name="modalitat-2-descarregar-metadades-i-fitxers-exp" id="modalitat-2-descarregar-metadades-i-fitxers-exp"></a>
 
-Aquesta modalitat permet descarregar també un fitxer ZIP que conté els fitxers XML amb les metadades dels expedients i dels documents associats, però el fitxer ZIP també conté el contingut dels fitxers vinculats amb els documents dels expedients.
+Aquesta modalitat permet descarregar també un fitxer ZIP que conté els fitxers XML amb les metadades dels expedients i dels documents associats, i a més a més s&#39;inclou dins el fitxer ZIP els binaris dels documents associats als expedients indicats per l&#39;integrador.
 	
-**Important:** Si l’antivirus no ha pogut finalitzar l’anàlisi d’algun dels fitxers, la descàrrega dels expedients fallarà amb un codi d’error 1 - El contingut del fitxer està esperant a ser analitzat pel antivirus.
+**Important:** Si l&#39;antivirus no ha pogut finalitzar l&#39;anàlisi d&#39;algun dels fitxers, la descàrrega dels expedients fallarà amb un codi d’error 1 - El contingut del fitxer està esperant a ser analitzat pel antivirus.
 
 ### Petició <a name="peticio-modalitat-2-descarregar-metadades-i-fitxers-exp" id="peticio-modalitat-2-descarregar-metadades-i-fitxers-exp"></a>
 
@@ -1204,9 +1204,9 @@ Aquesta modalitat permet descarregar també un fitxer ZIP que conté els fitxers
 | uuidExpedient | Body | Sí | Llista | - | N/A |
 | codiINE | QueryParam | Sí | Text | 10 | N/A |
 | codiServei | QueryParam | Sí | Text | 10 | N/A |
-| modality | QueryParam | Sí | Número | - | Per a modalitat 2, indicar “2” |
+| modality | QueryParam | Sí | Número | 1 | Per a modalitat 2, indicar “2” |
 
-L'URL corresponent a aquesta operació de l'API és:
+L&#39;URL corresponent a aquesta operació de l&#39;API és:
 
 ```javascript
 https://{{host}}/expedient/downloadExpedients?codiServei={{codiServei}}&codiINE={{codiINE}}&modality=2
