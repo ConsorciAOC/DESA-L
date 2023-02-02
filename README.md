@@ -75,14 +75,14 @@
 		- [Resposta](#resposta-modalitat-2-descarregar-metadades-i-fitxers-exp)
 		- [Exemple XML inclòs en el fitxer ZIP](#exemple-xml-inclos-en-el-fitxer-zip-exp)
 		- [Codis de resposta](#codis-resposta-descarrega-dexpedients-en-format-zip)
-	- [5.10 Modificació Expedients <a name="5.10"></a>](#modificacio-expedients)
-		- [Modalitat 1: Crear documents](#modalitat-1-modificacio-expedients)
-		- [Petició](#peticio-modalitat-1-modificacio-expedients)
-		- [Resposta](#resposta-modalitat-1-modificacio-expedients)
-		- [Modalitat 2: Afegir documents existents](#modalitat-2-modificacio-expedients)
-		- [Petició](#peticio-modalitat-2-modificacio-expedients)
-		- [Resposta](#resposta-modalitat-2-modificacio-expedients)
-		- [Codis de resposta](#codis-resposta-modificacio-expedients)
+	- [5.10 Afegeix Documents a un Expedient <a name="5.10"></a>](#afegeixDocuments)
+		- [Modalitat 1: Crear documents](#modalitat-1-afegeixDocuments)
+		- [Petició](#peticio-modalitat-1-afegeixDocuments)
+		- [Resposta](#resposta-modalitat-1-afegeixDocuments)
+		- [Modalitat 2: Afegir documents existents](#modalitat-2-afegeixDocuments)
+		- [Petició](#peticio-modalitat-2-afegeixDocuments)
+		- [Resposta](#resposta-modalitat-2-afegeixDocuments)
+		- [Codis de resposta](#codis-resposta-afegeixDocuments)
 - [6 Capa Document <a name="6"></a>](#6-capa-document-)
 	- [6.1 Alta de Document <a name="6.1"></a>](#61-alta-de-document-)
 		- [Petició alta document basic](#petició-alta-document-basic)
@@ -314,7 +314,7 @@ Es tracta del model de metadades que majoritàriament han d’utilitzar els serv
 | **estatElaboracio** | Obligatori | -- | Text | EstadoElaboracion | estatElaboracio | Aplicació que s'integra | No | No | No | Si | No | Si | <ul><li>EE01 - Original</li><li>EE02 - Copia electrónica auténtica con cambio de formato</li><li>EE04 - Copia electrónica parcial auténtica</li><li>EE99 - Otros.</li></ul>|
 | **origen** | Obligatori | -- | boolea | OrigenCiudadanoAdministracion | origen | Aplicació que s'integra | No | No | No | No | No | Si | <ul><li>false= Ciudadano</li><li>true=Administración</li><ul>|
 | **tipusDocumental** | Obligatori | -- | Text | TipoDocumental | tipusDocumentalNTI | Aplicació que s'integra | No | No | No | Si | No | Si | <ul><li>TD01 - Resolución</li><li>TD02 - Acuerdo</li><li>TD03 - Contrato</li><li>TD04 - Convenio</li><li>TD05 - Declaración</li><li>TD06 - Comunicación</li><li>TD07 - Notificación</li><li>TD08 - Publicación</li><li>TD09 - Acuse de recibo</li><li>TD10 - Acta</li><li>TD11 - Certificado</li><li>TD12 - Diligencia</li><li>TD13 - Informe</li><li>TD14 - Solicitud</li><li>TD15 - Denuncia</li><li>TD16 - Alegación</li><li>TD17 - Recursos</li><li>TD18 - Comunicación ciudadano</li><li>TD19 - Factura</li><li>TD20 - Otros incautados</li><li>TD51 - Ley</li><li>TD52 - Moción</li><li>TD53 - Instrucción</li><li>TD54 - Convocatoria</li><li>TD55 - Orden del día</li><li>TD56 - Informe de Ponencia</li><li>TD57 - Dictamen de Comisión</li><li>TD58 - Iniciativa legislativa</li><li>TD59 - Pregunta</li><li>TD60 - Interpelación</li><li>TD61 - Respuesta</li><li>TD62 - Proposición no de ley</li><li>TD63 - Enmienda</li><li>TD64 - Propuesta de resolución</li><li>TD65 - Comparecencia</li><li>TD66 - Solicitud de información</li><li>TD67 - Escrito</li><li>TD68 - Iniciativa legislativa</li><li>TD69 - Petición</li><li>TD99 - Otros.</li></ul>|
-| **tipusSignatura** |	Obligatori	 	| --|Text	|TipoFirma|	tipusSignatura|	Aplicació que s'integra	| No|	No|	No|	Si|	No|	Si| <ul><li>TF01 - CSV </li><li>TF02 - XAdES internally detached signature</li><li>TF03 - XAdES enveloped signature</li><li>TF04 - CAdES detached/explicit signature </li><li>TF05 - CAdES attached/implicit signature</li><li>TF06 - PAdES</li><li>TF07 - XAdES Manifest</li></ul>|
+| **tipusSignatura** |	Obligatori	 	| --|Text	|TipoFirma|	tipusSignatura|	Aplicació que s'integra	| No|	No|	No|	Si|	No|	Si| <ul><li>TF01 - CSV </li><li>TF02 - XAdES internally detached signature</li><li>TF03 - XAdES enveloped signature</li><li>TF04 - CAdES detached/explicit signature </li><li>TF05 - CAdES attached/implicit signature</li><li>TF06 - PAdES</li><li>TF07 - XAdES Manifest</li><li>TF99 - Sense signatura</li></ul>|
 | **CSVSignatura**|	Obligatori i condicional|	100	|Text	|ValorCSV|	valorCSV	|Aplicació que s'integra|	No|	No|	No|	Si|	Si|	Si	|Només s’ha d’informar si _TipoFirma_ és _TF01_ |
 | **regulacioGeneracioCSVSignatura** |	Obligatori i condicional|	500	|Text	|RegulacionGeneracionCSV	|regulacioGeneracioCSV|	Aplicació que s'integra|	No	|No|	No|	No	|No|	Si|	Només s’ha d'informar si _TipoFirma_ és _TF01|
 | **referenciaSignatura**	|Obligatori i condicional|	100	|Text	|ReferenciaFirma	|identificadorDocumentSignat|	Aplicació que s'integra|	No|	No|	No|	No	|No|	Si|	Referència al fitxer que inclou la signatura (UUID fitxer). Només s’ha d’informar si TipoFirma és TF03 o TF04. |
@@ -598,7 +598,7 @@ A continuació es detallen els possibles codis de resposta per l&#39;alta d&#39;
 
 ## 5.2 Modificació Expedient <a name="5.2"></a>
 
-Aquest mètode permet la modificació de qualsevol metadada identificada com a editable de l&#39;expedient. Es permetrà la modificació de l&#39;expedient independentment del seu estat (fins i tot si l&#39;expedient es troba en _ **Estat Tancat** _).
+Aquest mètode permet la modificació de qualsevol metadada identificada com a editable de l&#39;expedient. Es permetrà la modificació de l&#39;expedient independentment del seu estat (fins i tot si l&#39;expedient es troba en **Estat Tancat**).
 
 Es permetrà realitzar la modificació d&#39;una o vàries metadades a la vegada. Les metadades que l&#39;integrador no informi en la seva petició, no es modificaran i mantindran el seu valor original. En cas d&#39;error, DESA&#39;L no modificarà cap de les metadades.
 
@@ -1253,19 +1253,15 @@ A continuació es detallen els possibles codis de resposta per a la descàrrega 
 | 12 | Error: l&#39;expedient indicat no existeix en el servei i organisme indicats. Operació NO realitzada. |
 | 100 | Error no controlat: XXXXXX. Si us plau, reintenti l&#39;operació en uns minuts. Operació NO realitzada. |
 
-## 5.10 Modificació Expedients <a name="modificacio-expedients" id="modificacio-expedients"></a>
+## 5.10 Afegeix Documents a un Expedient <a name="afegeixDocuments" id="afegeixDocuments"></a>
 
-Aquest mètode permet la modificació de qualsevol metadada identificada com a editable dels expedients. Es permetrà la modificació dels expedients independentment del seu estat (fins i tot si els expedients es troben en _ **Estat Tancat** _).
+Aquest mètode permet afegir un conjunt de documents a un expedient existent. Els documents es poden crear de nou en la mateixa petició (Modalitat 1) o bé poden ser documents ja existents que es volen associar a l'expedient (Modalitat 2)
 
-Es permetrà realitzar la modificació d&#39;una o vàries metadades a la vegada. Les metadades que l&#39;integrador no informi en la seva petició, no es modificaran i mantindran el seu valor original. En cas d&#39;error, DESA&#39;L no modificarà cap de les metadades.
+### Modalitat 1: Crear documents <a name="modalitat-1-afegeixDocuments" id="modalitat-1-afegeixDocuments"></a>
 
-En el cas que l&#39;integrador necessiti esborrar una metadada, podrà fer-ho informant el valor null o una cadena buida si la metadada és de tipus Text. DESA&#39;L validarà però, que aquesta metadada no sigui obligatòria i en cas afirmatiu rebutjarà la petició.
+Aquesta modalitat permet crear els documents i associar-los a l'expedient. El funcionament d'aquesta modalitat és molt similar al mètode [6.1 Alta de Document <a name="6.1"></a>](#61-alta-de-document-)
 
-### Modalitat 1: Crear documents <a name="modalitat-1-modificacio-expedients" id="modalitat-1-modificacio-expedients"></a>
-
-Aquesta modalitat permet crear nous documents dins l'expedient.
-
-### Petició <a name="peticio-modalitat-1-modificacio-expedients" id="peticio-modalitat-1-modificacio-expedients"></a>
+### Petició <a name="peticio-modalitat-1-afegeixDocuments" id="peticio-modalitat-1-afegeixDocuments"></a>
 
 | **Element** | **Tipus paràmetre** | **Obligatori** | **Tipus camps** | **Mida màxima** | **Observacions** |
 | --- | --- | --- | --- | --- | --- |
@@ -1273,22 +1269,40 @@ Aquesta modalitat permet crear nous documents dins l'expedient.
 | codiINE | QueryParam | Sí | Text | 10 | -- |
 | modality | QueryParam | Sí | Número | -- | Per a modalitat 1, indicar “1” |
 | uuidExpedient | Body | Sí | Text | -- | -- |
-| documents | Body | No | Llista | -- | -- |
-| identificador | Body | No | -- | 50 | N/A |
-| titol | Body | No | Text | 500 | N/A |
-| dataInici | Body | No | Data | - | Format: DD/MM/AAAA HH:mm:SS |
-| dataFi | Body | No | Data | - | Format: DD/MM/AAAA HH:mm:SS |
-| unitatResponsable | Body | No | Text | 250 | N/A |
-| codiClassificacio | Body | No | Text | 50 | N/A |
-| nomClassificacio | Body | No | Text | 250 | N/A |
-| codiSIA | Body | No | Text | 50 | N/A |
-| nivellAccess | Body | No | Text | -- | N/A |
-| clasificacioENS | Body | No | Text | -- | N/A |
-| sensibilitatDadesCaracterPersonal | Body | No | Text | -- | N/A |
-| estatExpedient | Body | No | Text | -- | N/A |
-| interessat | Body | No | Llista | -- | Llista de literals |
-| descripció | Body | No | Text | 500 | N/A |
-| infoAddicional | Body | No | Llista | -- | Llista de literals |
+| documents | Body | Sí | Llista | -- | -- |
+| codiINE |  Body | Sí | Text | 10 | -- |
+| codiServei | Body |  | Taula | 10 | -- |
+| nomFitxer | Body | Condicional | Text | 250 | Només s&#39;informa si contingut igual a 1 |
+| nomNatural | Body | Sí | Text | 500 | Nom natural (sense extensió) |
+| dataDocument | Body | Sí | Data i hora | -- | Format: DD/MM/AAAA HH:mm:SS |
+| contingut | Body | Sí | Text | -- | -- |
+| interessat | Body | Sí | Llista | 20 | Llista d&#39;interessats |
+| usuari | Body | Sí | Text | 250 | Dades identificatives qui crea el document |
+| numeroRegistre | Body | Si | Text | 100 | -- |
+| CSV | Body | Sí | Text | 100 | -- |
+| identificadorExpedientDesal | Body | Si | Text | 100 | -- |
+| identificadorExpedientExtern | Body | Si | Text | 100 | -- |
+| UUIDFitxer | Body | Condicional | Text | 20 | Només s&#39;informa si contingut igual a 1 |
+| URLDocumentExtern | Body | Condicional | URI |   | Només s&#39;informa si contingut igual a 2 |
+| identificadorDocumentExtern | Body | Condicional | Text | 100 | Només s&#39;informa si contingut igual a 3 |
+| infoAddicional | Body | No | Llista | -- | Llista d&#39;elements clau/valor |
+| estatElaboracio | Body | Si | Text | -- | <ul><li>EE01 - Original</li><li>EE02 - Copia electrónica auténtica con cambio de formato</li><li>EE03 - Copia electrónica auténtica de documento papel</li><li>EE04 - Copia electrónica parcial auténtica</li><li>EE99 - Otros.</li></ul> |
+| origen | Body | Si | boolea | -- | false= Ciutadà, true=Administració |
+| tipusDocumental | Body  | Si | Text | -- | <ul><li>TD01 - Resolución</li><li>TD02 - Acuerdo</li><li>TD03 - Contrato</li><li>TD04 - Convenio</li><li>TD05 - Declaración</li><li>TD06 - Comunicación</li><li>TD07 - Notificación</li><li>TD08 - Publicación</li><li>TD09 - Acuse de recibo</li><li>TD10 - Acta</li><li>TD11 - Certificado</li><li>TD12 - Diligencia</li><li>TD13 - Informe</li><li>TD14 - Solicitud</li><li>TD15 - Denuncia</li><li>TD16 - Alegación</li><li>TD17 - Recursos</li><li>TD18 - Comunicación ciudadano</li><li>TD19 - Factura</li><li>TD20 - Otros incautados</li><li>TD51 - Ley</li><li>TD52 - Moción</li><li>TD53 - Instrucción</li><li>TD54 - Convocatoria</li><li>TD55 - Orden del día</li><li>TD56 - Informe de Ponencia</li><li>TD57 - Dictamen de Comisión</li><li>TD58 - Iniciativa legislativa</li><li>TD59 - Pregunta</li><li>TD60 - Interpelación</li><li>TD61 - Respuesta</li><li>TD62 - Proposición no de ley</li><li>TD63 - Enmienda</li><li>TD64 - Propuesta de resolución</li><li>TD65 - Comparecencia</li><li>TD66 - Solicitud de información</li><li>TD67 - Escrito</li><li>TD68 - Iniciativa legislativa</li><li>TD69 - Petición</li><li>TD99 - Otros. </li></ul>|
+| tipusSignatura | Body  | Si | Text | --  | <ul><li>TF01 - CSV</li><li>TF02 - XAdES internally detached signature</li><li>TF03 - XAdES enveloped signature</li><li>TF04 - CAdES detached/explicit signature</li><li>TF05 - CAdES attached/implicit signature</li><li>TF06 - PAdES</li><li>TF07 - XAdES Manifest</li><li>TF99 - Sense signatura</li></ul> |
+| CSVSignatura | Body  | Condicional | Text | 100 | S&#39;informa si TipoFirma =TF01 |
+| regulacioGeneracioCSVSignatura | Body  | Condicional | Text | 500 | S&#39;informa si TipoFirma =TF01 |
+| referenciaSignatura | Body  | Condicional | Text | 100 | Només cas TF03 i TF04. Referencia al fitxer que inclou la signatura (UUID - fitxer) |
+| identificadorDocumentOrigen | Body  | Condicional | Text | 250 | Només si s&#39;ha indicat EE02,EE03 i EE04 a EstadoElaboracion |
+| descripcio | Body  | No | Text | 500 | --  |
+| nivellAcces | Body  | No | Enum | --  | <ul><li>A-Secret</li><li>B-Reservat</li><li>C-Confidencial</li><li>E-No classificat</li></ul> |
+| clasificacioENS | Body  | No | Enum | -- | Baix, Mig, Alt |
+| sensibilitatDadesCaracterPersonal | Body  | No | Enum | -- | Basic, Mig, Alt |
+| documentEssencial | Body  | No | boolea | -- | True (si), False (NO) |
+| idioma | Body  | No | Text | 50 | -- |
+| codiClassificacio | Body  | No | Text | 50 | -- |
+| nomClassificacio | Body  | No | Text | 250 | -- |
+| codiSIA | Body  | No | Text | 50 | -- |
 
 L'URL corresponent a aquesta operació de l'API és:
 
@@ -1348,7 +1362,7 @@ El contingut de la petició quedaria:
 }
 ```
 
-### Resposta <a name="resposta-modalitat-1-modificacio-expedients" id="resposta-modalitat-1-modificacio-expedients"></a>
+### Resposta <a name="resposta-modalitat-1-afegeixDocuments" id="resposta-modalitat-1-afegeixDocuments"></a>
 
 ```json
 {
@@ -1437,11 +1451,11 @@ El contingut de la petició quedaria:
 }
 ```
 
-### Modalitat 2: Afegir documents existents <a name="modalitat-2-modificacio-expedients" id="modalitat-2-modificacio-expedients"></a>
+### Modalitat 2: Afegir documents existents <a name="modalitat-2-afegeixDocuments" id="modalitat-2-afegeixDocuments"></a>
 
-Aquesta modalitat permet afegir documents que ja existeixen dins l'expedient.
+Aquesta modalitat permet associar un conjunt de documents ja existents a un expedient.
 
-### Petició <a name="peticio-modalitat-2-modificacio-expedients" id="peticio-modalitat-2-modificacio-expedients"></a>
+### Petició <a name="peticio-modalitat-2-afegeixDocuments" id="peticio-modalitat-2-afegeixDocuments"></a>
 
 | **Element** | **Tipus paràmetre** | **Obligatori** | **Tipus camps** | **Mida màxima** | **Observacions** |
 | --- | --- | --- | --- | --- | --- |
@@ -1449,7 +1463,7 @@ Aquesta modalitat permet afegir documents que ja existeixen dins l'expedient.
 | codiINE | QueryParam | Sí | Text | 10 | -- |
 | modality | QueryParam | Sí | Número | -- | Per a modalitat 2, indicar “2” |
 | uuidExpedient | Body | Sí | Text | -- | -- |
-| uuidDocument | Body | No | Llista | -- | -- |
+| uuidDocument | Body | Sí | Llista | -- | -- |
 
 L'URL corresponent a aquesta operació de l'API és:
 
@@ -1468,7 +1482,7 @@ El contingut de la petició quedaria:
 }
 ```
 
-### Resposta <a name="resposta-modalitat-2-modificacio-expedients" id="resposta-modalitat-2-modificacio-expedients"></a>
+### Resposta <a name="resposta-modalitat-2-afegeixDocuments" id="resposta-modalitat-2-afegeixDocuments"></a>
 
 ```json
 {
@@ -1492,7 +1506,7 @@ El contingut de la petició quedaria:
 }
 ```
 
-### Codis de resposta <a name="codis-resposta-modificacio-expedients" id="codis-resposta-modificacio-expedients"></a>
+### Codis de resposta <a name="codis-resposta-afegeixDocuments" id="codis-resposta-afegeixDocuments"></a>
 
 A continuació es detallen els possibles codis de resposta per a la modificació dels expedients (per al codi d&#39;error 11, XXXXXX especifica la metadada en qüestió i per al codi d&#39;error 100 XXXXXX ofereix més detalls de l&#39;error no controlat):
 
@@ -1578,7 +1592,7 @@ La relació entre un document i el seu contingut (fitxer) es realitza a partir d
 | estatElaboracio | Body | Si | Text | -- | <ul><li>EE01 - Original</li><li>EE02 - Copia electrónica auténtica con cambio de formato</li><li>EE03 - Copia electrónica auténtica de documento papel</li><li>EE04 - Copia electrónica parcial auténtica</li><li>EE99 - Otros.</li></ul> |
 | origen | Body | Si | boolea | -- | false= Ciutadà, true=Administració |
 | tipusDocumental | Body  | Si | Text | -- | <ul><li>TD01 - Resolución</li><li>TD02 - Acuerdo</li><li>TD03 - Contrato</li><li>TD04 - Convenio</li><li>TD05 - Declaración</li><li>TD06 - Comunicación</li><li>TD07 - Notificación</li><li>TD08 - Publicación</li><li>TD09 - Acuse de recibo</li><li>TD10 - Acta</li><li>TD11 - Certificado</li><li>TD12 - Diligencia</li><li>TD13 - Informe</li><li>TD14 - Solicitud</li><li>TD15 - Denuncia</li><li>TD16 - Alegación</li><li>TD17 - Recursos</li><li>TD18 - Comunicación ciudadano</li><li>TD19 - Factura</li><li>TD20 - Otros incautados</li><li>TD51 - Ley</li><li>TD52 - Moción</li><li>TD53 - Instrucción</li><li>TD54 - Convocatoria</li><li>TD55 - Orden del día</li><li>TD56 - Informe de Ponencia</li><li>TD57 - Dictamen de Comisión</li><li>TD58 - Iniciativa legislativa</li><li>TD59 - Pregunta</li><li>TD60 - Interpelación</li><li>TD61 - Respuesta</li><li>TD62 - Proposición no de ley</li><li>TD63 - Enmienda</li><li>TD64 - Propuesta de resolución</li><li>TD65 - Comparecencia</li><li>TD66 - Solicitud de información</li><li>TD67 - Escrito</li><li>TD68 - Iniciativa legislativa</li><li>TD69 - Petición</li><li>TD99 - Otros. </li></ul>|
-| tipusSignatura | Body  | Si | Text | --  | <ul><li>TF01 - CSV</li><li>TF02 - XAdES internally detached signature</li><li>TF03 - XAdES enveloped signature</li><li>TF04 - CAdES detached/explicit signature</li><li>TF05 - CAdES attached/implicit signature</li><li>TF06 - PAdES</li><li>TF07 - XAdES Manifest</li></ul> |
+| tipusSignatura | Body  | Si | Text | --  | <ul><li>TF01 - CSV</li><li>TF02 - XAdES internally detached signature</li><li>TF03 - XAdES enveloped signature</li><li>TF04 - CAdES detached/explicit signature</li><li>TF05 - CAdES attached/implicit signature</li><li>TF06 - PAdES</li><li>TF07 - XAdES Manifest</li><li>TF99 - Sense signatura</li></ul> |
 | CSVSignatura | Body  | Condicional | Text | 100 | S&#39;informa si TipoFirma =TF01 |
 | regulacioGeneracioCSVSignatura | Body  | Condicional | Text | 500 | S&#39;informa si TipoFirma =TF01 |
 | referenciaSignatura | Body  | Condicional | Text | 100 | Només cas TF03 i TF04. Referencia al fitxer que inclou la signatura (UUID - fitxer) |
@@ -1654,7 +1668,7 @@ En la resposta del mètode de modificació de document, DESA&#39;L retorna totes
 | estatElaboracio | Body | No | Text | -- | <ul><li>EE01 - Original</li><li>EE02 - Copia electrónica auténtica con cambio de formato</li><li>EE03 - Copia electrónica auténtica de documento papel</li><li>EE04 - Copia electrónica parcial auténticaEE99 - Otros.</li></ul> |
 | origen | Body | No | Boolean | -- | false= Ciudadàtrue=Administració |
 | tipusDocumental | Body | No | Text | -- | <ul><li>TD01 - Resolución</li><li>TD02 - Acuerdo</li><li>TD03 - Contrato</li><li>TD04 - Convenio</li><li>TD05 - Declaración</li><li>TD06 - Comunicación</li><li>TD07 - Notificación</li><li>TD08 - Publicación</li><li>TD09 - Acuse de recibo</li><li>TD10 - Acta</li><li>TD11 - Certificado</li><li>TD12 - Diligencia</li><li>TD13 - Informe</li><li>TD14 - Solicitud</li><li>TD15 - Denuncia</li><li>TD16 - Alegación</li><li>TD17 - Recursos</li><li>TD18 - Comunicación ciudadano</li><li>TD19 - Factura</li><li>TD20 - Otros incautados</li><li>TD51 - Ley</li><li>TD52 - Moción</li><li>TD53 - Instrucción</li><li>TD54 - Convocatoria</li><li>TD55 - Orden del día</li><li>TD56 - Informe de Ponencia</li><li>TD57 - Dictamen de Comisión</li><li>TD58 - Iniciativa legislativa</li><li>TD59 - Pregunta</li><li>TD60 - Interpelación</li><li>TD61 - Respuesta</li><li>TD62 - Proposición no de ley</li><li>TD63 - Enmienda</li><li>TD64 - Propuesta de resolución</li><li>TD65 - Comparecencia</li><li>TD66 - Solicitud de informaciónT</li><li>D67 - Escrito</li><li>TD68 - Iniciativa legislativa</li><li>TD69 - Petición</li><li>TD99 - Otros.</li><ul> |
-| tipusSignatura | Body | No | Text | -- | <ul><li>TF01 - CSV</li><li>TF02 - XAdES internally detached signature</li><li>TF03 - XAdES enveloped signature</li><li>TF04 - CAdES detached/explicit signature</li><li>TF05 - CAdES attached/implicit signature</li><li>TF06 - PAdES</li><li>TF07 - XAdES Manifest</li></ul> |
+| tipusSignatura | Body | No | Text | -- | <ul><li>TF01 - CSV</li><li>TF02 - XAdES internally detached signature</li><li>TF03 - XAdES enveloped signature</li><li>TF04 - CAdES detached/explicit signature</li><li>TF05 - CAdES attached/implicit signature</li><li>TF06 - PAdES</li><li>TF07 - XAdES Manifest</li><li>TF99 - Sense signatura</li></ul> |
 | CSVSignatura | Body | No | Text | -- | S&#39;informa si a TipoFirma =TF01 |
 | regulacioGeneracioCSVSignatura | Body | No | Text | -- | S&#39;informa si a TipoFirma =TF01 |
 | referenciaSignatura | Body | No | Text | -- | Només cas TF03 i TF04. Referencia al fitxer que inclou la signatura (uuidFitxer) |
