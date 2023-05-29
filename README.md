@@ -131,12 +131,14 @@ DESA’L permet enriquir els documents del repositori amb un llenguatge comú i 
 DESA’L també ofereix funcionalitats avançades de cerca d’expedients i documents a partir d’un conjunt determinat de metadades definides com a indexables, i també permet la compartició d’expedients i documents amb serveis de tercers gràcies a les funcionalitats d’exportació en format ENI (Esquema Nacional d’Interoperabilitat).
 
 Totes les funcionalitats que ofereix DESA’L són accessibles a través d’una API REST en format JSON. Aquest manual detalla la missatgeria associada a aquesta API, així com el procediment a seguir per realitzar la integració amb el servei DESA’L. 
+<br></br>
 
+| **IMPORTANT** |
+| --- |
+| **Abans d’iniciar la integració amb el DESA’L és imprescindible que demaneu als responsables del DESA’L una reunió prèvia** on us puguin assessorar i recomanar, entre d’altres temes, si heu de fer servir expedients, quin model de metadades de document heu d’escollir (bàsic o complet), com heu d’informar les metadades, quins permisos hauran de tenir els altres serveis integradors sobre els vostres expedients o documents, etc. Els responsables del DESA’L s’encarregaran a la seva vegada de gestionar la vostra alta com a servei de DESA’L i us proporcionaran les credencials d’accés dels diferents entorns. |
+| **Recordeu que els entorns de DEV i PRE del DESA'L estan destinats únicament per a l'ús de proves** i que d'acord amb el Supervisor Europeo de Protecció de Dades (EDPS) **en cap cas podem fer servir dades personals reals**. Així doncs, als entorns de DEV i PRE de DESA'L hem de fer servir exclusívament dades fictícies o creades artificialment. |
 
-**Important:** AAbans d’iniciar la integració amb el DESA’L és imprescindible que demaneu als responsables del DESA’L una reunió prèvia on us puguin assessorar i recomanar, entre d’altres temes, si heu de fer servir expedients, quin model de metadades de document heu d’escollir, com heu d’informar les metadades, quins permisos hauran de tenir els altres serveis integradors sobre els vostres expedients o documents, etc.
-
-Els responsables del DESA’L s’encarregaran a la seva vegada de gestionar la vostra alta com a servei de DESA’L i us proporcionaran les credencials d’accés dels diferents entorns.
-
+<br></br>
 ## 1.1	Definició de nomenclatura de DESA’L <a name="1.1"></a>
 
 Per tal de garantir la comprensió de la nomenclatura que s’utilitza al DESA’L, a continuació definim les diferents entitats que conformen la nova solució:
