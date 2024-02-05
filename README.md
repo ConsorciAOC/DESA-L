@@ -1823,6 +1823,14 @@ A continuació es detallen els possibles codis de resposta per a la descàrrega 
 | 12 | Error: el document indicat no existeix en el servei i organisme indicats. Operació NO realitzada. |
 | 100 | Error no controlat: XXXXXX. Si us plau, reintenti l&#39;operació en uns minuts. Operació NO realitzada. |
 
+| **IMPORTANT** |
+| --- |
+| La descàrrega de documents per al **codiServei** SIR és de tipus referència (contingut de tipus 3). Per poder descarregar aquests documents es pot utilitzar la següent URL:
+|PRE: https://serveis3-pre.app.aoc.cat/CAOC-PCI30-MC-SIR/descarrega?guid=identificadorDocumentExtern
+|PRO: https://serveis3.app.aoc.cat/CAOC-PCI30-MC-SIR/descarrega?guid=identificadorDocumentExtern
+Cal tenir en compte que el frontal serveis3.app.aoc.cat (servei estàndard on es publiquen els serveis d'interoperabilitat d'AOC) no és accessible des d'internet, de forma que l'aplicació que descarregui el document no pot proporcionar a l'usuari final aquesta URL i haurà d'encarregar-se de la descàrrega actuant de passarel·la.
+
+
 ## 6.6 Descàrrega Document en format ENI <a name="6.5"></a>
 
 Aquest mètode permetrà obtenir i descarregar un document en format ENI per tal de poder compartir-ho amb un tercer.
