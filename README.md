@@ -1825,11 +1825,11 @@ A continuació es detallen els possibles codis de resposta per a la descàrrega 
 
 | **IMPORTANT** |
 | --- |
-| La descàrrega de documents per al **codiServei** SIR és de tipus referència (contingut de tipus 3). Per poder descarregar aquests documents es pot utilitzar la següent URL:
-|PRE: https://serveis3-pre.app.aoc.cat/CAOC-PCI30-MC-SIR/descarrega?guid=identificadorDocumentExtern
-|PRO: https://serveis3.app.aoc.cat/CAOC-PCI30-MC-SIR/descarrega?guid=identificadorDocumentExtern
-Cal tenir en compte que el frontal serveis3.app.aoc.cat (servei estàndard on es publiquen els serveis d'interoperabilitat d'AOC) no és accessible des d'internet, de forma que l'aplicació que descarregui el document no pot proporcionar a l'usuari final aquesta URL i haurà d'encarregar-se de la descàrrega actuant de passarel·la.
-
+| En la descàrrega de documents del **codiServei**=SIR trobareu documents de tipus referència (contingut=3). Per poder descarregar-los, cal tenir present:
+| <ul><li> Tots els documents associats als assentaments generats per l’aplicació SIR, són “contingut de tipus 3” (menys l’annex referent al sicres3.xml, que és “contingut de tipus 1”). </ul></li>
+| <ul><li>Aleshores, aquests documents (contingut de tipus 3) al no estar emmagatzemats físicament a DESAL, la descàrrega final del document no estarà en una URL preassignada a AWS (com sí que ho estarà l’adjunt sicres3.xml, al ser “contingut de tipus 1”), sinó que s'ha de descarregar via petició a la PCI (https://serveis3.app.aoc.cat/CAOC-PCI30-MC-SIR/descarrega?guid=identificadorDocumentExtern), on identificadorDocumentExtern serà un camp que et retornarà la resposta JSON del descarregaDocument().</ul></li>
+| <ul><li>Per exemple, la resposta JSON que retorna la petició descarregaDocument() del UUID d’un dels documents “contingut de tipus 3” associats a un assentament fet per l’aplicació SIR, i que a posteriori, amb el codi identificadorDocumentExtern, farem la consulta via PCI a: https://serveis3.app.aoc.cat/CAOC-PCI30-MC-SIR/descarrega?guid=9b175423-de44-ac33-XXXXXXXX</ul></li>
+| <ul><li>Cal tenir en compte que el frontal serveis3.app.aoc.cat (servei estàndard on es publiquen els serveis d'interoperabilitat d'AOC) no és accessible des d'internet, de forma que l'aplicació que descarregui el document no pot proporcionar a l'usuari final aquesta URL i haurà d'encarregar-se de la descàrrega actuant de passarel·la.</ul></li>
 
 ## 6.6 Descàrrega Document en format ENI <a name="6.5"></a>
 
