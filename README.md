@@ -688,7 +688,7 @@ A continuació es detallen els possibles codis de resposta de la petició d&#39;
 
 ## 5.4 Descàrrega d&#39;Expedient <a name="5.4"></a>
 
-Aquest mètode síncron permet obtenir les metadades de l&#39;expedient i dels documents associats a partir de l&#39;UUIDExpedient.
+Aquest mètode síncron permet obtenir les metadades de l&#39;expedient i dels documents associats a partir de l&#39;UUIDExpedient. És important destacar que per poder **descarregar l'expedient, l'integrador haurà de tenir permisos per descarregar tant el propi expedient com en tots i cadascun dels documents que formin part de l'expedient** (aquest comportament aplica a tots els mètodes relacionats amb l'expedient: descàrrega, modificació, esborrat i cerca).
 
 La descàrrega d&#39;expedients es pot realitzar independentment de l&#39;estat en que es trobi l&#39;expedient.
 
