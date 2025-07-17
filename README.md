@@ -10,7 +10,7 @@
 	- [2.1 Metadades de fitxer <a name="2.1"></a>](#21-metadades-de-fitxer-)
 	- [2.2	Metadades d'expedient <a name="2.2"></a>](#22metadades-dexpedient-)
 	- [2.3 Metadades de Document <a name="2.3"></a>](#23-metadades-de-document-)
-- [3 Autenticació <a name="3"></a>](#3-autenticació-)
+- [3 Autenticació <a name="3"></a>](#3-autenticació-a-name3a)
 	- [3.1	Mètode d’autenticació <a name="3.1"></a>](#31mètode-dautenticació-)
 	- [3.2	Permisologia DESA’L - Model de Control <a name="3.2"></a>](#32permisologia-desal---model-de-control-)
 - [4 Capa Fitxer <a name="4"></a>](#4-capa-fitxer-)
@@ -118,6 +118,7 @@
 		- [Petició](#peticio-eliminacio-documents)
 		- [Resposta](#resposta-eliminacio-documents)
 		- [Codis de resposta](#codis-resposta-eliminacio-documents)
+- [7 Client de l'API DESA'L <a name="7"></a>](#7-client-de-lapi-desal-a-name7a)
 
 
 # 1 Introducció <a name="1"></a>
@@ -362,6 +363,7 @@ https://docs.aws.amazon.com/es_es/apigateway/latest/developerguide/how-to-call-a
 
 
 **Important:** l’AOC disposa d’un client Java que facilita molt tant la implementació del procés d’autenticació amb l’API del DESA’L com la pròpia invocació dels diferents mètodes. Si creieu que pot ser del vostre interès, sol·liciteu als responsables del DESA’L que us el facilitin.
+Per mes informació veure l'apartat: [7 Client de l'API DESA'L <a name="7"></a>](#7-client-de-lapi-desal-a-name7a)
 
 ## 3.2	Permisologia DESA’L - Model de Control <a name="3.2"></a>
 
@@ -2111,4 +2113,29 @@ A continuació es detallen els possibles codis de resposta per a l'operació de 
 | 4 | Error: Petició mal formada. |
 | 10 | Error: no tens autorització per realitzar aquesta operació. Operació NO realitzada. |
 | 100 | Error no controlat: XXXXXX. Si us plau, reintenti l&#39;operació en uns minuts. Operació NO realitzada. |
+
+
+# 7 Client de l'API DESA'L <a name="7"></a>
+
+Aquest client facilita la integració amb l'API de DESA'L, fent més senzill utilitzar les diferents operacions disponibles.
+A més, aquest client gestiona l'autenticació.
+
+Per afegir el client a un projecte cal importar la llibreria:
+```
+implementation 'cat.aoc.desal:aoc-desal-client:0.0.17'
+```
+_Nota: S'hauria de revisar la versió més actual._
+
+Per altra banda, s'ha de configurar al `.properties` del projecte les següents propietats (exemple per SIR a l'entorn de PRE):
+````
+desal.accessKey=CHANGE_ME
+desal.secretKey=CHANGE_ME
+desal.entorn=PRE
+desal.servei=SIR
+desal.timeout.connection=1000
+desal.timeout.read=1000
+desal.retries.max=2
+desal.retries.interval=300
+desal.expedient.reintents=4
+````
 
